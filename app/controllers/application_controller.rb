@@ -8,4 +8,14 @@ class ApplicationController < ActionController::Base
   rescue_from CanCan::AccessDenied do |exception|
     redirect_to root_url, :alert => exception.message
   end
+
+  layout :layout_by_resource
+
+  def layout_by_resource
+    if devise_controller? && resource_name == :user && action_name == 'new'
+      "login"
+    else
+      "application"
+    end
+  end
 end

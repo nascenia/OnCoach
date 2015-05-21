@@ -37,6 +37,5 @@ class Ability
     else
       can [:index],[User]
     end
-
   end
 end

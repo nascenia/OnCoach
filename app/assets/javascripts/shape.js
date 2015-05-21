@@ -10,9 +10,15 @@
 // Read Sprockets README (https://github.com/rails/sprockets#sprockets-directives) for details
 // about supported directives.
 //
-//= require shape-theme/jquery.stellar.min.js
-//= require jquery
-//= require jquery_ujs
-//= require twitter/bootstrap
-//= require turbolinks
-//= require_tree .
+//= require shape-theme/less-1.7.5.min
+//= require shape-theme/pace.min
+//= require shape-theme/jquery-1.11.1.min
+//= require shape-theme/bootstrap.min
+//= require shape-theme/jquery.browser.min
+//= require shape-theme/fastclick
+//= require shape-theme/jquery.stellar.min
+//= require shape-theme/jquery.appear
+//= require shape-theme/js/init
+//= require shape-theme/owl.carousel.min
+//= require shape-theme/jquery.magnific-popup.min
+//= require shape-theme/js/pages/index.js

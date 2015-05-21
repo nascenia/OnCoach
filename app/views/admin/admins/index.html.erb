@@ -1,13 +1,17 @@
-<div class="pull-right">
+<!--<div class="pull-left">-->
   <%= link_to 'Creare New User', admin_new_path, :class => 'btn btn-success' %>
-</div>
-<div class="table-striped">
-  <table class="" style="width: 100%; text-align: left">
+<!--</div>-->
+
+<!--<div class="pull-left text-left" >-->
+  <table class="table table-striped " >
+    <thead>
     <tr>
       <th>User Email</th>
       <th>Type</th>
       <th>Activated On</th>
     </tr>
+    </thead>
+    <tbody>
     <% @users.each do |user| %>
 
         <tr>
@@ -16,7 +20,8 @@
           <td><%= user.created_at %></td>
         </tr>
     <% end %>
+    </tbody>
 
   </table>
 
-</div>
+<!--</div>-->
