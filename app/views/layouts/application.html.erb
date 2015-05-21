@@ -49,7 +49,7 @@
 
     <div class="navbar-collapse collapse navbar-responsive-collapse pull-right">
       <ul class="nav navbar-nav">
-        <!--<li><%#= link_to "Link1", "/path1" %></li>-->
+        <li><%= link_to "Home", root_path %></li>
         <% if current_user.present? %>
             <li><%= link_to "Logout", destroy_user_session_path, method: :delete %></li>
         <% else %>

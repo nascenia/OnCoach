@@ -28,5 +28,15 @@ class Ability
     #
     # See the wiki for details:
     # https://github.com/ryanb/cancan/wiki/Defining-Abilities
+
+
+    if user.type == Constants::TYPES_OPTIONS[:admin]
+      can :manage, :all
+    elsif user.type == Constants::TYPES_OPTIONS[:coach]
+      can [:index],[Coach]
+    else
+      can [:index],[User]
+    end
+
   end
 end

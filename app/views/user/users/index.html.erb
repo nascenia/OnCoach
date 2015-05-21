@@ -1,2 +1,11 @@
-<h1>Users#index</h1>
-<p>Find me in app/views/user/users/index.html.erb</p>
+<h1> You are in User#index </h1>
+
+
+<div class="code_container" style="text-align: left; margin-top: 50px; margin-right: 200px;">
+  <p>
+    <span class="p-head"> Your Email </span> : <span class="pull-right"> <%= current_user.email %> </span>
+  </p>
+  <p>
+    <span class="p-head"> User Type </span> : <span class="pull-right"> <%= current_user.type.nil? ? "User" : current_user.type %> </span>
+  </p>
+</div>

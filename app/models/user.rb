@@ -10,9 +10,16 @@ class User < ActiveRecord::Base
       user.password = Devise.friendly_token[0,20]
     end
   end
+
+  def self.type
+    if self.type.nil?
+      return "User"
+    else
+      self.type
+    end
+  end
 end
 
-class Admin < User; end
-class Coach < User; end
+
 
 

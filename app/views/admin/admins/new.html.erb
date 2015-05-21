@@ -1,0 +1,22 @@
+<%= form_for @user, :url => admin_create_path, :method => :post do |f| %>
+
+    <div class="bs-example form-group">
+
+      <div class="form-controll field">
+        <%= f.email_field :email, autofocus: true, :class => "form-control", :placeholder => "Email" %>
+      </div>
+      <div class="form-controll field">
+        <%= f.password_field :password, autocomplete: "off", :class => "form-control", :placeholder => "Password" %>
+      </div>
+
+      <div class="form-controll field">
+        <%= f.select :type, options_for_select(Constants::TYPES_OPTIONS, ''),:style => "width: 100%", prompt: 'User Type' %>
+      </div>
+
+      <div class="form-controll actions">
+        <%= f.submit "Create New User", :class => "btn btn-save", :style => "width: 100%" %>
+      </div>
+
+    </div>
+
+<% end %>
