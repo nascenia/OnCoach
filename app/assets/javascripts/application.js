@@ -15,5 +15,6 @@
 //= require jquery_ujs
 //= require twitter/bootstrap
 //= require home
+//= require left_bar
 //= require turbolinks
 //= require_tree .

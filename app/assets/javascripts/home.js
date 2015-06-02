@@ -1,6 +1,7 @@
 
 (function() {
     $(function() {
+        $('.search-text').attr("placeholder","");
         var collapseMyMenu, expandMyMenu, hideMenuTexts, showMenuTexts, collapsePageContent, expandPageContent;
         expandMyMenu = function() {
             return $("nav.sidebar").removeClass("sidebar-menu-collapsed").addClass("sidebar-menu-expanded");
@@ -21,23 +22,27 @@
             return $("#page-content-wrapper").animate({"margin-left": "230px"}, "fast");
         };
         return $("#justify-icon").click(function(e) {
-            if ($(this).parent("nav.sidebar").hasClass("sidebar-menu-collapsed")) {
+            if ($(this).parents("nav.sidebar").hasClass("sidebar-menu-collapsed")) {
                 expandMyMenu();
                 showMenuTexts();
                 expandPageContent();
                 $(this).css({
                     color: "#000"
                 });
-            } else if ($(this).parent("nav.sidebar").hasClass("sidebar-menu-expanded")) {
+                $('.search-text').attr("placeholder","search here");
+
+            } else if ($(this).parents("nav.sidebar").hasClass("sidebar-menu-expanded")) {
                 collapseMyMenu();
                 hideMenuTexts();
                 collapsePageContent();
                 $(this).css({
                     color: "#FFF"
                 });
+                $('.search-text').attr("placeholder","");
             }
             return false;
         });
+
     });
 
 }).call(this);

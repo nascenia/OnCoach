@@ -9,20 +9,24 @@ nav.sidebar-menu-collapsed {
 nav.sidebar-menu-expanded {
   width: 280px; }
 nav.sidebar {
-  float: left;
   position: fixed;
   top: 0px;
   left: 0px;
   height: 100%;
   background: none repeat scroll 0 0 #343838;
   color: white;
-  padding: 20px 10px; }
+  padding: 20px 0px; }
 nav.sidebar a#justify-icon {
   outline: 0;
   color: white;
-  font-size: 24px;
-  font-style: normal; }
-
+  font-size: 2em;
+  font-style: normal;
+  text-align:right;
+  padding:5px;
+}
+a#justify-icon:hover{
+  background-color:#343838;
+}
 nav.sidebar ul {
   margin: 0;
   padding: 0;
@@ -66,13 +70,18 @@ nav.sidebar ul li.active a.expandable:hover {
 }
 .glyphicon, .fa{
   font-size: 15px;
-  padding-left: 5px;
   color: #888;
 }
 span.fa-bars {
   font: normal normal normal 14px/1 FontAwesome;
   font-size: inherit;
+  font-size:1em;
 }
+
+span.fa.fa-bars:hover{
+  color:white;
+}
+
 span.glyphicon-off {
   color: #eb5055;
 }
@@ -85,15 +94,137 @@ hr.divider {
 }
 .profile-image {
   border: 4px double rgba(255,255,255,0.2);
+  width:100%;
 }
 .rounded-image {
 //  -webkit-border-radius: 100px;
-  border-radius: 100px;
+  border-radius: 100%;
   overflow: hidden;
   display: inline-block;
+  width:100%;
+  height:auto;
+}
+.collapsed-element{
+  display:inline-block;
 }
 .profile-image span.collapsed-element img{
   vertical-align: middle;
-  width: 35px;
-  height: 35px;
+  width: 100%;
+  height:auto;
+}
+
+/*done by faruk hossen*/
+
+.topmost-secion{
+  height:30px;
+  text-align:right;
+  padding-right:10px;
+}
+.topmost-secion .heading{
+  text-align:center;
+}
+.sidebar-menu-collapsed .profile-info{
+  width:100%;
+}
+.sidebar-menu-collapsed .topmost-secion .expanded-element{
+  display:none;
+}
+.sidebar-menu-expanded .topmost-secion .expanded-element{
+  display:inline-block;
+  color:red;
+  width:80%;
+  text-align: center;
+}
+.search-box-custom{
+  position:relative;
+  height:auto;
+  width:100%;
+  margin-top:10px;
+  overflow:hidden;
+  margin-bottom:10px;
+}
+
+.search-text{
+  width:100%;
+  display:block;
+  overflow:hidden;
+  background-color:#2f3232;
+  border-color: #2f3232;
+}
+.search-text:focus{
+  background-color:#555555;
+  border-color: #555555;
+}
+.search-text:hover{
+  border:none;
+}
+.search-button{
+  position:absolute;
+  right:5px;
+  top:0;
+  margin:0;
+  border:none;
+  background:transparent;
+
+}
+
+.sidebar-menu-expanded .profile, .sidebar-menu-expanded .user{
+  height:80px;
+}
+.sidebar-menu-collapsed .profile, .sidebar-menu-collapsed .user{
+  height:auto;
+}
+.sidebar-menu-collapsed .user{
+  padding-left:10px;
+}
+.sidebar-menu-collapsed .user-info{
+  margin-top:0px;
+}
+.sidebar-menu-expanded .user-info{
+  margin-top:15px;
+}
+.sidebar-menu-collapsed .user-info{
+  margin-top:0px;
+}
+.sidebar-menu-expanded .user-info .signout-icon{
+    margin-left:10px;
+}
+.sidebar-menu-collapsed .user-info .signout-icon,.sidebar-menu-collapsed .user-info .message-icon{
+  margin-top:5px;
+  margin-left:5px;
+}
+.sidebar-menu-collapsed .user-heading{
+  display:none;
+}
+
+nav.sidebar ul li.dashboard{
+  background-color:#68c395;
+  height:40px;
+  padding-top:10px;
+  padding-down:10px;
+  border-left:5px solid #49886F;
+  padding-left:10px;
+  position:relative;
+}
+
+nav.sidebar ul li.dashboard a {
+  background-color:#68c395;
+  color:white;
+}
+nav.sidebar ul li.dashboard .left-arrow-wrapper{
+  position:absolute;
+  right:-22px;
+  height:40px;
+  width:40px;
+  top:1px;
+}
+nav.sidebar ul li.dashboard .left-arrow-wrapper .left-arrow{
+  display:inline-block;
+  border-top: 19px solid transparent;
+  border-bottom: 19px solid transparent;
+
+  border-right:19px solid white;
+}
+.sub-menu {
+  display:none;
 }
