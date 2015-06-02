@@ -10,10 +10,15 @@
 // Read Sprockets README (https://github.com/rails/sprockets#sprockets-directives) for details
 // about supported directives.
 //
-//= require shape-theme/jquery.stellar.min.js
+
 //= require jquery
 //= require jquery_ujs
 //= require twitter/bootstrap
 //= require home
+//= require wysihtml5
+//= require bootstrap-wysihtml5
+//= require shape-theme/jquery.stellar.min.js
 //= require turbolinks
 //= require_tree .
+
+
