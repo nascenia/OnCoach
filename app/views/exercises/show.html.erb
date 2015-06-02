@@ -1,0 +1,34 @@
+<p id="notice"><%= notice %></p>
+
+<p>
+  <strong>Name:</strong>
+  <%= @exercise.name %>
+</p>
+
+<p>
+  <strong>Type:</strong>
+  <%= @exercise.exercise_type %>
+</p>
+
+<p>
+  <strong>Description:</strong>
+  <%= @exercise.description %>
+</p>
+
+<p>
+  <strong>Image:</strong>
+  <%= image_tag @exercise.image %>
+</p>
+
+<p>
+  <strong>Youtube video link:</strong>
+  <%= @exercise.youtube_video_link %>
+</p>
+
+<p>
+  <strong>Calories:</strong>
+  <%= @exercise.calories %>
+</p>
+
+<%= link_to 'Edit', edit_exercise_path(@exercise) %> |
+<%= link_to 'Back', exercises_path %>

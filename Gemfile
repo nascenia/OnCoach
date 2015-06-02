@@ -34,6 +34,10 @@ gem "cancan"
 gem 'seed_dump'
 
 gem 'jquery-ui-rails'
+
+gem 'carrierwave'
+
+gem 'bootstrap-wysihtml5-rails'
 # Use ActiveModel has_secure_password
 # gem 'bcrypt', '~> 3.1.7'
 

@@ -1,5 +1,6 @@
 Rails.application.routes.draw do
 
+  resources :exercises
   namespace :admin do
     get 'index' => 'admins#index'
     get 'new' => 'admins#new'
