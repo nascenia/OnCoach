@@ -143,10 +143,14 @@ hr.divider {
   overflow:hidden;
   margin-bottom:10px;
 }
+.sidebar-menu-collapsed .search-box-custom:hover{
+  width:200px;
+}
 
 .search-text{
   width:100%;
   display:block;
+  color:white;
   overflow:hidden;
   background-color:#2f3232;
   border-color: #2f3232;
