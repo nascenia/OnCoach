@@ -22,8 +22,10 @@ $(document).ready(function(){
         if ($(this).parent().find("ul.sub-menu").is(":hidden")){
             $("ul.sub-menu").hide();
             $(".main-menu li > a.expandable").removeClass("open");
+            $(".main-menu li").removeClass("open");
             $(this).parent().find("ul.sub-menu").show();
             $(this).addClass("open");
+            $(this).parent().addClass("open");
         }
         evt.stopPropagation();
     });
@@ -34,5 +36,6 @@ $(document).ready(function(){
     $(document).mouseover(function(){
         $('.sidebar-menu-collapsed .sub-menu').hide();
         $(".sidebar-menu-collapsed .main-menu li > a.expandable").removeClass("open");
+        $(".sidebar-menu-collapsed .main-menu li").removeClass("open");
     });
 });
