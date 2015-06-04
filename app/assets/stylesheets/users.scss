@@ -31,12 +31,12 @@ nav.sidebar ul {
   margin: 0;
   padding: 0;
   margin-top: 30px; }
-nav.sidebar ul li {
+nav.sidebar ul.main-menu li {
   background: #343838;
-  display: block;
+  display: inline-block;
   margin: 0;
   padding: 0;
-  margin-top: 20px;
+  margin-top: 10px;
   list-style-type: none;
   position: relative;
 }
@@ -200,17 +200,16 @@ hr.divider {
 nav.sidebar ul li.dashboard{
   background-color:#68c395;
   height:40px;
-  padding-top:10px;
-  padding-down:10px;
   border-left:5px solid #49886F;
-  padding-left:10px;
   position:relative;
 }
-
-nav.sidebar ul li.dashboard a {
+nav.sidebar ul li.dashboard > a{
+  padding-left:10px;
   background-color:#68c395;
   color:white;
+  padding-top:10px;
 }
+
 nav.sidebar ul li.dashboard .left-arrow-wrapper{
   position:absolute;
   right:-22px;
@@ -233,4 +232,55 @@ nav.sidebar ul li.dashboard .left-arrow-wrapper .left-arrow{
   border: 1px solid #ddd;
   background-color: #f9f9f9;
 }
+.sidebar ul.main-menu > li{
+  position:relative;
+}
+ul,li,li >a{
+  width:100%;
+}
+li > a.expandable{
+  display:inline-block;
+  padding-left: 15px;
+  height:30px;
+  padding-top:5px;
+  padding-bottom:5px;
+}
+li >a.expandable .dropdown-icon{
+  position:absolute;
+  right:5px;
+  font-size:.8em;
+  top:7px;
+}
+.sidebar-menu-collapsed li >a.expandable .dropdown-icon{
+  display:none;
+}
+.sidebar-menu-expanded li >a.expandable .dropdown-icon{
+  display:inline;
+}
+.sidebar ul.sub-menu{
+  margin-top:7px;
+  padding-left:15px;
+}
+.sidebar ul.sub-menu li>a{
+  background-color:inherit;
+  color:white;
+}
+
+.sidebar ul.sub-menu li>a:hover{
+  color:white;
+}
+
+.sidebar-menu-collapsed li ul.sub-menu{
+  position:absolute;
+  left:50px;
+  top:-7px;
+  height:auto;
+  width:250px;
+  z-index: 100;
+  background-color: rgba(0,0,0,1);
+}
+.sidebar-menu-collapsed li ul.sub-menu li{
+  background:rgba(0,0,0,1);
+}
+
 
