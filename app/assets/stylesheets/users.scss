@@ -186,6 +186,14 @@ hr.divider {
 .sidebar-menu-collapsed .user-info{
   margin-top:0px;
 }
+.message-icon,.signout-icon{
+  padding:2px;
+  border-radius:2px;
+}
+.signout-icon:hover,.message-icon:hover{
+  background:#000;
+}
+
 .sidebar-menu-expanded .user-info .signout-icon{
     margin-left:10px;
 }
@@ -245,6 +253,9 @@ li > a.expandable{
   padding-top:5px;
   padding-bottom:5px;
 }
+.sidebar ul.main-menu li > a.expandable.open{
+  background-color:black;
+}
 li >a.expandable .dropdown-icon{
   position:absolute;
   right:5px;
@@ -261,11 +272,15 @@ li >a.expandable .dropdown-icon{
   margin-top:7px;
   padding-left:15px;
 }
+
 .sidebar ul.sub-menu li>a{
   background-color:inherit;
   color:white;
+  width:inherit;
 }
-
+.sidebar ul.sub-menu li {
+  width:100%;
+}
 .sidebar ul.sub-menu li>a:hover{
   color:white;
 }
@@ -284,5 +299,8 @@ li >a.expandable .dropdown-icon{
 }
 .container{
   width: 100%;
+}
+nav.sidebar{
+  z-index: 1;
 }
 
