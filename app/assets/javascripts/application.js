@@ -16,8 +16,6 @@
 //= require twitter/bootstrap
 //= require home
 //= require left_bar
-//= require wysihtml5
-//= require bootstrap-wysihtml5
 //= require shape-theme/jquery.stellar.min.js
 //= require turbolinks
 //= require_tree .

@@ -31,3 +31,4 @@ bower.json
 .powenv
 *.cache
 .idea
+public
