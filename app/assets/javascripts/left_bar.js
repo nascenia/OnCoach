@@ -5,6 +5,7 @@ $(document).ready(function(){
         if ($(this).parent().find("ul.sub-menu").is(":hidden")){
             $("ul.sub-menu").hide();
             $(".main-menu li > a.expandable").removeClass("open");
+            $(".main-menu li> a.expandable .glyphicon-chevron-up").removeClass('glyphicon-chevron-up').addClass("glyphicon-chevron-down");
             $(this).parent().find("ul.sub-menu").slideDown(500);
             $(this).find(".glyphicon-chevron-down").addClass("glyphicon-chevron-up").removeClass("glyphicon-chevron-down");
             $(this).addClass('open');
