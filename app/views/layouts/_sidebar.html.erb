@@ -1,0 +1,162 @@
+<nav class='sidebar sidebar-menu-collapsed'>
+  <div class="topmost-secion">
+    <div class="heading expanded-element">
+      OnCoach
+    </div>
+    <a href='#' id='justify-icon' class="expandable">
+      <span class='fa fa-bars collapsed-element'></span>
+    </a>
+  </div>
+
+
+  <div class="search-box-custom">
+    <form style="width:100%;">
+
+      <input class="search-text form-control" type="text"  placeholder="Search">
+      <button class="search-button btn" type="submit"><i class="glyphicon glyphicon-search"></i></button>
+    </form>
+  </div>
+  <div class="row">
+    <div class="col-xs-4 profile-info">
+      <div class="profile">
+        <a class='expandable rounded-image profile-image' href='#' title='User'>
+          <span class='collapsed-element'><%= image_tag "profile.png" %> </span>
+          <span class='expanded-element pull-left'> <%= current_user.email %> </span>
+        </a>
+      </div>
+
+    </div>
+    <div class="col-xs-8 .profile-info">
+      <div class="user">
+        <div class="user-heading">
+          Omuk
+        </div>
+        <div class="user-info">
+          <a class="collapsed-element message-icon"  href="#"><span class='fa fa-envelope-o pulse ' ></span></a>
+          <a class="collapsed-element signout-icon" href="<%= destroy_user_session_path %>" data-method="delete"><span class='glyphicon glyphicon-off '></span></a>
+
+        </div>
+      </div>
+    </div>
+  </div>
+
+  <hr class="divider">
+  <ul class="main-menu">
+    <li class=' dashboard'>
+      <a class='expandable ' href='#' title='Dashboard'>
+        <span class='glyphicon glyphicon-home collapsed-element'></span>
+        <span class='expanded-element'>Dashboard</span>
+      </a>
+      <div class="left-arrow-wrapper">
+        <span class="left-arrow"></span>
+      </div>
+
+    </li>
+    <li>
+      <a class='expandable' href='#' title='Input'>
+        <span class='glyphicon glyphicon-plus-sign collapsed-element'></span>
+        <span class='expanded-element'>Input</span>
+        <i class="glyphicon glyphicon-chevron-down expanded-element dropdown-icon"> </i>
+      </a>
+      <ul class="sub-menu">
+        <li><a href="#">This is item1</a></li>
+        <li><a href="#">This is item2</a></li>
+        <li><a href="#">This is item3</a></li>
+        <li><a href="#">This is item4</a></li>
+      </ul>
+    </li>
+    <li>
+      <a class='expandable' href='#' title='Programs'>
+        <span class='glyphicon glyphicon-heart-empty collapsed-element'></span>
+        <span class='expanded-element'>Programs</span>
+        <i class="glyphicon glyphicon-chevron-down expanded-element dropdown-icon"> </i>
+      </a>
+      <ul class="sub-menu">
+        <li><a href="#">This is item1</a></li>
+        <li><a href="#">This is item2</a></li>
+        <li><a href="#">This is item3</a></li>
+        <li><a href="#">This is item4</a></li>
+      </ul>
+    </li>
+    <li>
+      <a class='expandable' href='#' title='Trainer'>
+        <span class='fa fa-male collapsed-element'></span>
+        <span class='expanded-element'>Trainer</span>
+        <i class="glyphicon glyphicon-chevron-down expanded-element dropdown-icon"> </i>
+      </a>
+      <ul class="sub-menu">
+        <li><a href="#">This is item1</a></li>
+        <li><a href="#">This is item2</a></li>
+        <li><a href="#">This is item3</a></li>
+        <li><a href="#">This is item4</a></li>
+      </ul>
+    </li>
+    <li>
+      <a class='expandable' href='#' title='Food'>
+        <span class="fa fa-cutlery collapsed-element"></span>
+        <span class='expanded-element'>Food</span>
+        <i class="glyphicon glyphicon-chevron-down expanded-element dropdown-icon"> </i>
+      </a>
+      <ul class="sub-menu">
+        <li><a href="#">This is item1</a></li>
+        <li><a href="#">This is item2</a></li>
+        <li><a href="#">This is item3</a></li>
+        <li><a href="#">This is item4</a></li>
+      </ul>
+    </li>
+    <li>
+      <a class='expandable' href='#' title='Report'>
+        <span class="fa fa-file-text"></span>
+        <span class='expanded-element'>Report</span>
+        <i class="glyphicon glyphicon-chevron-down expanded-element dropdown-icon"> </i>
+      </a>
+      <ul class="sub-menu">
+        <li><a href="#">This is item1</a></li>
+        <li><a href="#">This is item2</a></li>
+        <li><a href="#">This is item3</a></li>
+        <li><a href="#">This is item4</a></li>
+      </ul>
+    </li>
+    <li>
+      <a class='expandable' href='#' title='Contents'>
+        <span class="glyphicon glyphicon-briefcase"></span>
+        <span class='expanded-element'>Contents</span>
+        <i class="glyphicon glyphicon-chevron-down expanded-element dropdown-icon"> </i>
+      </a>
+      <ul class="sub-menu">
+        <li><a href="#">This is item1</a></li>
+        <li><a href="#">This is item2</a></li>
+        <li><a href="#">This is item3</a></li>
+        <li><a href="#">This is item4</a></li>
+      </ul>
+
+    </li>
+    <li>
+      <a class='expandable' href='#' title='Servicing'>
+        <span class="glyphicon glyphicon-euro"></span>
+        <span class='expanded-element'>Servicing</span>
+        <i class="glyphicon glyphicon-chevron-down expanded-element dropdown-icon"> </i>
+      </a>
+      <ul class="sub-menu">
+        <li><a href="#">This is item1</a></li>
+        <li><a href="#">This is item2</a></li>
+        <li><a href="#">This is item3</a></li>
+        <li><a href="#">This is item4</a></li>
+      </ul>
+    </li>
+    <li>
+      <a class='expandable' href='#' title='Posts'>
+        <span class="fa fa-envelope"></span>
+        <span class='expanded-element'>Posts</span>
+        <i class="glyphicon glyphicon-chevron-down expanded-element dropdown-icon"> </i>
+      </a>
+      <ul class="sub-menu">
+        <li><a href="#">This is item1</a></li>
+        <li><a href="#">This is item2</a></li>
+        <li><a href="#">This is item3</a></li>
+        <li><a href="#">This is item4</a></li>
+      </ul>
+    </li>
+  </ul>
+
+</nav>

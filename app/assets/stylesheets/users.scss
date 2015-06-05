@@ -354,3 +354,9 @@ nav.sidebar{
   z-index: 1;
 }
 
+ul.navbar-nav, li.dropdown {
+  width: auto;
+  min-width: 0;
+  display: inline-flex;
+}
+
