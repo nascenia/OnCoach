@@ -38,6 +38,8 @@ gem 'jquery-ui-rails'
 gem 'carrierwave'
 
 gem 'tinymce-rails'
+
+gem 'i18n'
 # Use ActiveModel has_secure_password
 # gem 'bcrypt', '~> 3.1.7'
 

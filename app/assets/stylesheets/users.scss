@@ -359,4 +359,7 @@ ul.navbar-nav, li.dropdown {
   min-width: 0;
   display: inline-flex;
 }
+li.dropdown:hover .dropdown-menu{
+  display: block;
+}
 
