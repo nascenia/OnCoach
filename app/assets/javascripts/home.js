@@ -46,3 +46,7 @@
     });
 
 }).call(this);
+
+$(document).ready(function(){
+    $("#justify-icon").trigger("click");
+})

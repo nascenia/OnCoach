@@ -42,14 +42,11 @@
 
   <hr class="divider">
   <ul class="main-menu">
-    <li class=' dashboard'>
+    <li>
       <a class='expandable ' href='#' title='<%= current_user.type == 'Admin' ? 'Home' : 'Dashboard' %>'>
         <span class='glyphicon glyphicon-home collapsed-element'></span>
         <span class='expanded-element'><%= current_user.type == 'Admin' ? 'Home' : 'Dashboard' %></span>
       </a>
-      <div class="left-arrow-wrapper">
-        <span class="left-arrow"></span>
-      </div>
 
     </li>
     <li>
@@ -79,16 +76,15 @@
       </ul>
     </li>
     <li>
-      <a class='expandable' href='#' title='<%= current_user.type == 'Admin' ? 'Training' : 'Programs' %>'>
+      <a class='expandable' href='#' title='<%= current_user.type == 'Admin' ? 'Exercises' : 'Programs' %>'>
         <span class='glyphicon glyphicon-heart-empty collapsed-element'></span>
-        <span class='expanded-element'><%= current_user.type == 'Admin' ? 'Training' : 'Programs' %></span>
+        <span class='expanded-element'><%= current_user.type == 'Admin' ? 'Exercises' : 'Programs' %></span>
         <i class="glyphicon glyphicon-chevron-down expanded-element dropdown-icon"> </i>
       </a>
       <ul class="sub-menu">
         <% if current_user.type == 'Admin' %>
-            <li><a href="#">Weekly Plans</a></li>
-            <li><a href="#">Plans</a></li>
-            <li><a href="<%= exercises_path %> ">Exercises</a></li>
+            <li><a href="<%= exercises_path %>">Full List</a></li>
+            <li><a href="<%= new_exercise_path %>">New Exercise</a></li>
         <% else %>
             <li><a href="#">This is item1</a></li>
             <li><a href="#">This is item2</a></li>

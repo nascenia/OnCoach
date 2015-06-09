@@ -1,5 +1,4 @@
 $(document).ready(function(){
-
     $(document).on('click',".sidebar-menu-expanded li a.expandable",function(evt){
 
         if ($(this).parent().find("ul.sub-menu").is(":hidden")){
@@ -38,4 +37,15 @@ $(document).ready(function(){
         $(".sidebar-menu-collapsed .main-menu li > a.expandable").removeClass("open");
         $(".sidebar-menu-collapsed .main-menu li").removeClass("open");
     });
+
+    $(document).on('click', 'ul.main-menu li > a.expandable, .sidebar.sidebar-menu-expanded ul.sub-menu li > a', function(){
+        $('ul li').removeClass('dashboard');
+
+        var div = '<div class="left-arrow-wrapper"><span class="left-arrow"></span></div>'
+        var $parent = $(this).parent();
+        if (!$parent.hasClass('dashboard')){
+            $parent.addClass('dashboard');
+            $(this).closest('a.expandable').after(div);
+        }
+    })
 });

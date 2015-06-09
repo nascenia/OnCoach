@@ -1,18 +1,10 @@
 <nav class="navbar navbar-default">
   <div class="container-fluid">
     <!-- Brand and toggle get grouped for better mobile display -->
-    <div class="navbar-header">
-      <button type="button" class="navbar-toggle collapsed" data-toggle="collapse" data-target="#bs-example-navbar-collapse-1">
-        <span class="sr-only">Toggle navigation</span>
-        <span class="icon-bar"></span>
-        <span class="icon-bar"></span>
-        <span class="icon-bar"></span>
-      </button>
-    </div>
 
     <!-- Collect the nav links, forms, and other content for toggling -->
-    <div class="collapse navbar-collapse" id="bs-example-navbar-collapse-1">
-      <ul class="nav navbar-nav">
+
+      <ul class="nav navbar-nav visible-lg">
         <li class="dropdown">
           <a href="#" class="dropdown-toggle" data-toggle="dropdown" role="button" aria-expanded="false">Portuguese <span class="caret"></span></a>
           <ul class="dropdown-menu" role="menu">
@@ -21,22 +13,35 @@
         </li>
       </ul>
       <ul class="nav navbar-nav navbar-right">
-        <li class="dropdown iconify hide-phone">
+        <li class="dropdown iconify visible-lg">
           <a href="#" class="dropdown-toggle" data-toggle="dropdown">
             <span class="fa fa-envelope"></span>
           </a>
         </li>
-        <li class="dropdown iconify hide-phone">
+        <li class="dropdown iconify visible-lg">
           <a href="#" onclick="javascript:toggle_fullscreen()">
             <i class="glyphicon glyphicon-resize-full"></i>
           </a>
         </li>
         <li class="dropdown topbar-profile">
-
+            <a class="dropdown-toggle" data-toggle="dropdown" href="#">
+              <span class="rounded-image topbar-profile-image">
+                <%= image_tag "profile.png" %>
+              </span>
+              <%= current_user.email %>
+              <span class="caret"></span>
+            </a>
+            <ul class="dropdown-menu" role="menu">
+                <li><a href="#">Profile</a></li>
+                <li><a href="#">Personal Info</a></li>
+                <li><a href="#">Definitions</a></li>
+                <li><a href="#">Change Password</a></li>
+                <li class="divider"></li>
+                <li class="md-trigger"><a href="<%= destroy_user_session_path %>" data-method="delete"><span class="log-out">Exit</span> </a> </li>
+            </ul>
         </li>
-        <li><%= link_to 'Logout', destroy_user_session_path, :method => :delete %></li>
       </ul>
 
-    </div><!-- /.navbar-collapse -->
+    <!--</nav>&lt;!&ndash; /.navbar-collapse &ndash;&gt;-->
   </div><!-- /.container-fluid -->
 </nav>
