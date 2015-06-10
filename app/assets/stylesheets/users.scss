@@ -329,8 +329,9 @@ li >a.expandable .dropdown-icon{
 .sidebar.sidebar-menu-expanded ul.sub-menu{
   background-color:#242727;
 }
-.sidebar.sidebar-menu-expanded ul.sub-menu li{
-  background-color:#242727;
+
+.sidebar.sidebar-menu-expanded ul.sub-menu li.highlight > a{
+  background-color:#1b1e1e;
 }
 .sidebar.sidebar-menu-expanded ul.sub-menu li>a{
   background-color:#242727;
@@ -407,6 +408,7 @@ li.dropdown:hover .dropdown-menu{
   color: #fff;
 }
 .navbar-nav > li.topbar-profile > .dropdown-menu {
+  width: 100px;
   background: #7A868F;
   box-shadow: 0 2px 6px rgba(0,0,0,0.1);
 }

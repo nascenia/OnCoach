@@ -16,7 +16,6 @@
 //= require home
 //= require left_bar
 //= require shape-theme/jquery.stellar.min.js
-//= require turbolinks
 //= require_tree .
 
 

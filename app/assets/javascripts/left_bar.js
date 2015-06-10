@@ -1,7 +1,26 @@
 $(document).ready(function(){
+    var activeLink = localStorage.getItem('activeLink');
+    var activeSubLink = localStorage.getItem('activeSubLink');
+    var div = '<div class="left-arrow-wrapper"><span class="left-arrow"></span></div>';
+
+    if (activeLink != null){
+        $('nav.sidebar ul li').removeClass('dashboard');
+        var highlightedTab = 'li#'+activeLink;
+        $("ul.sub-menu").css("overflow", "hidden");
+        $(highlightedTab).addClass('dashboard');
+        $(highlightedTab).children('a.expandable').after(div);
+        $(highlightedTab).find(".glyphicon-chevron-down").addClass("glyphicon-chevron-up").removeClass("glyphicon-chevron-down");
+        $(highlightedTab).find("ul.sub-menu").slideDown(500);
+    }
+    if (activeSubLink != null){
+        var subTab = 'li#'+activeSubLink;
+        $(subTab).addClass('highlight');
+    }
+
     $(document).on('click',".sidebar-menu-expanded li a.expandable",function(evt){
 
         if ($(this).parent().find("ul.sub-menu").is(":hidden")){
+            $("ul.sub-menu").css("overflow", "hidden");
             $("ul.sub-menu").hide();
             $(".main-menu li > a.expandable").removeClass("open");
             $(".main-menu li> a.expandable .glyphicon-chevron-up").removeClass('glyphicon-chevron-up').addClass("glyphicon-chevron-down");
@@ -9,6 +28,10 @@ $(document).ready(function(){
             $(this).find(".glyphicon-chevron-down").addClass("glyphicon-chevron-up").removeClass("glyphicon-chevron-down");
             $(this).addClass('open');
 
+        }else if (!$(this).parent().hasClass('sub-menu')){
+            $("ul.sub-menu").hide();
+            $(".main-menu li > a.expandable").removeClass("open");
+            $(".main-menu li> a.expandable .glyphicon-chevron-up").removeClass('glyphicon-chevron-up').addClass("glyphicon-chevron-down");
         }else{
             $(this).parent().find("ul.sub-menu").slideUp(500);
             $(this).find(".glyphicon-chevron-up").addClass("glyphicon-chevron-down").removeClass("glyphicon-chevron-up");
@@ -38,14 +61,19 @@ $(document).ready(function(){
         $(".sidebar-menu-collapsed .main-menu li").removeClass("open");
     });
 
-    $(document).on('click', 'ul.main-menu li > a.expandable, .sidebar.sidebar-menu-expanded ul.sub-menu li > a', function(){
+    $(document).on('click', 'ul.main-menu li > a.expandable', function(){
         $('ul li').removeClass('dashboard');
 
-        var div = '<div class="left-arrow-wrapper"><span class="left-arrow"></span></div>'
         var $parent = $(this).parent();
         if (!$parent.hasClass('dashboard')){
             $parent.addClass('dashboard');
             $(this).closest('a.expandable').after(div);
+            localStorage.setItem('activeLink', $parent.attr('id'));
         }
-    })
+    });
+
+    $(document).on('click', 'ul.sub-menu li > a', function(){
+        var $parent = $(this).parent();
+        localStorage.setItem('activeSubLink', $parent.attr('id'));
+    });
 });
