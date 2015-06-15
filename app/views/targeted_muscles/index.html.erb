@@ -1,0 +1,30 @@
+<p id="notice"><%= notice %></p>
+
+<h1>Targeted Muscles</h1>
+
+<table class="table table-bordered table-responsive">
+  <thead>
+    <tr>
+      <th>Exercise</th>
+      <th>Muscle</th>
+      <th>Primary</th>
+      <th colspan="3"></th>
+    </tr>
+  </thead>
+
+  <tbody>
+    <% @targeted_muscles.each do |targeted_muscle| %>
+      <tr>
+        <td><%= targeted_muscle.exercise.name %></td>
+        <td><%= targeted_muscle.muscle.name %></td>
+        <td><%= targeted_muscle.primary %></td>
+        <td><%= link_to 'Show', targeted_muscle %></td>
+        <td><%= link_to 'Edit', edit_targeted_muscle_path(targeted_muscle) %></td>
+        <td><%= link_to 'Destroy', targeted_muscle, method: :delete, data: { confirm: 'Are you sure?' } %></td>
+      </tr>
+    <% end %>
+  </tbody>
+</table>
+
+<br>
+

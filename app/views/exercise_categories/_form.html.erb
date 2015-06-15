@@ -1,0 +1,25 @@
+<%= form_for(@exercise_category) do |f| %>
+  <% if @exercise_category.errors.any? %>
+    <div id="error_explanation">
+      <h2><%= pluralize(@exercise_category.errors.count, "error") %> prohibited this exercise_category from being saved:</h2>
+
+      <ul>
+      <% @exercise_category.errors.full_messages.each do |message| %>
+        <li><%= message %></li>
+      <% end %>
+      </ul>
+    </div>
+  <% end %>
+
+  <div class="field">
+    <%= f.label :name %><br>
+    <%= f.text_field :name, :required => true %>
+  </div>
+  <div class="field">
+    <%= f.label :ancestry %><br>
+    <%= f.text_field :ancestry %>
+  </div>
+  <div class="actions">
+    <%= f.submit %>
+  </div>
+<% end %>

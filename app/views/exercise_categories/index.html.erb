@@ -1,0 +1,28 @@
+<p id="notice"><%= notice %></p>
+
+<h1>Exercise Categories</h1>
+
+<table class="table table-bordered table-responsive">
+  <thead>
+    <tr>
+      <th>Name</th>
+      <th>Ancestry</th>
+      <th colspan="3"></th>
+    </tr>
+  </thead>
+
+  <tbody>
+    <% @exercise_categories.each do |exercise_category| %>
+      <tr>
+        <td><%= exercise_category.name %></td>
+        <td><%= exercise_category.ancestry %></td>
+        <td><%= link_to 'Show', exercise_category %></td>
+        <td><%= link_to 'Edit', edit_exercise_category_path(exercise_category) %></td>
+        <td><%= link_to 'Destroy', exercise_category, method: :delete, data: { confirm: 'Are you sure?' } %></td>
+      </tr>
+    <% end %>
+  </tbody>
+</table>
+
+<br>
+

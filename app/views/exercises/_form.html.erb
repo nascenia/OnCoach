@@ -14,11 +14,15 @@
   <div class="form-box-control">
     <div class="control-group">
       <%= f.label :name, :class => 'control-label' %><br>
-      <%= f.text_field :name %>
+      <%= f.text_field :name, :required => true %>
+    </div>
+    <div class="control-group">
+      <%= f.label :exercise_category, :class => 'control-label' %><br>
+      <%= f.collection_select :exercise_category_id, ExerciseCategory.all, :id, :name %>
     </div>
     <div class="control-group">
       <%= f.label :type, :class => 'control-label' %><br>
-      <%= f.text_field :exercise_type%>
+      <%= f.text_field :exercise_type, :required => true %>
     </div>
     <div class="control-group">
       <%= f.label :description, :class => 'control-label' %><br>
@@ -31,11 +35,11 @@
     </div>
     <div class="control-group">
       <%= f.label :youtube_video_link, :class => 'control-label' %><br>
-      <%= f.text_field :youtube_video_link %>
+      <%= f.text_field :youtube_video_link, :required => true %>
     </div>
     <div class="control-group">
       <%= f.label :calories, :class => 'control-label' %><br>
-      <%= f.number_field :calories %>
+      <%= f.number_field :calories, :required => true %>
     </div>
     <div class="actions">
       <%= f.submit %>

@@ -1,0 +1,31 @@
+<p id="notice"><%= notice %></p>
+
+<h1>Training Sessions</h1>
+
+<table class="table table-bordered table-responsive">
+  <thead>
+    <tr>
+      <th>Training plan</th>
+      <th>Exercise plan</th>
+      <th>Day</th>
+      <th colspan="3"></th>
+    </tr>
+  </thead>
+
+  <tbody>
+    <% @training_sessions.each do |training_session| %>
+      <tr>
+        <td><%= training_session.training_plan.name %></td>
+        <td><%= training_session.exercise_plan.name %></td>
+        <td><%= training_session.day %></td>
+        <td><%= link_to 'Show', training_session %></td>
+        <td><%= link_to 'Edit', edit_training_session_path(training_session) %></td>
+        <td><%= link_to 'Destroy', training_session, method: :delete, data: { confirm: 'Are you sure?' } %></td>
+      </tr>
+    <% end %>
+  </tbody>
+</table>
+
+<br>
+
+<%= link_to 'New Training session', new_training_session_path %>

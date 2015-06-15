@@ -70,6 +70,7 @@ class ExercisesController < ApplicationController
 
     # Never trust parameters from the scary internet, only allow the white list through.
     def exercise_params
-      params.require(:exercise).permit(:name, :exercise_type, :description, :image, :youtube_video_link, :calories)
+      params.require(:exercise).permit(:name, :exercise_type, :description, :image,
+                                       :youtube_video_link, :calories, :exercise_category_id)
     end
 end

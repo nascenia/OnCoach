@@ -7,6 +7,7 @@
   <thead>
     <tr>
       <th>Name</th>
+      <th>Category</th>
       <th>Type</th>
       <th>Description</th>
       <th>Image</th>
@@ -20,6 +21,7 @@
     <% @exercises.each do |exercise| %>
       <tr>
         <td><%= exercise.name %></td>
+        <td><%= exercise.exercise_category.name %></td>
         <td><%= exercise.exercise_type %></td>
         <td><%= exercise.description.html_safe %></td>
         <td><%= image_tag exercise.image, :size => "200x150" %></td>

@@ -1,5 +1,13 @@
 Rails.application.routes.draw do
 
+  resources :training_sessions
+  resources :training_plans
+  resources :exercise_sessions
+  resources :exercise_plans
+  resources :exercise_categories
+  resources :targeted_muscles
+  resources :muscles
+  resources :muscle_groups
   resources :exercises
   namespace :admin do
     get 'index' => 'admins#index'
@@ -21,21 +29,12 @@ Rails.application.routes.draw do
                        :omniauth_callbacks => "users/omniauth_callbacks"
                    }
 
-  # devise_for :users do
-  #   get '/users/sign_out' => 'devise/sessions#destroy'
-  # end
-  # The priority is based upon order of creation: first created -> highest priority.
-  # See how all your routes lay out with "rake routes".
+  namespace :home do
+    get '/change_locale/:locale', to: 'home#change_locale', as: :change_locale
+  end
 
-  # You can have the root of your site routed with "root"
   root 'home#index'
-  # devise_for :users
 
-  # Example of regular route:
-  #   get 'products/:id' => 'catalog#view'
-
-  # Example of named route that can be invoked with purchase_url(id: product.id)
-  #   get 'products/:id/purchase' => 'catalog#purchase', as: :purchase
 
   # Example resource route (maps HTTP verbs to controller actions automatically):
   #   resources :products

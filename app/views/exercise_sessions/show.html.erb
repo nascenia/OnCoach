@@ -1,0 +1,39 @@
+<p id="notice"><%= notice %></p>
+
+<p>
+  <strong>Exercise plan:</strong>
+  <%= @exercise_session.exercise_plan_id %>
+</p>
+
+<p>
+  <strong>Exercise:</strong>
+  <%= @exercise_session.exercise_id %>
+</p>
+
+<p>
+  <strong>Phase:</strong>
+  <%= @exercise_session.phase %>
+</p>
+
+<p>
+  <strong>Intensity:</strong>
+  <%= @exercise_session.intensity %>
+</p>
+
+<p>
+  <strong>Repetitions:</strong>
+  <%= @exercise_session.repetitions %>
+</p>
+
+<p>
+  <strong>Num of series:</strong>
+  <%= @exercise_session.num_of_series %>
+</p>
+
+<p>
+  <strong>Resting period:</strong>
+  <%= @exercise_session.resting_period %>
+</p>
+
+<%= link_to 'Edit', edit_exercise_session_path(@exercise_session) %> |
+<%= link_to 'Back', exercise_sessions_path %>

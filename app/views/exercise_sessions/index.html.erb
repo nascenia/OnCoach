@@ -1,0 +1,37 @@
+<p id="notice"><%= notice %></p>
+
+<h1>Exercise Sessions</h1>
+
+<table class="table table-bordered table-responsive">
+  <thead>
+    <tr>
+      <th>Exercise plan</th>
+      <th>Exercise</th>
+      <th>Phase</th>
+      <th>Intensity</th>
+      <th>Repetitions</th>
+      <th>Num of series</th>
+      <th>Resting period</th>
+      <th colspan="3"></th>
+    </tr>
+  </thead>
+
+  <tbody>
+    <% @exercise_sessions.each do |exercise_session| %>
+      <tr>
+        <td><%= exercise_session.exercise_plan.name %></td>
+        <td><%= exercise_session.exercise.name %></td>
+        <td><%= exercise_session.phase %></td>
+        <td><%= exercise_session.intensity %></td>
+        <td><%= exercise_session.repetitions %></td>
+        <td><%= exercise_session.num_of_series %></td>
+        <td><%= exercise_session.resting_period %></td>
+        <td><%= link_to 'Show', exercise_session %></td>
+        <td><%= link_to 'Edit', edit_exercise_session_path(exercise_session) %></td>
+        <td><%= link_to 'Destroy', exercise_session, method: :delete, data: { confirm: 'Are you sure?' } %></td>
+      </tr>
+    <% end %>
+  </tbody>
+</table>
+
+<br>

@@ -1,30 +1,23 @@
 <li id="dashboard" class="dashboard">
-  <a class='expandable ' href='<%= admin_index_path %>' title='Home'>
+  <a class='expandable ' href='<%= admin_index_path %>'>
     <span class='glyphicon glyphicon-home collapsed-element'></span>
     <span class='expanded-element'>Home</span>
   </a>
   <div class="left-arrow-wrapper"><span class="left-arrow"></span></div>
 </li>
-<li id="management">
-  <a class='expandable' href='#' title='Customer management'>
+<li id="Category">
+  <a class='expandable' href='#'>
     <span class='glyphicon glyphicon-plus-sign collapsed-element'></span>
-    <span class='expanded-element'>Customer management</span>
+    <span class='expanded-element'>Exercise Category</span>
     <i class="glyphicon glyphicon-chevron-down expanded-element dropdown-icon"> </i>
   </a>
   <ul class="sub-menu">
-        <li id="customer"><a href="#">Customer</a></li>
-        <li><a href="#">Type of customers</a></li>
-        <li><a href="#">Table of services</a></li>
-        <li><a href="#">Services</a></li>
-        <li><a href="#">Goals</a></li>
-        <li><a href="#">Level</a></li>
-        <li><a href="#">Records</a></li>
-        <li><a href="#">Reports</a></li>
-        <li><a href="#">Statistics</a></li>
+        <li id="all-categories"><a href="<%= exercise_categories_path %>">All Categories</a></li>
+        <li id="new-category"><a href="<%= new_exercise_category_path %>">New Category</a></li>
   </ul>
 </li>
 <li id="exercises">
-  <a class='expandable' href='#' title='Exercises'>
+  <a class='expandable' href='#'>
     <span class='glyphicon glyphicon-heart-empty collapsed-element'></span>
     <span class='expanded-element'>Exercises</span>
     <i class="glyphicon glyphicon-chevron-down expanded-element dropdown-icon"> </i>
@@ -34,70 +27,81 @@
       <li id="new-exercise"><a href="<%= new_exercise_path %>">New Exercise</a></li>
   </ul>
 </li>
-<li id="nutrition">
-  <a class='expandable' href='#' title='Nutrition'>
-    <span class='fa fa-male collapsed-element'></span>
-    <span class='expanded-element'>Nutrition</span>
+<li id="plan">
+  <a class='expandable' href='#'>
+    <span class='glyphicon glyphicon-tasks collapsed-element'></span>
+    <span class='expanded-element'>Exercise Plan</span>
     <i class="glyphicon glyphicon-chevron-down expanded-element dropdown-icon"> </i>
   </a>
   <ul class="sub-menu">
-        <li><a href="#">Plans</a></li>
-        <li><a href="#">Items</a></li>
+        <li id="all-plan"><a href="<%= exercise_plans_path %>">All Plans</a></li>
+        <li id="new-plan"><a href="<%= new_exercise_plan_path %>">New Plan</a></li>
   </ul>
 </li>
-<li id="programs">
-  <a class='expandable' href='#' title='Programs'>
-    <span class="fa fa-cutlery collapsed-element"></span>
-    <span class='expanded-element'>Programs</span>
-    <i class="glyphicon glyphicon-chevron-down expanded-element dropdown-icon"> </i>
-  </a>
-</li>
-<li id="evaluation">
-  <a class='expandable' href='#' title='Physical Evaluation'>
-    <span class="fa fa-file-text"></span>
-    <span class='expanded-element'>Physical Evaluation</span>
+<li id="sessions">
+  <a class='expandable' href='#'>
+    <span class="glyphicon glyphicon-folder-open collapsed-element"></span>
+    <span class='expanded-element'>Exercise Sessions</span>
     <i class="glyphicon glyphicon-chevron-down expanded-element dropdown-icon"> </i>
   </a>
   <ul class="sub-menu">
-        <li><a href="#">Evaluation Protocols</a></li>
-        <li><a href="#">Evaluation Tests</a></li>
-        <li><a href="#">Category of Tests</a></li>
+    <li id="all-sessions"><a href="<%= exercise_sessions_path %>">All Sessions</a></li>
+    <li id="new-session"><a href="<%= new_exercise_session_path %>">New Session</a></li>
   </ul>
 </li>
-<li id="question">
-  <a class='expandable' href='#' title='Questionnaires'>
+<li id="training-plan">
+  <a class='expandable' href='#'>
+    <span class="glyphicon glyphicon-comment"></span>
+    <span class='expanded-element'>Training Plan</span>
+    <i class="glyphicon glyphicon-chevron-down expanded-element dropdown-icon"> </i>
+  </a>
+  <ul class="sub-menu">
+        <li id="all-training-plan"><a href="<%= training_plans_path %>">All Plans</a></li>
+        <li id="new-training-plan"><a href="<%= new_training_plan_path %>">New Plan</a></li>
+  </ul>
+</li>
+<li id="training-session">
+  <a class='expandable' href='#'>
     <span class="glyphicon glyphicon-briefcase"></span>
-    <span class='expanded-element'>Questionnaires</span>
+    <span class='expanded-element'>Training Session</span>
     <i class="glyphicon glyphicon-chevron-down expanded-element dropdown-icon"> </i>
   </a>
   <ul class="sub-menu">
-        <li><a href="#">Issues</a></li>
-        <li><a href="#">Type of Answers</a></li>
+        <li id="all-training-session"><a href="<%= training_sessions_path %>">All Training Session</a></li>
+        <li id="new-training-session"><a href="<%= new_training_session_path %>">New Training Session</a></li>
   </ul>
 
 </li>
-<li id="contents">
-  <a class='expandable' href='#' title='Contents'>
+<li id="muscle-group">
+  <a class='expandable' href='#'>
     <span class="glyphicon glyphicon-euro"></span>
-    <span class='expanded-element'>Contents</span>
+    <span class='expanded-element'>Muscle Group</span>
     <i class="glyphicon glyphicon-chevron-down expanded-element dropdown-icon"> </i>
   </a>
   <ul class="sub-menu">
-        <li><a href="#">Articles</a></li>
-        <li><a href="#">Tips</a></li>
-        <li><a href="#">Recipes</a></li>
+        <li id="all-muscle-group"><a href="<%= muscle_groups_path %>">All Muscle Group</a></li>
+        <li id="new-muscle-group"><a href="<%= new_muscle_group_path %>">New Muscle Group</a></li>
   </ul>
 </li>
-<li id="posts">
-  <a class='expandable' href='#' title='Posts'>
-    <span class="fa fa-envelope"></span>
-    <span class='expanded-element'>Posts</span>
+<li id="muscle">
+  <a class='expandable' href='#'>
+    <span class="glyphicon glyphicon-fire"></span>
+    <span class='expanded-element'>Muscle</span>
     <i class="glyphicon glyphicon-chevron-down expanded-element dropdown-icon"> </i>
   </a>
   <ul class="sub-menu">
-    <li><a href="#">This is item1</a></li>
-    <li><a href="#">This is item2</a></li>
-    <li><a href="#">This is item3</a></li>
-    <li><a href="#">This is item4</a></li>
+    <li id="all-muscle"><a href="<%= muscles_path %>">All Muscle</a></li>
+    <li id="new-muscle"><a href="<%= new_muscle_path %>">New Muscle</a></li>
+  </ul>
+</li>
+<li id="targeted-muscle">
+  <a class='expandable' href='#'>
+    <span class="glyphicon glyphicon-road"></span>
+    <span class='expanded-element'>Targeted Muscle</span>
+    <i class="glyphicon glyphicon-chevron-down expanded-element dropdown-icon"> </i>
+  </a>
+  <ul class="sub-menu">
+    <li id="all-muscle"><a href="<%= targeted_muscles_path %>">All Targeted Muscle</a></li>
+    <li id="new-muscle"><a href="<%= new_targeted_muscle_path %>">New Targeted Muscle</a></li>
   </ul>
 </li>

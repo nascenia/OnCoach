@@ -1,0 +1,19 @@
+# Read about fixtures at http://api.rubyonrails.org/classes/ActiveRecord/FixtureSet.html
+
+one:
+  exercise_plan_id: 1
+  exercise_id: 1
+  phase: MyString
+  intensity: 1
+  repetitions: 1
+  num_of_series: 1
+  resting_period: 1
+
+two:
+  exercise_plan_id: 1
+  exercise_id: 1
+  phase: MyString
+  intensity: 1
+  repetitions: 1
+  num_of_series: 1
+  resting_period: 1

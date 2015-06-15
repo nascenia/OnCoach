@@ -1,0 +1,45 @@
+<%= form_for(@exercise_session) do |f| %>
+  <% if @exercise_session.errors.any? %>
+    <div id="error_explanation">
+      <h2><%= pluralize(@exercise_session.errors.count, "error") %> prohibited this exercise_session from being saved:</h2>
+
+      <ul>
+      <% @exercise_session.errors.full_messages.each do |message| %>
+        <li><%= message %></li>
+      <% end %>
+      </ul>
+    </div>
+  <% end %>
+
+  <div class="field">
+    <%= f.label :exercise_plan_id %><br>
+    <%= f.collection_select :exercise_plan_id, ExercisePlan.all, :id, :name %>
+  </div>
+  <div class="field">
+    <%= f.label :exercise_id %><br>
+    <%= f.collection_select :exercise_id, Exercise.all, :id, :name %>
+  </div>
+  <div class="field">
+    <%= f.label :phase %><br>
+    <%= f.text_field :phase, :required => true %>
+  </div>
+  <div class="field">
+    <%= f.label :intensity %><br>
+    <%= f.number_field :intensity, :required => true %>
+  </div>
+  <div class="field">
+    <%= f.label :repetitions %><br>
+    <%= f.number_field :repetitions, :required => true %>
+  </div>
+  <div class="field">
+    <%= f.label :num_of_series %><br>
+    <%= f.number_field :num_of_series, :required => true %>
+  </div>
+  <div class="field">
+    <%= f.label :resting_period %><br>
+    <%= f.number_field :resting_period, :required => true %>
+  </div>
+  <div class="actions">
+    <%= f.submit %>
+  </div>
+<% end %>

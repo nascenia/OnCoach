@@ -11,18 +11,79 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 20150602103309) do
+ActiveRecord::Schema.define(version: 20150611045250) do
+
+  create_table "exercise_categories", force: :cascade do |t|
+    t.string   "name",       limit: 255
+    t.string   "ancestry",   limit: 255
+    t.datetime "created_at",             null: false
+    t.datetime "updated_at",             null: false
+  end
+
+  create_table "exercise_plans", force: :cascade do |t|
+    t.string   "name",       limit: 255
+    t.datetime "created_at",             null: false
+    t.datetime "updated_at",             null: false
+  end
+
+  create_table "exercise_sessions", force: :cascade do |t|
+    t.integer  "exercise_plan_id", limit: 4
+    t.integer  "exercise_id",      limit: 4
+    t.string   "phase",            limit: 255
+    t.integer  "intensity",        limit: 4
+    t.integer  "repetitions",      limit: 4
+    t.integer  "num_of_series",    limit: 4
+    t.integer  "resting_period",   limit: 4
+    t.datetime "created_at",                   null: false
+    t.datetime "updated_at",                   null: false
+  end
 
   create_table "exercises", force: :cascade do |t|
-    t.string   "name",               limit: 255
-    t.string   "exercise_type",      limit: 255
-    t.text     "description",        limit: 65535
-    t.string   "image",              limit: 255
-    t.string   "youtube_video_link", limit: 255
-    t.integer  "calories",           limit: 4
-    t.datetime "created_at",                       null: false
-    t.datetime "updated_at",                       null: false
-    t.string   "avatar",             limit: 255
+    t.string   "name",                 limit: 255
+    t.string   "exercise_type",        limit: 255
+    t.text     "description",          limit: 65535
+    t.string   "image",                limit: 255
+    t.string   "youtube_video_link",   limit: 255
+    t.integer  "calories",             limit: 4
+    t.datetime "created_at",                         null: false
+    t.datetime "updated_at",                         null: false
+    t.string   "avatar",               limit: 255
+    t.integer  "exercise_category_id", limit: 4
+  end
+
+  create_table "muscle_groups", force: :cascade do |t|
+    t.string   "name",       limit: 255
+    t.datetime "created_at",             null: false
+    t.datetime "updated_at",             null: false
+  end
+
+  create_table "muscles", force: :cascade do |t|
+    t.string   "name",            limit: 255
+    t.integer  "muscle_group_id", limit: 4
+    t.datetime "created_at",                  null: false
+    t.datetime "updated_at",                  null: false
+  end
+
+  create_table "targeted_muscles", force: :cascade do |t|
+    t.integer  "exercise_id", limit: 4
+    t.integer  "muscle_id",   limit: 4
+    t.boolean  "primary",     limit: 1
+    t.datetime "created_at",            null: false
+    t.datetime "updated_at",            null: false
+  end
+
+  create_table "training_plans", force: :cascade do |t|
+    t.string   "name",       limit: 255
+    t.datetime "created_at",             null: false
+    t.datetime "updated_at",             null: false
+  end
+
+  create_table "training_sessions", force: :cascade do |t|
+    t.integer  "training_plan_id", limit: 4
+    t.integer  "exercise_plan_id", limit: 4
+    t.integer  "day",              limit: 4
+    t.datetime "created_at",                 null: false
+    t.datetime "updated_at",                 null: false
   end
 
   create_table "users", force: :cascade do |t|

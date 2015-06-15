@@ -1,0 +1,14 @@
+<p id="notice"><%= notice %></p>
+
+<p>
+  <strong>Name:</strong>
+  <%= @muscle.name %>
+</p>
+
+<p>
+  <strong>Muscle group:</strong>
+  <%= @muscle.muscle_group_id %>
+</p>
+
+<%= link_to 'Edit', edit_muscle_path(@muscle) %> |
+<%= link_to 'Back', muscles_path %>

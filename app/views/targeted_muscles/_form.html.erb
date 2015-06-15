@@ -1,0 +1,29 @@
+<%= form_for(@targeted_muscle) do |f| %>
+  <% if @targeted_muscle.errors.any? %>
+    <div id="error_explanation">
+      <h2><%= pluralize(@targeted_muscle.errors.count, "error") %> prohibited this targeted_muscle from being saved:</h2>
+
+      <ul>
+      <% @targeted_muscle.errors.full_messages.each do |message| %>
+        <li><%= message %></li>
+      <% end %>
+      </ul>
+    </div>
+  <% end %>
+
+  <div class="field">
+    <%= f.label :exercise_id %><br>
+    <%= f.collection_select :exercise_id, Exercise.all, :id, :name %>
+  </div>
+  <div class="field">
+    <%= f.label :muscle_id %><br>
+    <%= f.collection_select :muscle_id, Muscle.all, :id, :name %>
+  </div>
+  <div class="field">
+    <%= f.label :primary %><br>
+    <%= f.check_box :primary, :required => true %>
+  </div>
+  <div class="actions">
+    <%= f.submit %>
+  </div>
+<% end %>

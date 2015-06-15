@@ -1,0 +1,14 @@
+<p id="notice"><%= notice %></p>
+
+<p>
+  <strong>Name:</strong>
+  <%= @exercise_category.name %>
+</p>
+
+<p>
+  <strong>Ancestry:</strong>
+  <%= @exercise_category.ancestry %>
+</p>
+
+<%= link_to 'Edit', edit_exercise_category_path(@exercise_category) %> |
+<%= link_to 'Back', exercise_categories_path %>
