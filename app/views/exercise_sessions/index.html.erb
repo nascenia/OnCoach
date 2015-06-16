@@ -34,4 +34,39 @@
   </tbody>
 </table>
 
-<br>
+<div>
+  <div class="calendar"></div>
+</div>
+<div id = "create_event_dialog" class="dialog" style ="display:none;"></div>
+<div id = "event_desc_dialog" class="dialog" style ="display:none;"></div>
+
+<script>
+    $(document).ready(function() {
+        var date = new Date();
+        var d = <%=@end_date.day%>;
+        var m = <%=@end_date.month%>-1;
+        var y = <%=@end_date.year%>;
+        var calendar = $('.calendar').fullCalendar({
+            header: {
+                left: 'prev,next today',
+                center: 'title',
+                right: 'month,agendaWeek'
+            },
+            selectable: true,
+            selectHelper: true,
+            events: [
+                <% @events.each do |event| %>
+                {
+                    title: '<%= event.exercise_plan.name %>',
+                    description: '<%= event.exercise.name+' '+ event.exercise.description %>',
+                    start: new Date(y, m, d)
+                },
+                <% end %>
+            ],
+            editable: true
+
+        });
+
+    });
+
+</script>

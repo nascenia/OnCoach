@@ -15,7 +15,9 @@
 //= require twitter/bootstrap
 //= require home
 //= require left_bar
+//= require cocoon
 //= require shape-theme/jquery.stellar.min.js
 //= require_tree .
 
 
+//= require fullcalendar_engine/application

@@ -42,14 +42,10 @@ gem 'tinymce-rails'
 gem 'i18n'
 
 gem 'ancestry'
-# Use ActiveModel has_secure_password
-# gem 'bcrypt', '~> 3.1.7'
 
-# Use Unicorn as the app server
-# gem 'unicorn'
+gem 'fullcalendar_engine'
 
-# Use Capistrano for deployment
-# gem 'capistrano-rails', group: :development
+gem "cocoon"
 
 group :development, :test do
   # Call 'debugger' anywhere in the code to stop execution and get a debugger console

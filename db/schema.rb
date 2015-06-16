@@ -11,7 +11,15 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 20150611045250) do
+ActiveRecord::Schema.define(version: 20150616054630) do
+
+  create_table "events", force: :cascade do |t|
+    t.string   "name",       limit: 255
+    t.datetime "start_at"
+    t.datetime "end_at"
+    t.datetime "created_at"
+    t.datetime "updated_at"
+  end
 
   create_table "exercise_categories", force: :cascade do |t|
     t.string   "name",       limit: 255
@@ -50,6 +58,29 @@ ActiveRecord::Schema.define(version: 20150611045250) do
     t.string   "avatar",               limit: 255
     t.integer  "exercise_category_id", limit: 4
   end
+
+  create_table "fullcalendar_engine_event_series", force: :cascade do |t|
+    t.integer  "frequency",  limit: 4,   default: 1
+    t.string   "period",     limit: 255, default: "monthly"
+    t.datetime "starttime"
+    t.datetime "endtime"
+    t.boolean  "all_day",    limit: 1,   default: false
+    t.datetime "created_at"
+    t.datetime "updated_at"
+  end
+
+  create_table "fullcalendar_engine_events", force: :cascade do |t|
+    t.string   "title",           limit: 255
+    t.datetime "starttime"
+    t.datetime "endtime"
+    t.boolean  "all_day",         limit: 1,     default: false
+    t.text     "description",     limit: 65535
+    t.integer  "event_series_id", limit: 4
+    t.datetime "created_at"
+    t.datetime "updated_at"
+  end
+
+  add_index "fullcalendar_engine_events", ["event_series_id"], name: "index_fullcalendar_engine_events_on_event_series_id", using: :btree
 
   create_table "muscle_groups", force: :cascade do |t|
     t.string   "name",       limit: 255

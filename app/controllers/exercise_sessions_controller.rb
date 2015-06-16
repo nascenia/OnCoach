@@ -5,6 +5,8 @@ class ExerciseSessionsController < ApplicationController
   # GET /exercise_sessions.json
   def index
     @exercise_sessions = ExerciseSession.all
+    @end_date = Time.now
+    @events = ExerciseSession.all
   end
 
   # GET /exercise_sessions/1
@@ -58,6 +60,14 @@ class ExerciseSessionsController < ApplicationController
     respond_to do |format|
       format.html { redirect_to exercise_sessions_url, notice: 'Exercise session was successfully destroyed.' }
       format.json { head :no_content }
+    end
+  end
+
+  def get_events
+    @events = ExerciseSession.first
+
+    respond_to do |format|
+      format.json { render json: @events}
     end
   end
 

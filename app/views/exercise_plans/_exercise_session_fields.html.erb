@@ -1,9 +1,5 @@
 <div class="nested-fields">
   <div class="field">
-    <%= f.label :exercise_plan_id %><br>
-    <%= f.collection_select :exercise_plan_id, ExercisePlan.all, :id, :name %>
-  </div>
-  <div class="field">
     <%= f.label :exercise_id %><br>
     <%= f.collection_select :exercise_id, Exercise.all, :id, :name %>
   </div>
@@ -28,6 +24,6 @@
     <%= f.number_field :resting_period, :required => true %>
   </div>
   <div class="actions">
-    <%=  link_to_remove_association "remove task", f %>
+    <%=  link_to_remove_association "Remove Exercise Session", f %>
   </div>
 </div>

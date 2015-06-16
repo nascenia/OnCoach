@@ -4,6 +4,40 @@
   <strong>Name:</strong>
   <%= @exercise_plan.name %>
 </p>
+<% if @exercise_plan.exercise_sessions.present? %>
+    <h5>Exercise Sessions</h5>
+    <% @exercise_plan.exercise_sessions.each do |session| %>
+        <p>
+          <strong>Exercise:</strong>
+          <%= session.exercise.name %>
+        </p>
+
+        <p>
+          <strong>Phase:</strong>
+          <%= session.phase %>
+        </p>
+
+        <p>
+          <strong>Intensity:</strong>
+          <%= session.intensity %>
+        </p>
+
+        <p>
+          <strong>Repetitions:</strong>
+          <%= session.repetitions %>
+        </p>
+
+        <p>
+          <strong>Num of series:</strong>
+          <%= session.num_of_series %>
+        </p>
+
+        <p>
+          <strong>Resting period:</strong>
+          <%= session.resting_period %>
+        </p>
+    <% end %>
+<% end %>
 
 <%= link_to 'Edit', edit_exercise_plan_path(@exercise_plan) %> |
 <%= link_to 'Back', exercise_plans_path %>
