@@ -16,6 +16,8 @@
 //= require home
 //= require left_bar
 //= require cocoon
+//= require raphael-min
+//= require morris-chart.min
 //= require shape-theme/jquery.stellar.min.js
 //= require_tree .
 

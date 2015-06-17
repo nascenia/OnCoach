@@ -1,33 +1,118 @@
-<!--<div class="row top-summary">-->
-    <!--<div class="col-lg-3 col-md-6">-->
-      <!--<div class="widget green-1 animated fadeInDown">-->
-        <!--<div class="widget-content">-->
-          <!--<div class="text-box">-->
-            <!--<p class="maindata">PESO</p>-->
-            <!--<h2>-->
-              <!--<span class="animate-number" data-value="89" data-duration="3000">89</span>-->
-            <!--</h2>-->
-            <!--<div class="clearfix"></div>-->
-          <!--</div>-->
-        <!--</div>-->
-        <!--<div class="widget-footer">-->
-          <!--<div class="row">-->
-            <!--<p>asdasdasd</p>-->
-            <!--<a href=""><span class="glyphicon glyphicon-hand-right"></span></a>-->
-          <!--</div>-->
-        <!--</div>-->
-      <!--</div>-->
-    <!--</div>-->
-<!--</div>-->
+<div class="page-heading">
+    <h1>
+      <span class="glyphicon glyphicon-th-large"></span>
+      Summary
+    </h1>
+</div>
+<div class="row top-summary">
+    <div class="col-lg-3 col-md-6">
+      <div class="widget green-1 animated fadeInDown">
+        <div class="widget-content">
+          <div class="text-box">
+            <p class="maindata">WEIGHT</p>
+            <h2>
+              <span class="animate-number">79</span>
+              Kg
+            </h2>
+            <div class="clearfix"></div>
+          </div>
+        </div>
+        <div class="widget-footer">
+          <div class="row">
+            <p>Evaluation made on <b>6/15/2013</b></p>
+            <a href=""><span class="glyphicon glyphicon-hand-right"></span></a>
+          </div>
+        </div>
+      </div>
+    </div>
+    <div class="col-lg-3 col-md-6">
+        <div class="widget darkblue-2 animated fadeInDown">
+          <div class="widget-content">
+            <div class="text-box">
+              <p class="maindata">TOTAL <b>TRAINING PT</b></p>
+              <h2>
+                <span class="animate-number">1</span>
+              </h2>
+              <div class="clearfix"></div>
+            </div>
+          </div>
+          <div class="widget-footer">
+            <div class="row">
+              <p>Last training session on <b>07.23.2013</b></p>
+              <a href=""><span class="glyphicon glyphicon-hand-right"></span></a>
+            </div>
+          </div>
+        </div>
+    </div>
+    <div class="col-lg-3 col-md-6">
+        <div class="widget pink-1 animated fadeInDown">
+          <div class="widget-content">
+            <div class="text-box">
+              <p class="maindata">TOTAL <b>INDIVIDUAL TRAINING</b></p>
+              <h2>
+                <span class="animate-number">1</span>
+              </h2>
+              <div class="clearfix"></div>
+            </div>
+          </div>
+          <div class="widget-footer">
+            <div class="row">
+              <p>Last training session on <b>07.23.2013</b></p>
+              <a href=""><span class="glyphicon glyphicon-hand-right"></span></a>
+            </div>
+          </div>
+        </div>
+    </div>
+    <div class="col-lg-3 col-md-6">
+        <div class="widget lightblue-1 animated fadeInDown">
+          <div class="widget-content">
+            <div class="text-box">
+              <p class="maindata">TOTAL <b>REPORTS</b></p>
+              <h2>
+                <span class="animate-number">0</span>
+              </h2>
+              <div class="clearfix"></div>
+            </div>
+          </div>
+          <div class="widget-footer">
+            <div class="row">
+              <p>Latest report on <b>undated</b></p>
+              <a href=""><span class="glyphicon glyphicon-hand-right"></span></a>
+            </div>
+          </div>
+        </div>
+    </div>
+</div>
 
-<h1> You are in Users home page </h1>
-
-
-<div class="code_container" style="text-align: left; margin-top: 50px; margin-right: 200px;">
-  <p>
-    <span class="p-head"> Your Email </span> : <span class="pull-right"> <%= current_user.email %> </span>
-  </p>
-  <p>
-    <span class="p-head"> User Type </span> : <span class="pull-right"> <%= current_user.type.nil? ? "User" : current_user.type %> </span>
-  </p>
+<div class="row">
+    <div class="col-sm-6 portlets ui-sortable">
+        <div class="widget">
+            <div class="widget-header">
+                <h2><strong>Evolution of</strong> Weight</h2>
+                <div class="additional-btn">
+                    <a href="#" class="hidden reload"><span class="glyphicon glyphicon-refresh"></span></a>
+                    <a href="#" class="widget-toggle"><span class="glyphicon glyphicon-chevron-down"></span></a>
+                    <a href="#" class="widget-close"><span class="glyphicon glyphicon-remove"></span></a>
+                </div>
+            </div>
+            <div class="widget-content padding">
+              <div id="weight-bar-chart"></div>
+            </div>
+        </div>
+    </div>
+    <div class="col-sm-6 portlets ui-sortable">
+        <div class="widget">
+          <div class="widget-header">
+            <h2><strong>Evolution</strong> of Training (calories burned)</h2>
+            <div class="additional-btn">
+              <a href="#" class="hidden reload"><span class="glyphicon glyphicon-refresh"></span></a>
+              <a href="#" class="widget-toggle"><span class="glyphicon glyphicon-chevron-down"></span></a>
+              <a href="#" class="widget-close"><span class="glyphicon glyphicon-remove"></span></a>
+            </div>
+          </div>
+          <div class="widget-content padding">
+            <div id="training-bar-chart"></div>
+          </div>
+        </div>
+    </div>
 </div>

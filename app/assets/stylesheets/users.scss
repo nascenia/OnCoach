@@ -58,9 +58,13 @@ nav.sidebar ul li:not(.dashboard) a.expandable:hover {
   color: #bbbbbb;
   background-color:#4d5252;
 }
-nav.sidebar ul li a.expandable span.expanded-element, nav.sidebar a.expandable span.expanded-element {
-  margin-left: 10px;
+nav.sidebar ul li a.rounded-image span.expanded-element,
+nav.sidebar a.rounded-image span.expanded-element{
   display: none;
+}
+nav.sidebar ul li a.expandable span.expanded-element,
+nav.sidebar a.expandable span.expanded-element {
+  margin-left: 10px;
   font-size: 11px;
   position: relative;
   bottom: 2px; }
@@ -255,7 +259,7 @@ nav.sidebar ul li.dashboard .left-arrow-wrapper .left-arrow{
   display:inline-block;
   border-top: 17px solid transparent;
   border-bottom: 17px solid transparent;
-  border-right:17px solid white;
+  border-right:17px solid #E4EAE6;
 }
 .sub-menu {
   display:none;
@@ -374,11 +378,26 @@ li.dropdown:hover .dropdown-menu{
 .top-summary .widget{
   border-radius: 5px;
 }
+.widget .text-box .maindata b {
+  font-size: 12px;
+}
 .top-summary .widget .text-box{
   padding: 10px;
 }
 .widget.green-1 {
   background-color: #68c39f;
+  color: #fff;
+}
+.widget.darkblue-2 {
+  background-color: #4a525f;
+  color: #fff;
+}
+.widget.pink-1 {
+  background-color: #f57a82;
+  color: #333;
+}
+.widget.lightblue-1 {
+  background-color: #abb7b7;
   color: #fff;
 }
 .top-summary .widget .widget-footer {
@@ -392,6 +411,15 @@ li.dropdown:hover .dropdown-menu{
 
 .top-summary .widget .widget-footer p{
   display: inline;
+}
+.top-summary .widget .widget-footer a:hover{
+  background-color: transparent;
+}
+.top-summary .widget .widget-footer a .glyphicon{
+  color: #2a6496;
+}
+.top-summary .widget .widget-footer a .glyphicon:hover{
+  color: #0033CC;
 }
 .widget .text-box .maindata {
   font-size: 11px;
@@ -430,3 +458,68 @@ li.dropdown:hover .dropdown-menu{
   border-bottom: 1px solid rgba(255,255,255,0.2);
   margin: 4px 0;
 }
+
+.page-heading {
+  margin: 0px 0 20px;
+  padding: 5px 0;
+}
+.page-heading h1, span.glyphicon-th-large {
+  margin: 0;
+  padding: 0;
+  font-weight: 400;
+  font-size: 24px;
+  margin-bottom: 0px;
+}
+.widget {
+  position: relative;
+  background: #fff;
+  color: #5b5b5b;
+  margin-bottom: 20px;
+  -webkit-border-radius: 2px;
+  border-radius: 2px;
+}
+.widget .widget-header {
+  height: 43px;
+  display: block;
+  border-bottom: 1px solid rgba(0,0,0,0.1);
+}
+.portlets .widget-header {
+  cursor: move;
+}
+.widget .additional-btn {
+  position: absolute;
+  top: 10px;
+  right: 13px;
+  z-index: 2;
+}
+.widget .additional-btn > a:hover {
+  background-color: transparent;
+  text-decoration: none;
+  -webkit-transition: All 0.8s ease;
+}
+.widget .additional-btn > a, .widget .widget-header .additional-btn .btn-group > a {
+  color: #ccc;
+  margin-left: 7px;
+  margin-right: 0px;
+  cursor: pointer;
+  -webkit-transition: All 0.4s ease;
+  -moz-transition: All 0.4s ease;
+  -o-transition: All 0.4s ease;
+}
+.widget .widget-header:hover .additional-btn > a {
+  color: #909090;
+  -webkit-transition: All 0.4s ease;
+}
+.widget:hover .additional-btn > a.hidden {
+  display: inline-block !important;
+  visibility: visible !important;
+}
+.widget .widget-header h2 {
+  padding: 10px 13px 4px 13px;
+  margin: 0px;
+  font-weight: 400;
+  font-size: 16px;
+  display: block;
+  color: #5b5b5b;
+}
+
