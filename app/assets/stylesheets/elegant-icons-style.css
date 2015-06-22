@@ -1118,42 +1118,57 @@ you can use the generic selector below, but it's slower:
 .icon_clipboard:before {
 	content: "\e0e6";
 }
+.glyph {
+    float: left;
+    text-align: center;
+    padding: .75em;
+    margin: .4em 1.5em .75em 0;
+    width: 6em;
+    text-shadow: none;
+}
+    .glyph_big {
+    font-size: 128px;
+    color: #59c5dc;
+    float: left;
+    margin-right: 20px;
+    }
+
+    .glyph div { padding-bottom: 10px;}
+
+.glyph input {
+    font-family: consolas, monospace;
+    font-size: 12px;
+    width: 100%;
+    text-align: center;
+    border: 0;
+    box-shadow: 0 0 0 1px #ccc;
+    padding: .2em;
+            -moz-border-radius: 5px;
+            -webkit-border-radius: 5px;
+}
+.centered {
+    margin-left: auto;
+    margin-right: auto;
+}
+.glyph .fs1 {
+    font-size: 2em;
+}
+span.glyphicon:not(.glyphicon-th-large, .glyphicon-off), span.fa{
+    color: rgba(255, 255, 255, 0.7);
+    display: inline-block;
+    font-size: 15px;
+    line-height: 17px;
+    text-align: center;
+    vertical-align: middle;
+}
+i.fa-bars:hover{
+    color: rgba(255, 255, 255, 0.7);
+}
+li.dropdown > a > i.fa-envelope{
+    font-size: 18px;
+}
+.user-info i.fa-envelope-o {
+    font-size: 18px;
+}
 
 
-	.glyph {
-		float: left;
-		text-align: center;
-		padding: .75em;
-		margin: .4em 1.5em .75em 0;
-		width: 6em;
-text-shadow: none;
-	}
-        .glyph_big {
-        font-size: 128px;
-        color: #59c5dc;
-        float: left;
-        margin-right: 20px;
-        }
-
-        .glyph div { padding-bottom: 10px;}
-
-	.glyph input {
-		font-family: consolas, monospace;
-		font-size: 12px;
-		width: 100%;
-		text-align: center;
-		border: 0;
-		box-shadow: 0 0 0 1px #ccc;
-		padding: .2em;
-                -moz-border-radius: 5px;
-                -webkit-border-radius: 5px;
-	}
-	.centered {
-		margin-left: auto;
-		margin-right: auto;
-	}
-	.glyph .fs1 {
-		font-size: 2em;
-	}
-
-	

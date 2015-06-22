@@ -92,7 +92,9 @@
                 <div class="additional-btn">
                     <a href="#" class="hidden reload"><span class="glyphicon glyphicon-refresh"></span></a>
                     <a href="#" class="widget-toggle"><span class="glyphicon glyphicon-chevron-down"></span></a>
-                    <a href="#" class="widget-close"><span class="glyphicon glyphicon-remove"></span></a>
+                    <a href="#" class="widget-close" data-toggle="modal" data-target="#myModal">
+                      <span class="glyphicon glyphicon-remove"></span>
+                    </a>
                 </div>
             </div>
             <div class="widget-content padding">
@@ -107,7 +109,9 @@
             <div class="additional-btn">
               <a href="#" class="hidden reload"><span class="glyphicon glyphicon-refresh"></span></a>
               <a href="#" class="widget-toggle"><span class="glyphicon glyphicon-chevron-down"></span></a>
-              <a href="#" class="widget-close"><span class="glyphicon glyphicon-remove"></span></a>
+              <a href="#" class="widget-close" data-toggle="modal" data-target="#myModal">
+                <span class="glyphicon glyphicon-remove"></span>
+              </a>
             </div>
           </div>
           <div class="widget-content padding">
@@ -116,3 +120,4 @@
         </div>
     </div>
 </div>
+<%= render 'layouts/modal' %>

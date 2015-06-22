@@ -24,7 +24,9 @@ nav.sidebar {
   height: 100%;
   background: none repeat scroll 0 0 #343838;
   color: white;
-  padding: 20px 0px; }
+  padding: 10px 0px;
+  font-family: "Open Sans";
+}
 nav.sidebar a#justify-icon {
   outline: 0;
   color: white;
@@ -65,9 +67,11 @@ nav.sidebar a.rounded-image span.expanded-element{
 nav.sidebar ul li a.expandable span.expanded-element,
 nav.sidebar a.expandable span.expanded-element {
   margin-left: 10px;
-  font-size: 11px;
   position: relative;
-  bottom: 2px; }
+  font-size: 13px;
+  vertical-align: middle;
+  color: #e7e7e7;
+}
 nav.sidebar ul li.active {
   background: none repeat scroll 0 0 ;
   border-radius: 4px;
@@ -131,15 +135,29 @@ hr.divider {
   height:auto;
 }
 
-/*done by faruk hossen*/
-
 .topmost-secion{
   height:30px;
   text-align:right;
   padding-right:10px;
 }
-.topmost-secion .heading{
-  text-align:center;
+.fa {
+  display: inline-block;
+  font-family: FontAwesome;
+  font-feature-settings: normal;
+  font-kerning: auto;
+  font-language-override: normal;
+  font-size: inherit;
+  font-size-adjust: none;
+  font-stretch: normal;
+  font-style: normal;
+  font-synthesis: weight style;
+  font-variant: normal;
+  font-weight: normal;
+  line-height: 1;
+  text-rendering: auto;
+}
+.topmost-secion .heading img{
+  width: 35%;
 }
 .sidebar-menu-collapsed .profile-info{
   width:100%;
@@ -204,21 +222,17 @@ hr.divider {
 .sidebar-menu-collapsed .user{
   padding-left:0px;
 }
-.sidebar-menu-collapsed .user-info{
-  margin-top:0px;
-}
 .sidebar-menu-expanded .user-info{
-  margin-top:15px;
-}
-.sidebar-menu-collapsed .user-info{
-  margin-top:0px;
+  margin-top: 5px;
 }
 .message-icon,.signout-icon{
   padding:10px;
-  border-radius:2px;
+//  border-radius:2px;
 }
 .signout-icon:hover,.message-icon:hover{
-  background:#000;
+  background: rgba(0, 0, 0, 0.2) none repeat scroll 0 0;
+  border-radius: 3px;
+  color: #fff;
 }
 
 .sidebar-menu-expanded .user-info .signout-icon{
@@ -295,10 +309,11 @@ ul.main-menu li:not(.dashboard) > a.expandable.open{
   display:inline-block;
 }
 li >a.expandable .dropdown-icon{
-  position:absolute;
-  right:15px;
-  font-size:.5em;
-  top:15px;
+  position: absolute;
+  right: 15px;
+  top: 12px;
+  font-size: 14px;
+  color: rgba(255, 255, 255, 0.7);
 }
 .sidebar-menu-collapsed li >a.expandable .dropdown-icon{
   display:none;
@@ -469,6 +484,7 @@ li.dropdown:hover .dropdown-menu{
   font-weight: 400;
   font-size: 24px;
   margin-bottom: 0px;
+  color: #505458;
 }
 .widget {
   position: relative;
@@ -482,6 +498,10 @@ li.dropdown:hover .dropdown-menu{
   height: 43px;
   display: block;
   border-bottom: 1px solid rgba(0,0,0,0.1);
+}
+.widget .widget-header.transparent{
+  background: transparent;
+  border: none;
 }
 .portlets .widget-header {
   cursor: move;
@@ -522,4 +542,14 @@ li.dropdown:hover .dropdown-menu{
   display: block;
   color: #5b5b5b;
 }
-
+.data-table-toolbar {
+  margin: 0px;
+  padding: 15px;
+  background: rgba(0,0,0,0.03);
+}
+.toolbar-btn-action {
+  text-align: right;
+}
+.toolbar-btn-action > a, .toolbar-btn-action > a > i {
+  color: white;
+}

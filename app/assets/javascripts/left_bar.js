@@ -9,7 +9,7 @@ $(document).ready(function(){
         $("ul.sub-menu").css("overflow", "hidden");
         $(highlightedTab).addClass('dashboard');
         $(highlightedTab).children('a.expandable').after(div);
-        $(highlightedTab).find(".glyphicon-chevron-down").addClass("glyphicon-chevron-up").removeClass("glyphicon-chevron-down");
+        $(highlightedTab).find(".fa-angle-down").addClass("fa-angle-up").removeClass("fa-angle-down");
         $(highlightedTab).find("ul.sub-menu").slideDown(500);
     }
     if (activeSubLink != null){
@@ -21,20 +21,20 @@ $(document).ready(function(){
 
         if ($(this).parent().find("ul.sub-menu").is(":hidden")){
             $("ul.sub-menu").css("overflow", "hidden");
-            $("ul.sub-menu").hide();
+            $("ul.sub-menu").slideUp(500);
             $(".main-menu li > a.expandable").removeClass("open");
-            $(".main-menu li> a.expandable .glyphicon-chevron-up").removeClass('glyphicon-chevron-up').addClass("glyphicon-chevron-down");
+            $(".main-menu li> a.expandable .fa-angle-up").removeClass('fa-angle-up').addClass("fa-angle-down");
             $(this).parent().find("ul.sub-menu").slideDown(500);
-            $(this).find(".glyphicon-chevron-down").addClass("glyphicon-chevron-up").removeClass("glyphicon-chevron-down");
+            $(this).find(".fa-angle-down").addClass("fa-angle-up").removeClass("fa-angle-down");
             $(this).addClass('open');
 
         }else if (!$(this).parent().hasClass('sub-menu')){
-            $("ul.sub-menu").hide();
+            $("ul.sub-menu").slideUp(500);
             $(".main-menu li > a.expandable").removeClass("open");
-            $(".main-menu li> a.expandable .glyphicon-chevron-up").removeClass('glyphicon-chevron-up').addClass("glyphicon-chevron-down");
+            $(".main-menu li> a.expandable .fa-angle-up").removeClass('fa-angle-up').addClass("fa-angle-down");
         }else{
             $(this).parent().find("ul.sub-menu").slideUp(500);
-            $(this).find(".glyphicon-chevron-up").addClass("glyphicon-chevron-down").removeClass("glyphicon-chevron-up");
+            $(this).find(".fa-angle-up").addClass("fa-angle-down").removeClass("fa-angle-up");
             $(this).removeClass("open");
 
         }
@@ -62,14 +62,8 @@ $(document).ready(function(){
     });
 
     $(document).on('click', 'ul.main-menu li > a.expandable', function(){
-        $('ul li').removeClass('dashboard');
-
         var $parent = $(this).parent();
-        if (!$parent.hasClass('dashboard')){
-            $parent.addClass('dashboard');
-            $(this).closest('a.expandable').after(div);
-            localStorage.setItem('activeLink', $parent.attr('id'));
-        }
+        localStorage.setItem('activeLink', $parent.attr('id'));
     });
 
     $(document).on('click', 'ul.sub-menu li > a', function(){

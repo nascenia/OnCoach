@@ -1,38 +1,61 @@
 <p id="notice"><%= notice %></p>
 
-<%= link_to 'New Exercise', new_exercise_path, :class => 'btn btn-danger pull-right' %>
-<h1>Listing Exercises</h1>
+<div class="page-heading">
+  <h1>
+    <span class="glyphicon glyphicon-th-large"></span>
+    Exercises
+  </h1>
+  <%= link_to 'New Exercise', new_exercise_path, :class => 'btn btn-danger pull-right' %>
+</div>
+<div class="row">
+  <div class="col-md-12">
+    <div class="widget" id="category">
+      <div class="widget-header transparent">
+        <h2><strong>Categories of</strong> Exercise</h2>
+        <div class="additional-btn">
+          <a href="#" class="hidden reload"><span class="glyphicon glyphicon-refresh"></span></a>
+          <a href="#" class="widget-toggle"><span class="glyphicon glyphicon-chevron-down"></span></a>
+          <a href="#" class="widget-close" data-toggle="modal" data-target="#myModal">
+            <span class="glyphicon glyphicon-remove"></span>
+          </a>
+        </div>
+      </div>
+      <div class="widget-content">
+        <div class="table-responsive">
+          <table class="table table-hover table-striped">
+            <thead>
+                <tr>
+                  <th>Name</th>
+                  <th>Category</th>
+                  <th>Type</th>
+                  <th>Description</th>
+                  <th>Image</th>
+                  <th>Youtube video link</th>
+                  <th>Calories</th>
+                  <th colspan="3"></th>
+                </tr>
+            </thead>
 
-<table class="table table-bordered table-responsive">
-  <thead>
-    <tr>
-      <th>Name</th>
-      <th>Category</th>
-      <th>Type</th>
-      <th>Description</th>
-      <th>Image</th>
-      <th>Youtube video link</th>
-      <th>Calories</th>
-      <th colspan="3"></th>
-    </tr>
-  </thead>
-
-  <tbody>
-    <% @exercises.each do |exercise| %>
-      <tr>
-        <td><%= exercise.name %></td>
-        <td><%= exercise.exercise_category.name %></td>
-        <td><%= exercise.exercise_type %></td>
-        <td><%= exercise.description.html_safe %></td>
-        <td><%= image_tag exercise.image, :size => "200x150" %></td>
-        <td><%= link_to exercise.youtube_video_link, exercise.youtube_video_link, :target => '_blank' %></td>
-        <td><%= exercise.calories %></td>
-        <td><%= link_to 'Show', exercise %></td>
-        <td><%= link_to 'Edit', edit_exercise_path(exercise) %></td>
-        <td><%= link_to 'Destroy', exercise, method: :delete, data: { confirm: 'Are you sure?' } %></td>
-      </tr>
-    <% end %>
-  </tbody>
-</table>
-
-<br>
+            <tbody>
+                <% @exercises.each do |exercise| %>
+                    <tr>
+                      <td><%= exercise.name %></td>
+                      <td><%= exercise.exercise_category.name %></td>
+                      <td><%= exercise.exercise_type %></td>
+                      <td><%= exercise.description.html_safe %></td>
+                      <td><%= image_tag exercise.image, :size => "200x150" %></td>
+                      <td><%= link_to exercise.youtube_video_link, exercise.youtube_video_link, :target => '_blank' %></td>
+                      <td><%= exercise.calories %></td>
+                      <td><%= link_to 'Show', exercise %></td>
+                      <td><%= link_to 'Edit', edit_exercise_path(exercise) %></td>
+                      <td><%= link_to 'Destroy', exercise, method: :delete, data: { confirm: 'Are you sure?' } %></td>
+                    </tr>
+                <% end %>
+            </tbody>
+          </table>
+        </div>
+      </div>
+    </div>
+  </div>
+</div>
+<%= render 'layouts/modal' %>

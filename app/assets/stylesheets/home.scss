@@ -1,4 +1,10 @@
-
+html{
+  background: #E4EAE6;
+}
+.form-control.search:focus {
+  background: #f1f1f1;
+  border-color: #eee;
+}
 footer#home-page-footer {
   background: #E4EAE6;
   padding: 20px 0;
@@ -6,6 +12,8 @@ footer#home-page-footer {
   border-top: 1px solid #B9C1CB;
   color: #7A868F;
 }
+
+//====================================  Responsive styles
 @media screen and (max-width: 980px) {
   .container{
     padding-left: 8%;
