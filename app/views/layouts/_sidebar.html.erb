@@ -18,7 +18,7 @@
         <div class="profile-buttons">
           <a href="javascript:;"><i class="fa fa-envelope-o pulse"></i></a>
           <a href="#connect" class="open-right"><i class="fa fa-comments"></i></a>
-          <a href="javascript:;" title="Sign Out"><i class="fa fa-power-off text-red-1"></i></a>
+          <a href="<%= destroy_user_session_path %>" data-method="delete" title="Sign Out"><i class="fa fa-power-off text-red-1"></i></a>
         </div>
       </div>
     </div>
