@@ -10,27 +10,17 @@
  * defined in the other CSS/SCSS files in this directory. It is generally better to create a new
  * file per style scope.
  *
- *= require all
- *= require animate.min
- *= require bic_calendar
  *= require bootstrap.min
- *= require bootstrap-editable
- *= require clock
- *= require component
- *= require datepicker
+ *= require pace
  *= require font-awesome.min
  *= require fontello
- *= require github
- *= require ios7-switch
- *= require jquery-jvectormap-1.2.2
- *= require jquery-ui-1.10.4.custom.min
+ *= require animate.min
  *= require magnific-popup
- *= require morris
- *= require pace
- *= require rickshaw.min
- *= require simpleweather
- *= require sortable-theme-bootstrap
- *= require style
- *= require style-responsive
+ *= require login/style
+ *= require login/login-style
+ *= require login/owl.carousel
+ *= require login/owl.theme
+ *= require login/owl.transitions
+ *= require social-buttons-3
  *= require_self
 */

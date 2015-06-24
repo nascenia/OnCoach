@@ -16,7 +16,7 @@
   <meta name="keywords" content="Personal training, treino, gestao, nutri��o">
   <meta name="author" content="Huban Creative">
 
-  <%= stylesheet_link_tag "application", :media => "all" %>
+  <%= stylesheet_link_tag "login", :media => "all" %>
   <%= favicon_link_tag 'favicon.ico' %>
   <!-- Extra CSS Libraries End -->
   <!--[if lt IE 9]>
@@ -52,7 +52,8 @@
             <span class="icon-navicon"></span>
           </button>
           <a class="navbar-brand" href="<%= new_session_path(resource_name) %>">
-            <img src="/assets/img/logo.png" data-dark-src="/assets/img/logo_dark.png" alt="Coco Frontend Template" class="logo">
+            <%= image_tag 'logo.png', alt: 'OnShape', class: 'logo' %>
+            <!--<img src="../assets/logo.png" data-dark-src="/assets/img/logo_dark.png" alt="Coco Frontend Template" class="logo">-->
           </a>
         </div>
 
@@ -67,7 +68,7 @@
       </div>
       <!-- /.container-->
     </nav>
-    <section class="main-slider fullsize" data-stellar-background-ratio="0.5" style="background-image: url(/assets/images/headers/signup-login.jpg)">
+    <section class="main-slider fullsize" data-stellar-background-ratio="0.5" style="background-image: url(../assets/signup-login.jpg)">
       <div class="slider-caption">
 
         <div class="container">
@@ -88,7 +89,7 @@
       <div class="row">
         <div class="col-sm-4">
           <a href="<%= new_session_path(resource_name) %>">
-            <img src="/assets/img/logo.png" alt="Coco Frontend Template" class="footer-logo">
+            <%= image_tag 'logo.png', alt: 'OnShape', class: 'footer-logo' %>
           </a>
           <h5>Workout your future...</h5>
 
@@ -130,6 +131,6 @@
     var resizefunc = [];
     localStorage.clear();
 </script>
-<%= javascript_include_tag "application" %>
+<%= javascript_include_tag "login" %>
 </body>
 </html>
