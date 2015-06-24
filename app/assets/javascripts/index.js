@@ -89,7 +89,6 @@ $(document).ready(function(){
   resizefunc.push("reload_charts");
   //$(".content-page").resize(debounce(reload_charts,100));
 
-  load_charts();
   loadWeather('Seattle','');
   monthNames = ["January", "February", "March", "April", "May", "June", "July", "August", "September", "October", "November", "December"];
   dayNames = ["S", "M", "T", "W", "T", "F", "S"];

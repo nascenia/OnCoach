@@ -1,104 +1,112 @@
-<li id="dashboard" class="dashboard">
-  <a class='expandable ' href='<%= user_index_path %>'>
-    <span class='glyphicon glyphicon-home collapsed-element'></span>
-    <span class='expanded-element'>Dashboard</span>
-  </a>
-  <div class="left-arrow-wrapper"><span class="left-arrow"></span></div>
-</li>
-<li id="management">
-  <a class='expandable' href='#'>
-    <span class='glyphicon glyphicon-plus-sign collapsed-element'></span>
-    <span class='expanded-element'>Input</span>
-    <i class="fa fa-angle-down expanded-element dropdown-icon"> </i>
-  </a>
-  <ul class="sub-menu">
-        <li><a href="#">This is item1</a></li>
-        <li><a href="#">This is item2</a></li>
-        <li><a href="#">This is item3</a></li>
-        <li><a href="#">This is item4</a></li>
-  </ul>
-</li>
-<li id="exercises">
-  <a class='expandable' href='#'>
-    <span class='glyphicon glyphicon-heart-empty collapsed-element'></span>
-    <span class='expanded-element'>Programs</span>
-    <i class="fa fa-angle-down expanded-element dropdown-icon"> </i>
-  </a>
-  <ul class="sub-menu">
-        <li><a href="#">This is item1</a></li>
-        <li><a href="#">This is item2</a></li>
-        <li><a href="#">This is item3</a></li>
-        <li><a href="#">This is item4</a></li>
-  </ul>
-</li>
-<li id="training">
-  <a class='expandable' href='#'>
-    <span class='fa fa-male collapsed-element'></span>
-    <span class='expanded-element'>Training</span>
-    <i class="fa fa-angle-down expanded-element dropdown-icon"> </i>
-  </a>
-  <ul class="sub-menu">
-    <li><a href="#">Workout Plans</a></li>
-    <li><a href="#">Training log</a></li>
-  </ul>
-</li>
-<li id="programs">
-  <a class='expandable' href='#'>
-    <span class="fa fa-cutlery collapsed-element"></span>
-    <span class='expanded-element'>Food</span>
-    <i class="fa fa-angle-down expanded-element dropdown-icon"> </i>
-  </a>
-</li>
-<li id="evaluation">
-  <a class='expandable' href='#'>
-    <span class="fa fa-file-text"></span>
-    <span class='expanded-element'>Reports</span>
-    <i class="fa fa-angle-down expanded-element dropdown-icon"> </i>
-  </a>
-  <ul class="sub-menu">
-        <li><a href="#">This is item1</a></li>
-        <li><a href="#">This is item2</a></li>
-        <li><a href="#">This is item3</a></li>
-        <li><a href="#">This is item4</a></li>
-  </ul>
-</li>
-<li id="question">
-  <a class='expandable' href='#'>
-    <span class="glyphicon glyphicon-briefcase"></span>
-    <span class='expanded-element'>Contents</span>
-    <i class="fa fa-angle-down expanded-element dropdown-icon"> </i>
-  </a>
-  <ul class="sub-menu">
-        <li><a href="#">This is item1</a></li>
-        <li><a href="#">This is item2</a></li>
-        <li><a href="#">This is item3</a></li>
-        <li><a href="#">This is item4</a></li>
-  </ul>
+<div id="sidebar-menu">
+  <ul>
+    <li>
+      <a href='<%= user_index_path %>'>
+        <i class='icon-home-3'></i>
+        <span>Dashboard</span>
+      </a>
+    </li>
+    <li class='has_sub'>
+      <a href='javascript:void(0);'>
+        <i class='icon-feather'></i>
+        <span>Exercise Categories</span>
+            <span class="pull-right">
+              <i class="fa fa-angle-down"></i>
+            </span>
+      </a>
+      <ul>
+        <li>
+          <a href='<%= exercise_categories_path %>'><span>All Categories</span></a>
+        </li>
+        <li>
+          <a href='<%= new_exercise_category_path %>'><span>New Categories</span></a>
+        </li>
 
-</li>
-<li id="contents">
-  <a class='expandable' href='#'>
-    <span class="glyphicon glyphicon-euro"></span>
-    <span class='expanded-element'>Servicing</span>
-    <i class="fa fa-angle-down expanded-element dropdown-icon"> </i>
-  </a>
-  <ul class="sub-menu">
-        <li><a href="#">This is item1</a></li>N
-        <li><a href="#">This is item2</a></li>
-        <li><a href="#">This is item3</a></li>
-        <li><a href="#">This is item4</a></li>
+      </ul>
+    </li>
+    <li class='has_sub'>
+      <a href='javascript:void(0);'>
+        <i class='icon-pencil-3'></i>
+        <span>Exercise Plan</span>
+        <span class="pull-right"><i class="fa fa-angle-down"></i></span>
+      </a>
+      <ul>
+        <li>
+          <a href='<%= exercise_plans_path %>'><span>All Plans</span></a>
+        </li>
+        <li>
+          <a href='<%= new_exercise_plan_path %>'><span>New Plan</span></a>
+        </li>
+      </ul>
+    </li>
+    <li class='has_sub'>
+      <a href='javascript:void(0);'>
+        <i class='fa fa-table'></i>
+        <span>Training Plan</span>
+        <span class="pull-right"><i class="fa fa-angle-down"></i></span>
+      </a>
+      <ul>
+        <li>
+          <a href='<%= training_plans_path %>'><span>All Training Plans</span></a>
+        </li>
+        <li>
+          <a href='<%= new_training_plan_path %>'><span>New Trainig Plan</span></a>
+        </li>
+      </ul>
+    </li>
+    <li class='has_sub'>
+      <a href='javascript:void(0);'><i class='fa fa-map-marker'></i><span>Training Session</span>
+        <span class="pull-right"><i class="fa fa-angle-down"></i></span></a>
+      <ul>
+        <li><a href='<%= training_sessions_path %>'><span>All Training Sessions</span></a></li>
+        <li><a href='<%= new_training_session_path %>'><span>New Training Session</span></a></li>
+      </ul>
+    </li>
+    <li class='has_sub'><a href='javascript:void(0);'><i class='fa fa-envelope'></i><span>Muscle Group</span>
+      <span class="pull-right"><i class="fa fa-angle-down"></i></span></a>
+      <ul>
+        <li><a href='<%= muscle_groups_path %>'><span>View All</span></a></li>
+        <li><a href='<%= new_muscle_group_path %>'><span>New Muscle Group</span></a></li>
+      </ul>
+    </li>
+    <li class='has_sub'><a href='javascript:void(0);'><i class='icon-chart-line'></i><span>Muscle</span>
+      <span class="pull-right"><i class="fa fa-angle-down"></i></span></a>
+      <ul>
+        <li><a href='<%= muscles_path %>'><span>View All Muscle</span></a></li>
+        <li><a href='<%= new_muscle_path %>'><span>New Muscle</span></a></li>
+      </ul>
+    </li>
+    <li class='has_sub'><a href='javascript:void(0);'><i class='icon-megaphone'></i><span>Targeted Muscle</span>
+      <span class="pull-right"><i class="fa fa-angle-down"></i></span></a>
+      <ul>
+        <li><a href='<%= targeted_muscles_path %>'><span>All Targeted Muscle</span></a></li>
+        <li><a href='<%= new_targeted_muscle_path %>'><span>New Targeted Muscle</span></a></li>
+        <li class='has_sub'><a href='javascript:void(0);'><span>3 Level menu</span>
+          <span class="pull-right"><i class="fa fa-angle-down"></i></span></a>
+          <ul>
+            <li><a href='javascript:void(0);'><span>Sub Item</span></a></li>
+          </ul>
+        </li>
+        <li class='has_sub'><a href='javascript:void(0);'><span>4 Level Menu</span>
+          <span class="pull-right"><i class="fa fa-angle-down"></i></span></a>
+          <ul>
+            <li class='has_sub'><a href='javascript:void(0);'><span>Sub Item - level 3</span>
+              <span class="pull-right"><i class="fa fa-angle-down"></i></span></a>
+              <ul>
+                <li><a href='javascript:void(0);'><span>Sub Item - level 4</span></a></li>
+              </ul>
+            </li>
+          </ul>
+        </li>
+        <li class='has_sub'><a href='javascript:void(0);'><span>Submenu with icons</span>
+          <span class="pull-right"><i class="fa fa-angle-down"></i></span></a>
+          <ul>
+            <li><a href='javascript:void(0);'><i class='fa fa-camera'></i><span>Item with icon</span></a></li>
+            <li><a href='javascript:void(0);'><i class='entypo entypo-users'></i><span>Another Item</span></a></li>
+          </ul>
+        </li>
+      </ul>
+    </li>
   </ul>
-</li>
-<li id="posts">
-  <a class='expandable' href='#'>
-    <span class="fa fa-envelope"></span>
-    <span class='expanded-element'>Posts</span>
-    <i class="fa fa-angle-down expanded-element dropdown-icon"> </i>
-  </a>
-  <ul class="sub-menu">
-    <li><a href="#">This is item1</a></li>
-    <li><a href="#">This is item2</a></li>
-    <li><a href="#">This is item3</a></li>
-    <li><a href="#">This is item4</a></li>
-  </ul>
-</li>
+  <div class="clearfix"></div>
+</div>

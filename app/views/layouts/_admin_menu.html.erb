@@ -1,107 +1,112 @@
-<li id="dashboard" class="dashboard">
-  <a class='expandable ' href='<%= admin_index_path %>'>
-    <span class='glyphicon glyphicon-home collapsed-element'></span>
-    <span class='expanded-element'>Home</span>
-  </a>
-  <div class="left-arrow-wrapper"><span class="left-arrow"></span></div>
-</li>
-<li id="Category">
-  <a class='expandable' href='#'>
-    <span class='glyphicon glyphicon-plus-sign collapsed-element'></span>
-    <span class='expanded-element'>Exercise Category</span>
-    <i class="fa fa-angle-down expanded-element dropdown-icon"> </i>
-  </a>
-  <ul class="sub-menu">
-        <li id="all-categories"><a href="<%= exercise_categories_path %>">All Categories</a></li>
-        <li id="new-category"><a href="<%= new_exercise_category_path %>">New Category</a></li>
-  </ul>
-</li>
-<li id="exercises">
-  <a class='expandable' href='#'>
-    <span class='glyphicon glyphicon-heart-empty collapsed-element'></span>
-    <span class='expanded-element'>Exercises</span>
-    <i class="fa fa-angle-down expanded-element dropdown-icon"> </i>
-  </a>
-  <ul class="sub-menu">
-      <li id="full-list"><a href="<%= exercises_path %>">Full List</a></li>
-      <li id="new-exercise"><a href="<%= new_exercise_path %>">New Exercise</a></li>
-  </ul>
-</li>
-<li id="plan">
-  <a class='expandable' href='#'>
-    <span class='glyphicon glyphicon-tasks collapsed-element'></span>
-    <span class='expanded-element'>Exercise Plan</span>
-    <i class="fa fa-angle-down expanded-element dropdown-icon"> </i>
-  </a>
-  <ul class="sub-menu">
-        <li id="all-plan"><a href="<%= exercise_plans_path %>">All Plans</a></li>
-        <li id="new-plan"><a href="<%= new_exercise_plan_path %>">New Plan</a></li>
-  </ul>
-</li>
-<li id="sessions">
-  <a class='expandable' href='#'>
-    <span class="glyphicon glyphicon-folder-open collapsed-element"></span>
-    <span class='expanded-element'>Exercise Sessions</span>
-    <i class="fa fa-angle-down expanded-element dropdown-icon"> </i>
-  </a>
-  <ul class="sub-menu">
-    <li id="all-sessions"><a href="<%= exercise_sessions_path %>">All Sessions</a></li>
-    <li id="new-session"><a href="<%= new_exercise_session_path %>">New Session</a></li>
-  </ul>
-</li>
-<li id="training-plan">
-  <a class='expandable' href='#'>
-    <span class="glyphicon glyphicon-comment"></span>
-    <span class='expanded-element'>Training Plan</span>
-    <i class="fa fa-angle-down expanded-element dropdown-icon"> </i>
-  </a>
-  <ul class="sub-menu">
-        <li id="all-training-plan"><a href="<%= training_plans_path %>">All Plans</a></li>
-        <li id="new-training-plan"><a href="<%= new_training_plan_path %>">New Plan</a></li>
-  </ul>
-</li>
-<li id="training-session">
-  <a class='expandable' href='#'>
-    <span class="glyphicon glyphicon-briefcase"></span>
-    <span class='expanded-element'>Training Session</span>
-    <i class="fa fa-angle-down expanded-element dropdown-icon"> </i>
-  </a>
-  <ul class="sub-menu">
-        <li id="all-training-session"><a href="<%= training_sessions_path %>">All Training Session</a></li>
-        <li id="new-training-session"><a href="<%= new_training_session_path %>">New Training Session</a></li>
-  </ul>
+<div id="sidebar-menu">
+  <ul>
+    <li>
+      <a href='<%= admin_index_path %>'>
+        <i class='icon-home-3'></i>
+        <span>Dashboard</span>
+      </a>
+    </li>
+    <li class='has_sub'>
+      <a href='javascript:void(0);'>
+        <i class='icon-feather'></i>
+        <span>Exercise Categories</span>
+            <span class="pull-right">
+              <i class="fa fa-angle-down"></i>
+            </span>
+      </a>
+      <ul>
+        <li>
+          <a href='<%= exercise_categories_path %>'><span>All Categories</span></a>
+        </li>
+        <li>
+          <a href='<%= new_exercise_category_path %>'><span>New Categories</span></a>
+        </li>
 
-</li>
-<li id="muscle-group">
-  <a class='expandable' href='#'>
-    <span class="glyphicon glyphicon-euro"></span>
-    <span class='expanded-element'>Muscle Group</span>
-    <i class="fa fa-angle-down expanded-element dropdown-icon"> </i>
-  </a>
-  <ul class="sub-menu">
-        <li id="all-muscle-group"><a href="<%= muscle_groups_path %>">All Muscle Group</a></li>
-        <li id="new-muscle-group"><a href="<%= new_muscle_group_path %>">New Muscle Group</a></li>
+      </ul>
+    </li>
+    <li class='has_sub'>
+      <a href='javascript:void(0);'>
+        <i class='icon-pencil-3'></i>
+        <span>Exercise Plan</span>
+        <span class="pull-right"><i class="fa fa-angle-down"></i></span>
+      </a>
+      <ul>
+        <li>
+          <a href='<%= exercise_plans_path %>'><span>All Plans</span></a>
+        </li>
+        <li>
+          <a href='<%= new_exercise_plan_path %>'><span>New Plan</span></a>
+        </li>
+      </ul>
+    </li>
+    <li class='has_sub'>
+      <a href='javascript:void(0);'>
+        <i class='fa fa-table'></i>
+        <span>Training Plan</span>
+        <span class="pull-right"><i class="fa fa-angle-down"></i></span>
+      </a>
+      <ul>
+        <li>
+          <a href='<%= training_plans_path %>'><span>All Training Plans</span></a>
+        </li>
+        <li>
+          <a href='<%= new_training_plan_path %>'><span>New Trainig Plan</span></a>
+        </li>
+      </ul>
+    </li>
+    <li class='has_sub'>
+      <a href='javascript:void(0);'><i class='fa fa-map-marker'></i><span>Training Session</span>
+        <span class="pull-right"><i class="fa fa-angle-down"></i></span></a>
+      <ul>
+        <li><a href='<%= training_sessions_path %>'><span>All Training Sessions</span></a></li>
+        <li><a href='<%= new_training_session_path %>'><span>New Training Session</span></a></li>
+      </ul>
+    </li>
+    <li class='has_sub'><a href='javascript:void(0);'><i class='fa fa-envelope'></i><span>Muscle Group</span>
+      <span class="pull-right"><i class="fa fa-angle-down"></i></span></a>
+      <ul>
+        <li><a href='<%= muscle_groups_path %>'><span>View All</span></a></li>
+        <li><a href='<%= new_muscle_group_path %>'><span>New Muscle Group</span></a></li>
+      </ul>
+    </li>
+    <li class='has_sub'><a href='javascript:void(0);'><i class='icon-chart-line'></i><span>Muscle</span>
+      <span class="pull-right"><i class="fa fa-angle-down"></i></span></a>
+      <ul>
+        <li><a href='<%= muscles_path %>'><span>View All Muscle</span></a></li>
+        <li><a href='<%= new_muscle_path %>'><span>New Muscle</span></a></li>
+      </ul>
+    </li>
+    <li class='has_sub'><a href='javascript:void(0);'><i class='icon-megaphone'></i><span>Targeted Muscle</span>
+      <span class="pull-right"><i class="fa fa-angle-down"></i></span></a>
+      <ul>
+        <li><a href='<%= targeted_muscles_path %>'><span>All Targeted Muscle</span></a></li>
+        <li><a href='<%= new_targeted_muscle_path %>'><span>New Targeted Muscle</span></a></li>
+        <li class='has_sub'><a href='javascript:void(0);'><span>3 Level menu</span>
+          <span class="pull-right"><i class="fa fa-angle-down"></i></span></a>
+          <ul>
+            <li><a href='javascript:void(0);'><span>Sub Item</span></a></li>
+          </ul>
+        </li>
+        <li class='has_sub'><a href='javascript:void(0);'><span>4 Level Menu</span>
+          <span class="pull-right"><i class="fa fa-angle-down"></i></span></a>
+          <ul>
+            <li class='has_sub'><a href='javascript:void(0);'><span>Sub Item - level 3</span>
+              <span class="pull-right"><i class="fa fa-angle-down"></i></span></a>
+              <ul>
+                <li><a href='javascript:void(0);'><span>Sub Item - level 4</span></a></li>
+              </ul>
+            </li>
+          </ul>
+        </li>
+        <li class='has_sub'><a href='javascript:void(0);'><span>Submenu with icons</span>
+          <span class="pull-right"><i class="fa fa-angle-down"></i></span></a>
+          <ul>
+            <li><a href='javascript:void(0);'><i class='fa fa-camera'></i><span>Item with icon</span></a></li>
+            <li><a href='javascript:void(0);'><i class='entypo entypo-users'></i><span>Another Item</span></a></li>
+          </ul>
+        </li>
+      </ul>
+    </li>
   </ul>
-</li>
-<li id="muscle">
-  <a class='expandable' href='#'>
-    <span class="glyphicon glyphicon-fire"></span>
-    <span class='expanded-element'>Muscle</span>
-    <i class="fa fa-angle-down expanded-element dropdown-icon"> </i>
-  </a>
-  <ul class="sub-menu">
-    <li id="all-muscle"><a href="<%= muscles_path %>">All Muscle</a></li>
-    <li id="new-muscle"><a href="<%= new_muscle_path %>">New Muscle</a></li>
-  </ul>
-</li>
-<li id="targeted-muscle">
-  <a class='expandable' href='#'>
-    <span class="glyphicon glyphicon-road"></span>
-    <span class='expanded-element'>Targeted Muscle</span>
-    <i class="fa fa-angle-down expanded-element dropdown-icon"> </i>
-  </a>
-  <ul class="sub-menu">
-    <li id="all-muscle"><a href="<%= targeted_muscles_path %>">All Targeted Muscle</a></li>
-    <li id="new-muscle"><a href="<%= new_targeted_muscle_path %>">New Targeted Muscle</a></li>
-  </ul>
-</li>
+  <div class="clearfix"></div>
+</div>
