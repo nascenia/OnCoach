@@ -1,4 +1,5 @@
 class HomeController < ApplicationController
+  skip_before_action :authenticate_user!, :only => [:begin, :contact]
 
   def index
     if current_user.present?
@@ -9,6 +10,18 @@ class HomeController < ApplicationController
       else
         redirect_to user_index_path
       end
+    end
+  end
+
+  def begin
+    respond_to do |format|
+      format.html {render layout: 'login'}
+    end
+  end
+
+  def contact
+    respond_to do |format|
+      format.html {render layout: 'login'}
     end
   end
 

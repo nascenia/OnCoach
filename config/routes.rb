@@ -12,8 +12,14 @@ Rails.application.routes.draw do
   resources :muscle_groups
   resources :exercises
 
-  namespace :exercise_sessions do
+  resources :exercise_sessions do
     get 'get_events' => 'exercise_sessions/get_events'
+  end
+
+  resources :home do
+    get '/change_locale/:locale', to: 'home#change_locale', as: :change_locale
+    get 'begin', to: 'home#begin', on: :collection
+    get 'contact', to: 'home#contact', on: :collection
   end
   namespace :admin do
     get 'index' => 'admins#index'
@@ -35,9 +41,5 @@ Rails.application.routes.draw do
                        :omniauth_callbacks => "users/omniauth_callbacks"
                    }
 
-  namespace :home do
-    get '/change_locale/:locale', to: 'home#change_locale', as: :change_locale
-  end
-
-  root 'home#index'
+  root 'home#begin'
 end

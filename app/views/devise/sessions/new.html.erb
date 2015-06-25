@@ -1,18 +1,75 @@
-<h2 class="form-signin-heading">LOGIN</h2>
-<%= form_for(resource, as: resource_name, url: session_path(resource_name)) do |f| %>
+<header>
+  <div id="topbar">
+    <div class="container">
+      <div class="row">
+        <div class="col-sm-6 col-xs-6">
+
+        </div>
+        <div class="col-sm-6 col-xs-6 text-right">
+          <div class="btn-group social-links hidden-sm hidden-xs">
+
+          </div>
+          <a href="<%= new_user_session_path %>" class="login-button">Login</a>
+        </div>
+      </div>
+      <div class="top-divider"></div>
+    </div>
+  </div>
+  <nav class="navbar navbar-default" role="navigation">
+    <div class="container">
+      <!-- Brand and toggle get grouped for better mobile display -->
+      <div class="navbar-header">
+        <button type="button" class="navbar-toggle" data-toggle="collapse" data-target="#main-navigation">
+          <span class="icon-navicon"></span>
+        </button>
+        <a class="navbar-brand" href="<%= new_user_session_path %>">
+          <%= image_tag 'logo.png', alt: 'OnShape', class: 'logo' %>
+          <!--<img src="../assets/logo.png" data-dark-src="/assets/img/logo_dark.png" alt="Coco Frontend Template" class="logo">-->
+        </a>
+      </div>
+
+      <!-- Collect the nav links, forms, and other content for toggling -->
+      <div class="collapse navbar-collapse" id="main-navigation">
+        <ul class="nav navbar-nav navbar-right">
+          <li><a href="<%= root_path %>" class="active">INICIO</a></li>
+          <li><a href="<%= contact_home_index_path %>">CONTATOS</a></li>
+        </ul>
+      </div>
+      <!-- /.navbar-collapse -->
+    </div>
+    <!-- /.container-->
+  </nav>
+  <section class="main-slider fullsize" data-stellar-background-ratio="0.5" style="background-image: url(../assets/signup-login.jpg)">
+    <div class="slider-caption">
+
+      <div class="container">
+        <div class="row">
+          <div class="col-sm-4 col-sm-offset-4">
+            <%= bootstrap_flash %>
+
+            <h2 class="form-signin-heading">LOGIN</h2>
+            <%= form_for(resource, as: resource_name, url: session_path(resource_name)) do |f| %>
 
 
-    <%= f.email_field :email, autofocus: true, :class => "form-control", :placeholder => "Email" %>
+                <%= f.email_field :email, autofocus: true, :class => "form-control", :placeholder => "Email" %>
 
-    <br>
-    <%= f.password_field :password, autocomplete: "off", :class => "form-control", :placeholder => "Password" %>
-    <br>
+                <br>
+                <%= f.password_field :password, autocomplete: "off", :class => "form-control", :placeholder => "Password" %>
+                <br>
 
-    <%= f.submit "Log in", :class => "btn btn-lg btn-primary btn-block", :style => "width: 100%" %>
+                <%= f.submit "Log in", :class => "btn btn-lg btn-primary btn-block", :style => "width: 100%" %>
 
-    <br>
+                <br>
 
-    <a href="<%= user_omniauth_authorize_path(:facebook) %>" class="btn btn-block btn-facebook">
-      Login with Facebook
-    </a>
-<% end %>
+                <a href="<%= user_omniauth_authorize_path(:facebook) %>" class="btn btn-block btn-facebook">
+                  Login with Facebook
+                </a>
+            <% end %>
+
+          </div>
+        </div>
+      </div>
+    </div>
+  </section>
+</header>
+

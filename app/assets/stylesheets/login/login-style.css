@@ -920,7 +920,7 @@ header.inverted #topbar .top-divider {
     padding-top: 50px;
     padding-bottom: 50px;
     color: #999;
-    background: #4a525f url(../../images/subscribe-bg.png);
+    /*background: #4a525f url(../../images/subscribe-bg.png);*/
 }
 .subscribe-block h1 {
     color: #fff;

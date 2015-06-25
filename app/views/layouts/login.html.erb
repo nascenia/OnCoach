@@ -27,68 +27,12 @@
 
 <body class="">
 <div id="wrapper">
-  <header>
-    <div id="topbar">
-      <div class="container">
-        <div class="row">
-          <div class="col-sm-6 col-xs-6">
-
-          </div>
-          <div class="col-sm-6 col-xs-6 text-right">
-            <div class="btn-group social-links hidden-sm hidden-xs">
-
-            </div>
-            <a href="<%= new_session_path(resource_name) %>" class="login-button">Login</a>
-          </div>
-        </div>
-        <div class="top-divider"></div>
-      </div>
-    </div>
-    <nav class="navbar navbar-default" role="navigation">
-      <div class="container">
-        <!-- Brand and toggle get grouped for better mobile display -->
-        <div class="navbar-header">
-          <button type="button" class="navbar-toggle" data-toggle="collapse" data-target="#main-navigation">
-            <span class="icon-navicon"></span>
-          </button>
-          <a class="navbar-brand" href="<%= new_session_path(resource_name) %>">
-            <%= image_tag 'logo.png', alt: 'OnShape', class: 'logo' %>
-            <!--<img src="../assets/logo.png" data-dark-src="/assets/img/logo_dark.png" alt="Coco Frontend Template" class="logo">-->
-          </a>
-        </div>
-
-        <!-- Collect the nav links, forms, and other content for toggling -->
-        <div class="collapse navbar-collapse" id="main-navigation">
-          <ul class="nav navbar-nav navbar-right">
-            <li><a href="<%= new_session_path(resource_name) %>" class="active">INICIO</a></li>
-            <li><a href="<%= new_session_path(resource_name) %>">CONTATOS</a></li>
-          </ul>
-        </div>
-        <!-- /.navbar-collapse -->
-      </div>
-      <!-- /.container-->
-    </nav>
-    <section class="main-slider fullsize" data-stellar-background-ratio="0.5" style="background-image: url(../assets/signup-login.jpg)">
-      <div class="slider-caption">
-
-        <div class="container">
-          <div class="row">
-            <div class="col-sm-4 col-sm-offset-4">
-              <%= bootstrap_flash %>
-              <%= yield %>
-
-
-            </div>
-          </div>
-        </div>
-      </div>
-    </section>
-  </header>
+  <%= yield %>
   <footer>
     <div class="container">
       <div class="row">
         <div class="col-sm-4">
-          <a href="<%= new_session_path(resource_name) %>">
+          <a href="<%= new_user_session_path %>">
             <%= image_tag 'logo.png', alt: 'OnShape', class: 'footer-logo' %>
           </a>
           <h5>Workout your future...</h5>
@@ -108,7 +52,7 @@
         <div class="col-sm-4 hidden-xs">
           <h4>Facebook</h4>
           <ul class="list-unstyled social-stream">
-            <li><a href="<%= new_session_path(resource_name) %>" target="_blank">OnCoach</a></li>
+            <li><a href="<%= new_user_session_path %>" target="_blank">OnCoach</a></li>
 
           </ul>
         </div>
@@ -116,7 +60,7 @@
       <hr>
       <div class="row">
         <div class="col-sm-6">
-          <p>Copyright &copy; 2015 by <a href="<%= new_session_path(resource_name) %>" target="_blank">SportZai</a></p>
+          <p>Copyright &copy; 2015 by <a href="<%= new_user_session_path %>" target="_blank">SportZai</a></p>
         </div>
         <div class="col-sm-6 text-right">
 
