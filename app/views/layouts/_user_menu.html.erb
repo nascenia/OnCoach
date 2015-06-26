@@ -1,13 +1,13 @@
 <div id="sidebar-menu">
   <ul>
     <li>
-      <a href='<%= user_index_path %>'>
+      <a href='<%= user_index_path %>' class="active" id='dashboard'>
         <i class='icon-home-3'></i>
         <span>Dashboard</span>
       </a>
     </li>
     <li class='has_sub'>
-      <a href='javascript:void(0);'>
+      <a href='javascript:void(0);' id='exercise-category'>
         <i class='icon-feather'></i>
         <span>Exercise Categories</span>
             <span class="pull-right">
@@ -16,71 +16,71 @@
       </a>
       <ul>
         <li>
-          <a href='<%= exercise_categories_path %>'><span>All Categories</span></a>
+          <a href='<%= exercise_categories_path %>' id='all-category'><span>All Categories</span></a>
         </li>
         <li>
-          <a href='<%= new_exercise_category_path %>'><span>New Categories</span></a>
+          <a href='<%= new_exercise_category_path %>' id='new-category'><span>New Categories</span></a>
         </li>
 
       </ul>
     </li>
     <li class='has_sub'>
-      <a href='javascript:void(0);'>
+      <a href='javascript:void(0);' id='exercise-plan'>
         <i class='icon-pencil-3'></i>
         <span>Exercise Plan</span>
         <span class="pull-right"><i class="fa fa-angle-down"></i></span>
       </a>
       <ul>
         <li>
-          <a href='<%= exercise_plans_path %>'><span>All Plans</span></a>
+          <a href='<%= exercise_plans_path %>' id='all-exercise-plan'><span>All Plans</span></a>
         </li>
         <li>
-          <a href='<%= new_exercise_plan_path %>'><span>New Plan</span></a>
+          <a href='<%= new_exercise_plan_path %>' id='new-exercise-plan'><span>New Plan</span></a>
         </li>
       </ul>
     </li>
     <li class='has_sub'>
-      <a href='javascript:void(0);'>
+      <a href='javascript:void(0);' id='training-plan'>
         <i class='fa fa-table'></i>
         <span>Training Plan</span>
         <span class="pull-right"><i class="fa fa-angle-down"></i></span>
       </a>
       <ul>
         <li>
-          <a href='<%= training_plans_path %>'><span>All Training Plans</span></a>
+          <a href='<%= training_plans_path %>' id='all-training-plan'><span>All Training Plans</span></a>
         </li>
         <li>
-          <a href='<%= new_training_plan_path %>'><span>New Trainig Plan</span></a>
+          <a href='<%= new_training_plan_path %>' id='new-training-plan'><span>New Trainig Plan</span></a>
         </li>
       </ul>
     </li>
     <li class='has_sub'>
-      <a href='javascript:void(0);'><i class='fa fa-map-marker'></i><span>Training Session</span>
+      <a href='javascript:void(0);' id='training-session'><i class='fa fa-map-marker'></i><span>Training Session</span>
         <span class="pull-right"><i class="fa fa-angle-down"></i></span></a>
       <ul>
-        <li><a href='<%= training_sessions_path %>'><span>All Training Sessions</span></a></li>
-        <li><a href='<%= new_training_session_path %>'><span>New Training Session</span></a></li>
+        <li><a href='<%= training_sessions_path %>' id='all-training-session'><span>All Training Sessions</span></a></li>
+        <li><a href='<%= new_training_session_path %>' id='new-training-session'><span>New Training Session</span></a></li>
       </ul>
     </li>
-    <li class='has_sub'><a href='javascript:void(0);'><i class='fa fa-envelope'></i><span>Muscle Group</span>
+    <li class='has_sub'><a href='javascript:void(0);' id='muscle-group'><i class='fa fa-envelope'></i><span>Muscle Group</span>
       <span class="pull-right"><i class="fa fa-angle-down"></i></span></a>
       <ul>
-        <li><a href='<%= muscle_groups_path %>'><span>View All</span></a></li>
-        <li><a href='<%= new_muscle_group_path %>'><span>New Muscle Group</span></a></li>
+        <li><a href='<%= muscle_groups_path %>' id='all-muscle-group'><span>View All</span></a></li>
+        <li><a href='<%= new_muscle_group_path %>' id='new-muscle-group'><span>New Muscle Group</span></a></li>
       </ul>
     </li>
-    <li class='has_sub'><a href='javascript:void(0);'><i class='icon-chart-line'></i><span>Muscle</span>
+    <li class='has_sub'><a href='javascript:void(0);' id='muscle'><i class='icon-chart-line'></i><span>Muscle</span>
       <span class="pull-right"><i class="fa fa-angle-down"></i></span></a>
       <ul>
-        <li><a href='<%= muscles_path %>'><span>View All Muscle</span></a></li>
-        <li><a href='<%= new_muscle_path %>'><span>New Muscle</span></a></li>
+        <li><a href='<%= muscles_path %>' id='all-muscle'><span>View All Muscle</span></a></li>
+        <li><a href='<%= new_muscle_path %>' id='new-muscle'><span>New Muscle</span></a></li>
       </ul>
     </li>
-    <li class='has_sub'><a href='javascript:void(0);'><i class='icon-megaphone'></i><span>Targeted Muscle</span>
+    <li class='has_sub'><a href='javascript:void(0);' id='targeted-muscle'><i class='icon-megaphone'></i><span>Targeted Muscle</span>
       <span class="pull-right"><i class="fa fa-angle-down"></i></span></a>
       <ul>
-        <li><a href='<%= targeted_muscles_path %>'><span>All Targeted Muscle</span></a></li>
-        <li><a href='<%= new_targeted_muscle_path %>'><span>New Targeted Muscle</span></a></li>
+        <li><a href='<%= targeted_muscles_path %>' id='all-targeted-muscle'><span>All Targeted Muscle</span></a></li>
+        <li><a href='<%= new_targeted_muscle_path %>' id='new-targeted-muscle'><span>New Targeted Muscle</span></a></li>
         <li class='has_sub'><a href='javascript:void(0);'><span>3 Level menu</span>
           <span class="pull-right"><i class="fa fa-angle-down"></i></span></a>
           <ul>

@@ -14,8 +14,18 @@ class HomeController < ApplicationController
   end
 
   def begin
-    respond_to do |format|
-      format.html {render layout: 'login'}
+    if current_user.present?
+      if (current_user.type == "Admin")
+        redirect_to admin_index_path and return
+      elsif (current_user.type == "Coach")
+        redirect_to coach_index_path and return
+      else
+        redirect_to user_index_path and return
+      end
+    else
+      respond_to do |format|
+        format.html {render layout: 'login'}
+      end
     end
   end
 

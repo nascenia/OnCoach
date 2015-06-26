@@ -1,4 +1,5 @@
 $(document).ready(function() {
+    localStorage.clear();
 
 	$('.zoom-gallery').magnificPopup({
 		delegate: 'a.gallery-item',

@@ -86,7 +86,7 @@ $(document).ready(function(){
     });
   });
 
-  resizefunc.push("reload_charts");
+//  resizefunc.push("reload_charts");
   //$(".content-page").resize(debounce(reload_charts,100));
 
   loadWeather('Seattle','');

@@ -51,3 +51,4 @@
 //= require select2.min
 //= require sortable.min
 //= require todo
+//= require sidebar
