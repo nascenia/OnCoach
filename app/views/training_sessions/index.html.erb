@@ -15,7 +15,7 @@
   <tbody>
     <% @training_sessions.each do |training_session| %>
       <tr>
-        <td><%= training_session.training_plan.name %></td>
+        <td><%= training_session.training_plan_template.name %></td>
         <td><%= training_session.exercise_plan.name %></td>
         <td><%= training_session.day %></td>
         <td><%= link_to 'Show', training_session %></td>

@@ -11,7 +11,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 20150616054630) do
+ActiveRecord::Schema.define(version: 20150629064414) do
 
   create_table "events", force: :cascade do |t|
     t.string   "name",       limit: 255
@@ -28,22 +28,16 @@ ActiveRecord::Schema.define(version: 20150616054630) do
     t.datetime "updated_at",             null: false
   end
 
-  create_table "exercise_plans", force: :cascade do |t|
-    t.string   "name",       limit: 255
-    t.datetime "created_at",             null: false
-    t.datetime "updated_at",             null: false
-  end
-
   create_table "exercise_sessions", force: :cascade do |t|
-    t.integer  "exercise_plan_id", limit: 4
-    t.integer  "exercise_id",      limit: 4
-    t.string   "phase",            limit: 255
-    t.integer  "intensity",        limit: 4
-    t.integer  "repetitions",      limit: 4
-    t.integer  "num_of_series",    limit: 4
-    t.integer  "resting_period",   limit: 4
-    t.datetime "created_at",                   null: false
-    t.datetime "updated_at",                   null: false
+    t.integer  "training_session_template_id", limit: 4
+    t.integer  "exercise_id",                  limit: 4
+    t.string   "phase",                        limit: 255
+    t.integer  "intensity",                    limit: 4
+    t.integer  "repetitions",                  limit: 4
+    t.integer  "num_of_series",                limit: 4
+    t.integer  "resting_period",               limit: 4
+    t.datetime "created_at",                               null: false
+    t.datetime "updated_at",                               null: false
   end
 
   create_table "exercises", force: :cascade do |t|
@@ -103,18 +97,28 @@ ActiveRecord::Schema.define(version: 20150616054630) do
     t.datetime "updated_at",            null: false
   end
 
-  create_table "training_plans", force: :cascade do |t|
+  create_table "training_plan_templates", force: :cascade do |t|
     t.string   "name",       limit: 255
     t.datetime "created_at",             null: false
     t.datetime "updated_at",             null: false
+    t.integer  "owner_id",   limit: 4
+    t.date     "start_date"
+  end
+
+  create_table "training_session_templates", force: :cascade do |t|
+    t.string   "name",       limit: 255
+    t.datetime "created_at",             null: false
+    t.datetime "updated_at",             null: false
+    t.integer  "owner_id",   limit: 4
   end
 
   create_table "training_sessions", force: :cascade do |t|
-    t.integer  "training_plan_id", limit: 4
-    t.integer  "exercise_plan_id", limit: 4
-    t.integer  "day",              limit: 4
-    t.datetime "created_at",                 null: false
-    t.datetime "updated_at",                 null: false
+    t.integer  "training_plan_id",             limit: 4
+    t.integer  "training_session_template_id", limit: 4
+    t.datetime "created_at",                             null: false
+    t.datetime "updated_at",                             null: false
+    t.datetime "start_at"
+    t.integer  "client_id",                    limit: 4
   end
 
   create_table "users", force: :cascade do |t|

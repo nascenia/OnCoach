@@ -1,4 +1,5 @@
 /**
+/**
 	Copyrights
 	http://www.alessioatzeni.com/wp-content/tutorials/jquery/CSS3-digital-clock/index.html
 **/

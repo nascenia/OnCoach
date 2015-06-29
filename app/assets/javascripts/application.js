@@ -22,6 +22,7 @@
 //= require calculator
 //= require classie
 //= require clock
+//= require cocoon
 //= require d3.v3
 //= require detect
 //= require fastclick

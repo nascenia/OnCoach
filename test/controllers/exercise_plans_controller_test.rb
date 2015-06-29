@@ -8,7 +8,7 @@ class ExercisePlansControllerTest < ActionController::TestCase
   test "should get index" do
     get :index
     assert_response :success
-    assert_not_nil assigns(:exercise_plans)
+    assert_not_nil assigns(:training_session_templates)
   end
 
   test "should get new" do
