@@ -1,5 +1,5 @@
 class User < ActiveRecord::Base
-  has_many :training_sessions, :foreign_key => :client_id
+  has_many :training_sessions
   # Include default devise modules. Others available are:
   # :confirmable, :lockable, :timeoutable and :omniauthable
   devise :database_authenticatable, :registerable,

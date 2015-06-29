@@ -1,16 +1,28 @@
 <div id="sidebar-menu">
   <ul>
     <li>
-      <a href='<%= user_index_path %>' class="active" id='dashboard'>
+      <a href='<%= coach_index_path %>' class="active" id='dashboard'>
         <i class='icon-home-3'></i>
         <span>Dashboard</span>
       </a>
     </li>
-    <li>
-      <a href='<%= user_calendar_path %>' id='schedule'>
-        <i class='icon-calendar'></i>
-        <span>Calendar</span>
+    <li class='has_sub'>
+      <a href='javascript:void(0);' id='exercise-category'>
+        <i class='icon-feather'></i>
+        <span>Exercise Categories</span>
+            <span class="pull-right">
+              <i class="fa fa-angle-down"></i>
+            </span>
       </a>
+      <ul>
+        <li>
+          <a href='<%= exercise_categories_path %>' id='all-category'><span>All Categories</span></a>
+        </li>
+        <li>
+          <a href='<%= new_exercise_category_path %>' id='new-category'><span>New Categories</span></a>
+        </li>
+
+      </ul>
     </li>
     <li class='has_sub'>
       <a href='javascript:void(0);' id='exercise-plan'>

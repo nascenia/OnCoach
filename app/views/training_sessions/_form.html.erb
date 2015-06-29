@@ -13,7 +13,7 @@
 
   <div class="field">
     <%= f.label :training_plan_id %><br>
-    <%= f.collection_select :training_plan_id, TrainingPlanTemplate.all, :id, :name %>
+    <%= f.collection_select :training_plan_template_id, TrainingPlanTemplate.all, :id, :name %>
   </div>
   <div class="field">
     <%= f.label :exercise_plan_id %><br>

@@ -30,10 +30,12 @@ Rails.application.routes.draw do
 
   namespace :coach do
     get 'index' => 'coaches#index'
+    get 'calendar' => 'coaches#calendar'
   end
 
   namespace :user do
     get 'index' => 'users#index'
+    get 'calendar' => 'users#calendar'
   end
 
   devise_for :users, controllers: {

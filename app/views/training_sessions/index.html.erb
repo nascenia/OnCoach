@@ -7,7 +7,8 @@
     <tr>
       <th>Training plan</th>
       <th>Exercise plan</th>
-      <th>Day</th>
+      <th>Start At</th>
+      <th>User</th>
       <th colspan="3"></th>
     </tr>
   </thead>
@@ -16,8 +17,9 @@
     <% @training_sessions.each do |training_session| %>
       <tr>
         <td><%= training_session.training_plan_template.name %></td>
-        <td><%= training_session.exercise_plan.name %></td>
-        <td><%= training_session.day %></td>
+        <td><%= training_session.training_session_template.name %></td>
+        <td><%= training_session.start_at %></td>
+        <td><%= training_session.user.email %></td>
         <td><%= link_to 'Show', training_session %></td>
         <td><%= link_to 'Edit', edit_training_session_path(training_session) %></td>
         <td><%= link_to 'Destroy', training_session, method: :delete, data: { confirm: 'Are you sure?' } %></td>

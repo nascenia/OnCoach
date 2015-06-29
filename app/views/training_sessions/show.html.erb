@@ -2,17 +2,22 @@
 
 <p>
   <strong>Training plan:</strong>
-  <%= @training_session.training_plan_id %>
+  <%= @training_session.training_plan_template_id %>
 </p>
 
 <p>
   <strong>Exercise plan:</strong>
-  <%= @training_session.exercise_plan_id %>
+  <%= @training_session.training_session_template_id %>
 </p>
 
 <p>
   <strong>Day:</strong>
-  <%= @training_session.day %>
+  <%= @training_session.start_at %>
+</p>
+
+<p>
+  <strong>User:</strong>
+  <%= @training_session.user.email %>
 </p>
 
 <%= link_to 'Edit', edit_training_session_path(@training_session) %> |

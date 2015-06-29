@@ -1,11 +1,150 @@
-<h1> You are in Coach#index </h1>
+<div class="page-heading">
+  <h1>
+    <i class="fa fa-th-large"></i>
+    Summary
+  </h1>
+</div>
+<!-- Start info box -->
+<div class="row top-summary">
+  <div class="col-lg-3 col-md-6">
+    <div class="widget green-1 animated fadeInDown">
+      <div class="widget-content padding">
+        <div class="widget-icon">
+          <i class="icon-globe-inv"></i>
+        </div>
+        <div class="text-box">
+          <p class="maindata">TOTAL <b>VISITORS</b></p>
 
+          <h2><span class="animate-number" data-value="25153" data-duration="3000">0</span></h2>
 
-<div class="code_container" style="text-align: left; margin-top: 50px; margin-right: 200px;">
-   <p>
-     <span class="p-head"> Your Email </span> : <span class="pull-right"> <%= current_user.email %> </span>
-   </p>
-  <p>
-    <span class="p-head"> User Type </span> : <span class="pull-right"> <%= current_user.type.nil? ? "User" : current_user.type %> </span>
-  </p>
+          <div class="clearfix"></div>
+        </div>
+      </div>
+      <div class="widget-footer">
+        <div class="row">
+          <div class="col-sm-12">
+            <i class="fa fa-caret-up rel-change"></i> <b>39%</b> increase in traffic
+          </div>
+        </div>
+        <div class="clearfix"></div>
+      </div>
+    </div>
+  </div>
+
+  <div class="col-lg-3 col-md-6">
+    <div class="widget darkblue-2 animated fadeInDown">
+      <div class="widget-content padding">
+        <div class="widget-icon">
+          <i class="icon-bag"></i>
+        </div>
+        <div class="text-box">
+          <p class="maindata">TOTAL <b>SALES</b></p>
+
+          <h2><span class="animate-number" data-value="6399" data-duration="3000">0</span></h2>
+
+          <div class="clearfix"></div>
+        </div>
+      </div>
+      <div class="widget-footer">
+        <div class="row">
+          <div class="col-sm-12">
+            <i class="fa fa-caret-down rel-change"></i> <b>11%</b> decrease in sales
+          </div>
+        </div>
+        <div class="clearfix"></div>
+      </div>
+    </div>
+  </div>
+
+  <div class="col-lg-3 col-md-6">
+    <div class="widget orange-4 animated fadeInDown">
+      <div class="widget-content padding">
+        <div class="widget-icon">
+          <i class="fa fa-dollar"></i>
+        </div>
+        <div class="text-box">
+          <p class="maindata">OVERALL <b>INCOME</b></p>
+
+          <h2>$<span class="animate-number" data-value="70389" data-duration="3000">0</span></h2>
+
+          <div class="clearfix"></div>
+        </div>
+      </div>
+      <div class="widget-footer">
+        <div class="row">
+          <div class="col-sm-12">
+            <i class="fa fa-caret-down rel-change"></i> <b>7%</b> decrease in income
+          </div>
+        </div>
+        <div class="clearfix"></div>
+      </div>
+    </div>
+  </div>
+
+  <div class="col-lg-3 col-md-6">
+    <div class="widget lightblue-1 animated fadeInDown">
+      <div class="widget-content padding">
+        <div class="widget-icon">
+          <i class="fa fa-users"></i>
+        </div>
+        <div class="text-box">
+          <p class="maindata">TOTAL <b>USERS</b></p>
+
+          <h2><span class="animate-number" data-value="18648" data-duration="3000">0</span></h2>
+
+          <div class="clearfix"></div>
+        </div>
+      </div>
+      <div class="widget-footer">
+        <div class="row">
+          <div class="col-sm-12">
+            <i class="fa fa-caret-up rel-change"></i> <b>6%</b> increase in users
+          </div>
+        </div>
+        <div class="clearfix"></div>
+      </div>
+    </div>
+  </div>
+
+</div>
+
+<div class="row">
+  <div class="col-md-12">
+    <div class="widget" id="category">
+      <div class="widget-header transparent">
+        <h2><strong>Categories of</strong> Exercise</h2>
+        <div class="additional-btn">
+          <a href="#" class="hidden reload"><span class="glyphicon glyphicon-refresh"></span></a>
+          <a href="#" class="widget-toggle"><span class="glyphicon glyphicon-chevron-down"></span></a>
+          <a href="#" class="widget-close" data-toggle="modal" data-target="#myModal">
+            <span class="glyphicon glyphicon-remove"></span>
+          </a>
+        </div>
+      </div>
+      <div class="widget-content">
+        <div class="table-responsive">
+          <table class="table table-hover table-striped">
+            <thead>
+            <tr>
+              <th>Id</th>
+              <th>Email</th>
+              <th colspan="3"></th>
+            </tr>
+            </thead>
+            <tbody>
+            <% @clients.each do |client| %>
+                <tr>
+                  <td><%= client.id %></td>
+                  <td><%= client.email %></td>
+                  <td><%= link_to 'Calendar', coach_calendar_path(:client_id => client) %></td>
+                  <td><%= link_to 'Edit', '#' %></td>
+                  <td><%#= link_to 'Destroy', client, method: :delete, data: { confirm: 'Are you sure?' } %></td>
+                </tr>
+            <% end %>
+            </tbody>
+          </table>
+        </div>
+      </div>
+    </div>
+  </div>
 </div>

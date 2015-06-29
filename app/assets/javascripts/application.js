@@ -20,12 +20,14 @@
 //= require bootstrap-editable.min
 //= require bootstrap-select.min
 //= require calculator
+//= require calendar
 //= require classie
 //= require clock
 //= require cocoon
 //= require d3.v3
 //= require detect
 //= require fastclick
+//= require fullcalendar.min
 //= require icheck.min
 //= require index
 //= require init
