@@ -20,7 +20,6 @@
 //= require bootstrap-editable.min
 //= require bootstrap-select.min
 //= require calculator
-//= require calendar
 //= require classie
 //= require clock
 //= require cocoon

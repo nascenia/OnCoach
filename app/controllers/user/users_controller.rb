@@ -4,6 +4,6 @@ class User::UsersController < ApplicationController
   end
 
   def calendar
-
+    @training_sessions = current_user.training_sessions
   end
 end

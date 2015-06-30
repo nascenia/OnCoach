@@ -6,5 +6,13 @@ class Coach::CoachesController < ApplicationController
 
   def calendar
     @client = User.find params[:client_id]
+    @training_session_templates = TrainingSessionTemplate.all
+    @training_plan_templates = TrainingPlanTemplate.all
+    @training_session = TrainingSession.new
+    @client_training_sessions = @client.training_sessions
+
+    respond_to do |format|
+      format.html
+    end
   end
 end

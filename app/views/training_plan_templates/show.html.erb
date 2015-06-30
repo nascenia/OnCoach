@@ -5,5 +5,15 @@
   <%= @training_plan_template.name %>
 </p>
 
-<%= link_to 'Edit', edit_training_plan_path(@training_plan_template) %> |
-<%= link_to 'Back', training_plans_path %>
+<p>
+  <strong>Owner:</strong>
+  <%= @training_plan_template.user.email if @training_plan_template.user.present? %>
+</p>
+
+<p>
+  <strong>Start Date:</strong>
+  <%= @training_plan_template.start_date %>
+</p>
+
+<%= link_to 'Edit', edit_training_plan_template_path(@training_plan_template) %> |
+<%= link_to 'Back', training_plan_templates_path %>

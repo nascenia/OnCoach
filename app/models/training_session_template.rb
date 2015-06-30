@@ -1,5 +1,5 @@
 class TrainingSessionTemplate < ActiveRecord::Base
-  belongs_to :training_session
+  has_many :training_sessions
   has_many :exercise_sessions
 
   accepts_nested_attributes_for :exercise_sessions

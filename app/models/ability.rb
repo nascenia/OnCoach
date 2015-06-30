@@ -35,6 +35,7 @@ class Ability
     elsif user.type == Constants::TYPES_OPTIONS[:coach]
       can [:index],[Coach]
       can [:calendar], [User]
+      can [:calendar], [Coach]
     else
       can [:index],[User]
       can [:index], [TrainingSession]

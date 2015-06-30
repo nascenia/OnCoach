@@ -80,9 +80,26 @@
   </div>
 </div>
 <script>
-  $(document).ready(function(){
-      $('#calendar').fullCalendar({
-          editable: false
-      });
-  });
+    $(document).ready(function(){
+        var date = new Date();
+        var calendar = $('#calendar').fullCalendar({
+            header: {
+                left: 'prev,next today',
+                center: 'title',
+                right: 'month,agendaWeek'
+            },
+            selectable: true,
+            selectHelper: true,
+            events: [
+                <% @training_sessions.each do |event| %>
+                {
+                    title: '<%= event.training_session_template.name %>',
+                    start: '<%= event.start_at %>'
+                },
+                <% end %>
+            ],
+            editable: false,
+            selectable: true
+        });
+    });
 </script>

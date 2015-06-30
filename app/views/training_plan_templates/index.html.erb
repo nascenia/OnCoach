@@ -6,6 +6,8 @@
   <thead>
     <tr>
       <th>Name</th>
+      <th>Owner</th>
+      <th>Start Date</th>
       <th colspan="3"></th>
     </tr>
   </thead>
@@ -14,6 +16,8 @@
     <% @training_plan_templates.each do |training_plan| %>
       <tr>
         <td><%= training_plan.name %></td>
+        <td><%= training_plan.user.email if training_plan.user.present? %></td>
+        <td><%= training_plan.start_date %></td>
         <td><%= link_to 'Show', training_plan %></td>
         <td><%= link_to 'Edit', edit_training_plan_template_path(training_plan) %></td>
         <td><%= link_to 'Destroy', training_plan, method: :delete, data: { confirm: 'Are you sure?' } %></td>

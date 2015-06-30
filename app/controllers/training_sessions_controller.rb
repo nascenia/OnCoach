@@ -69,6 +69,6 @@ class TrainingSessionsController < ApplicationController
 
     # Never trust parameters from the scary internet, only allow the white list through.
     def training_session_params
-      params.require(:training_session).permit(:training_plan_id, :training_session_template_id, :start_at, :client_id)
+      params.require(:training_session).permit(:training_plan_template_id, :training_session_template_id, :start_at, :client_id)
     end
 end
