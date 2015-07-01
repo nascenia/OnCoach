@@ -43,9 +43,10 @@ class TrainingPlanTemplatesController < ApplicationController
     respond_to do |format|
       if @training_plan_template.update(training_plan_params)
         format.html { redirect_to @training_plan_template, notice: 'Training plan was successfully updated.' }
+        format.js {render :edit}
         format.json { render :show, status: :ok, location: @training_plan_template }
       else
-        format.html { render :edit }
+        format.html
         format.json { render json: @training_plan_template.errors, status: :unprocessable_entity }
       end
     end
@@ -56,7 +57,7 @@ class TrainingPlanTemplatesController < ApplicationController
   def destroy
     @training_plan_template.destroy
     respond_to do |format|
-      format.html { redirect_to training_plans_url, notice: 'Training plan was successfully destroyed.' }
+      format.html { redirect_to training_plan_templates_url, notice: 'Training plan was successfully destroyed.' }
       format.json { head :no_content }
     end
   end
