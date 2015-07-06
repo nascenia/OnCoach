@@ -20,6 +20,9 @@ default: &default
 development:
   <<: *default
   database: onCoach
+  username: root
+  password: '123456'
+  socket: '/tmp/mysql.sock'
 
 # Warning: The database defined as "test" will be erased and
 # re-generated from your development database when you run "rake".
@@ -50,5 +53,6 @@ test:
 production:
   <<: *default
   database: onCoach_production
-  username: onCoach
-  password: <%= ENV['ONCOACH_DATABASE_PASSWORD'] %>
+  username: root
+  password: '123456'
+  socket: '/tmp/mysql.sock'
