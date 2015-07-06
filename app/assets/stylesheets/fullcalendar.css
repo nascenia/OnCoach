@@ -288,7 +288,9 @@ a.fc-event,
 	overflow: hidden;
 	}
 	
-.fc-event-time,
+.fc-event-time{
+ display: none;
+}
 .fc-event-title {
 	padding: 0 1px;
 	}

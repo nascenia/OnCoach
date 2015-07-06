@@ -17,7 +17,7 @@
 
 <p>
   <strong>User:</strong>
-  <%= @training_session.user.email %>
+  <%= @training_session.user.email if @training_session.user.present? %>
 </p>
 
 <%= link_to 'Edit', edit_training_session_path(@training_session) %> |

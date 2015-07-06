@@ -1,18 +1,27 @@
-<%= hidden_field_tag :events, @client_training_sessions %>
-<!-- BEGIN MODAL -->
+<%= hidden_field_tag :plan_id, @training_plan_template.id %>
 <div class="modal fade" id="event-modal">
   <div class="modal-dialog">
     <div class="modal-content">
       <div class="modal-header">
         <button type="button" class="close" data-dismiss="modal" aria-hidden="true">&times;</button>
-        <h4 class="modal-title"><strong>Manage</strong> Training Session</h4>
+        <h4 class="modal-title"><strong>Create</strong> Training Sessions</h4>
       </div>
       <div class="modal-body">
-        <p></p>
+        <%= form_for(@training_session) do |f| %>
+            <%= f.hidden_field :training_plan_template_id, :value => @training_plan_template.id %>
+            <div class="row">
+              <div class="col-md-6">
+                <div class="form-group">
+                  <label class="control-label">Training Session Start At</label>
+                  <%= f.time_select :start_at %>
+                </div>
+              </div>
+            </div>
+        <% end %>
       </div>
       <div class="modal-footer">
         <button type="button" class="btn btn-default" data-dismiss="modal">Close</button>
-        <button type="button" class="btn btn-success save-event">Add event</button>
+        <button type="button" class="btn btn-success save-event">Create Training Session</button>
         <button type="button" class="btn btn-danger delete-event" data-dismiss="modal">Delete</button>
       </div>
     </div>
@@ -23,7 +32,7 @@
   <div class="col-md-12 portlets">
     <div class="widget">
       <div class="widget-header">
-        <h2>Training Session Manager | <%= @client.email %></h2>
+        <h2>Training Plan Template Manager</h2>
         <div class="additional-btn">
           <a href="#" class="hidden reload"><i class="icon-ccw-1"></i></a>
           <a href="#" class="widget-toggle"><i class="icon-down-open-2"></i></a>
@@ -80,44 +89,31 @@
     </div>
   </div>
 </div>
-<%= form_for(@training_session, :html => {:style => "display: none"}) do |f| %>
-  <%= hidden_field_tag :client_id, @client.id %>
-  <input type="hidden" name="start_at" id="start-at" value=""/>
-  <div class="row">
-    <div class="col-md-6">
-      <div class="form-group">
-        <label class="control-label">Training Session Template</label>
-        <%= f.collection_select :training_session_template_id, TrainingSessionTemplate.all, :id, :name, {prompt: "Select a Training Session Template"}, {:class => 'form-control'} %>
-      </div>
-    </div>
-    <div class="col-md-6">
-      <div class="form-group">
-        <label class="control-label">Training Plan Template</label>
-        <%= f.collection_select :training_plan_template_id, TrainingPlanTemplate.all, :id, :name, {prompt: "Select a Training Plan Template"}, {:class => 'form-control'} %>
-      </div>
-    </div>
-  </div>
-<% end %>
+
 <script>
     $(document).ready(function(){
-        var date = new Date();
         var calendar = $('#calendar').fullCalendar({
             header: {
                 left: 'prev,next today',
                 center: 'title',
                 right: 'month,agendaWeek'
             },
+            titleFormat: '\'Month 1\'',
+            year: 2018,
+            month: 0,
+            date: 1,
             selectable: true,
             selectHelper: true,
             events: [
-                <% @client_training_sessions.each do |event| %>
+                <% @training_sessions.each do |event| %>
                 {
-                    title: '<%= event.training_session_template.present? ? event.training_session_template.name : event.training_plan_template.name %>',
+                    title: '<%= event.training_plan_template.name %>',
                     start: '<%= event.start_at %>',
                     allDay: false
                 },
                 <% end %>
             ],
+            eventColor: '#ED1317',
             editable: true,
             droppable: true, // this allows things to be dropped onto the calendar !!!
             drop: function (date, allDay) { // this function is called when something is dropped
@@ -145,38 +141,43 @@
             eventClick: function (calEvent, jsEvent, view) {
                 var form = $("<form></form>");
                 form.append("<label>Change event name</label>");
-                form.append("<div class='input-group'><input class='form-control' type=text value='" + calEvent.title + "' /><span class='input-group-btn'><button type='submit' class='btn btn-success'><i class='fa fa-check'></i> Save Changes</button></span></div>");
+                form.append("<div class='input-group'><input class='form-control' id='plan-name' type=text value='" + calEvent.title + "' /><span class='input-group-btn'><button type='submit' class='btn btn-success save-event'><i class='fa fa-check'></i> Save Changes</button></span></div>");
                 $modal.modal({
                     backdrop: 'static'
                 });
-                $modal.find('.delete-event').show().end().find('.save-event').hide().end().find('.modal-body').empty().prepend(form).end().find('.delete-event').unbind('click').click(function () {
-                    calendar.fullCalendar('removeEvents', function (ev) {
-                        return (ev._id == calEvent._id);
+                $modal.find('.delete-event').hide().end().find('.save-event').show().end().find('.modal-body').empty().prepend(form).end().find('.save-event').unbind('click').click(function () {
+                    var name = $('#plan-name').val();
+                    var plan_id = $('#plan_id').val();
+                    $.ajax({
+                        type: "PUT",
+                        url: "/training_plan_templates/"+plan_id,
+                        dataType: 'script',
+                        data: { training_plan_template: {name: name} }
+                    }).done(function (msg) {
+                        window.location.reload(true);
+                        calendar.fullCalendar('refetchEvents');
                     });
                     $modal.modal('hide');
                 });
-                $modal.find('form').on('submit', function () {
-                    calEvent.title = form.find("input[type=text]").val();
-                    calendar.fullCalendar('updateEvent', calEvent);
-                    $modal.modal('hide');
-                    return false;
-                });
             },
             select: function (start, end, allDay) {
+                alert(start)
                 $modal.modal({
                     backdrop: 'static'
                 });
-                form = $('form#new_training_session').html();//
+                form = $('form#new_training_session').html();
                 $modal.find('.delete-event').hide().end().find('.save-event').show().end().find('.modal-body').empty().prepend(form).end().find('.save-event').unbind('click').click(function () {
-                    var session_id = $('#training_session_training_session_template_id').val();
                     var plan_id = $('#training_session_training_plan_template_id').val();
-                    var client_id = $('#client_id').val();
+                    var hour = $('#training_session_start_at_4i').val();
+                    var minute = $('#training_session_start_at_5i').val();
+                    start.setHours(hour);
+                    start.setMinutes(minute);
                     $.ajax({
                         type: "POST",
                         url: "/training_sessions",
-                        data: { training_session: {training_plan_template_id: plan_id, training_session_template_id: session_id, start_at: start, client_id: client_id} }
+                        data: { training_session: {training_plan_template_id: plan_id, start_at: start} }
                     }).done(function (msg) {
-                        window.location.reload(true);
+                        window.location.href = '<%= training_plan_templates_path %>';
                         calendar.fullCalendar('refetchEvents');
                     });
                     $modal.modal('hide');

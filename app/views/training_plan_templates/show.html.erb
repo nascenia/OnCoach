@@ -19,6 +19,7 @@
 <!-- END MODAL -->
 <div class="row">
   <div class="col-md-12 portlets">
+    <%= link_to 'Edit', training_plan_template_create_training_session_path(@training_plan_template), class: 'btn btn-primary' %>
     <div class="widget">
       <div class="widget-header">
         <h2>Training Plan Template Manager</h2>
@@ -109,7 +110,8 @@
             events: [
                 {
                     title: '<%= @training_plan_template.name %>',
-                    start: '<%= @training_plan_template.start_date %>'
+                    start: '<%= @training_plan_template.start_date %>',
+                    allDay: false
                 }
             ],
             eventColor: '#ED1317',

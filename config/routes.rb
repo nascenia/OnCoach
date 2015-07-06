@@ -3,7 +3,9 @@ Rails.application.routes.draw do
   mount FullcalendarEngine::Engine => "/fullcalendar_engine"
 
   resources :training_sessions
-  resources :training_plan_templates
+  resources :training_plan_templates do
+    get 'create_training_session' => 'training_plan_templates#create_training_session'
+  end
   resources :exercise_sessions
   resources :training_session_templates
   resources :exercise_categories

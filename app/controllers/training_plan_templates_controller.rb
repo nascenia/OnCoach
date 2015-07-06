@@ -10,6 +10,7 @@ class TrainingPlanTemplatesController < ApplicationController
   # GET /training_plan_templates/1
   # GET /training_plan_templates/1.json
   def show
+    @training_sessions = @training_plan_template.training_sessions
   end
 
   # GET /training_plan_templates/new
@@ -60,6 +61,12 @@ class TrainingPlanTemplatesController < ApplicationController
       format.html { redirect_to training_plan_templates_url, notice: 'Training plan was successfully destroyed.' }
       format.json { head :no_content }
     end
+  end
+
+  def create_training_session
+    @training_plan_template = TrainingPlanTemplate.find params[:training_plan_template_id]
+    @training_session = TrainingSession.new
+    @training_sessions = @training_plan_template.training_sessions
   end
 
   private

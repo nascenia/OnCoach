@@ -93,8 +93,9 @@
             events: [
                 <% @training_sessions.each do |event| %>
                 {
-                    title: '<%= event.training_session_template.name %>',
-                    start: '<%= event.start_at %>'
+                    title: '<%= event.training_session_template.present? ? event.training_session_template.name : event.training_plan_template.name %>',
+                    start: '<%= event.start_at %>',
+                    allDay: false
                 },
                 <% end %>
             ],
