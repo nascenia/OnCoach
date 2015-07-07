@@ -1,25 +1,42 @@
-<p id="notice"><%= notice %></p>
+<div class="page-heading">
+  <h1><i class='fa fa-list'></i> Muscles</h1>
+  <h3>Muscles list</h3>
+</div>
 
-<h1>Listing Muscles</h1>
+<div class="row">
+  <div class="col-md-12">
+    <div class="widget">
+      <div class="widget-header">
+        <h2><strong>Muscles</strong> DataTable</h2>
+      </div>
+      <div class="widget-content">
+        <br>
 
-<table class="table table-bordered table-responsive">
-  <thead>
-    <tr>
-      <th>Name</th>
-      <th>Muscle group</th>
-      <th colspan="3"></th>
-    </tr>
-  </thead>
+        <div class="table-responsive">
+          <form class='form-horizontal' role='form'>
+            <table id="datatables-1" class="table table-striped table-bordered" cellspacing="0" width="100%">
+              <thead>
+                  <tr>
+                    <th>Name</th>
+                    <th>Muscle group</th>
+                    <th></th>
+                  </tr>
+              </thead>
 
-  <tbody>
-    <% @muscles.each do |muscle| %>
-      <tr>
-        <td><%= muscle.name %></td>
-        <td><%= muscle.muscle_group.name %></td>
-        <td><%= link_to 'Show', muscle %></td>
-        <td><%= link_to 'Edit', edit_muscle_path(muscle) %></td>
-        <td><%= link_to 'Destroy', muscle, method: :delete, data: { confirm: 'Are you sure?' } %></td>
-      </tr>
-    <% end %>
-  </tbody>
-</table>
+              <tbody>
+                  <% @muscles.each do |muscle| %>
+                      <tr>
+                        <td><%= muscle.name %></td>
+                        <td><%= muscle.muscle_group.name %></td>
+                        <td><%= link_to 'Show', muscle %></td>
+                      </tr>
+                  <% end %>
+              </tbody>
+            </table>
+          </form>
+        </div>
+      </div>
+    </div>
+  </div>
+</div>
+

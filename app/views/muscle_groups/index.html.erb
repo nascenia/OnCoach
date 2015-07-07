@@ -1,28 +1,41 @@
-<p id="notice"><%= notice %></p>
-
 <div class="page-heading">
-<h1><i class="fa fa-th-large"></i> Muscle Groups</h1>
+  <h1><i class='fa fa-list'></i> Muscle Group</h1>
+  <h3>Muscle Group list</h3>
 </div>
 
-<table class="table table-bordered table-responsive">
-  <thead>
-    <tr>
-      <th>Name</th>
-      <th colspan="3"></th>
-    </tr>
-  </thead>
+<div class="row">
+    <div class="col-md-12">
+        <div class="widget">
+            <div class="widget-header">
+              <h2><strong>Muscle Group</strong> DataTable</h2>
+            </div>
+            <div class="widget-content">
+                <br>
 
-  <tbody>
-    <% @muscle_groups.each do |muscle_group| %>
-      <tr>
-        <td><%= muscle_group.name %></td>
-        <td><%= link_to 'Show', muscle_group %></td>
-        <td><%= link_to 'Edit', edit_muscle_group_path(muscle_group) %></td>
-        <td><%= link_to 'Destroy', muscle_group, method: :delete, data: { confirm: 'Are you sure?' } %></td>
-      </tr>
-    <% end %>
-  </tbody>
-</table>
+                <div class="table-responsive">
+                    <form class='form-horizontal' role='form'>
+                        <table id="datatables-1" class="table table-striped table-bordered" cellspacing="0" width="100%">
+                            <thead>
+                                <tr>
+                                  <th>Name</th>
+                                  <th>Number Of Muscles</th>
+                                  <th></th>
+                                </tr>
+                            </thead>
 
-<br>
-
+                            <tbody>
+                                <% @muscle_groups.each do |muscle_group| %>
+                                    <tr>
+                                      <td><%= muscle_group.name %></td>
+                                      <td><%= muscle_group.muscles.count %></td>
+                                      <td><%= link_to 'Show', muscle_group %></td>
+                                    </tr>
+                                <% end %>
+                            </tbody>
+                        </table>
+                    </form>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>

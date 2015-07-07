@@ -69,6 +69,6 @@ class ExerciseCategoriesController < ApplicationController
 
     # Never trust parameters from the scary internet, only allow the white list through.
     def exercise_category_params
-      params.require(:exercise_category).permit(:name)
+      params.require(:exercise_category).permit(:name, :ancestry)
     end
 end

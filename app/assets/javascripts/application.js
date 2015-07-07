@@ -13,6 +13,7 @@
 //= require jquery-1.11.1.min
 //= require jquery_ujs
 //= require twitter/bootstrap
+//= require sidebar
 //= require bic_calendar.min
 //= require bootbox.min
 //= require bootstrap.file-input
@@ -25,7 +26,12 @@
 //= require cocoon
 //= require d3.v3
 //= require detect
+//= require jquery.dataTables.min
+//= require dataTables.bootstrap
+//= require dataTables.tableTools.min
+//= require datatables
 //= require fastclick
+//= require forms
 //= require fullcalendar.min
 //= require icheck.min
 //= require index
@@ -36,6 +42,7 @@
 //= require jquery.easypiechart.min
 //= require jquery.knob
 //= require jquery.magnific-popup.min
+//= require jquery.nestable
 //= require jquery.simpleWeather-2.6.min
 //= require jquery.slimscroll
 //= require jquery.ui.touch-punch.min
@@ -46,11 +53,12 @@
 //= require modalEffects
 //= require morris.min
 //= require notes
+//= require nested-list
 //= require pace.min
 //= require prettify
 //= require raphael-min
 //= require rickshaw.min
 //= require select2.min
 //= require sortable.min
+//= require summernote
 //= require todo
-//= require sidebar

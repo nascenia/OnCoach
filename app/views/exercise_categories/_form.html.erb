@@ -11,15 +11,29 @@
     </div>
   <% end %>
 
-  <div class="field">
-    <%= f.label :name %><br>
-    <%= f.text_field :name, :required => true %>
-  </div>
-  <div class="field">
-    <%= f.label :ancestry %><br>
-    <%= f.text_field :ancestry %>
-  </div>
-  <div class="actions">
-    <%= f.submit %>
-  </div>
+    <div class="row">
+      <div class="col-sm-6 portlets">
+        <div class="widget">
+          <div class="widget-header transparent">
+            <h2><strong><%= @exercise_category.new_record? ? "New" : "Edit" %></strong> Muscle Group</h2>
+          </div>
+          <div class="widget-content padding">
+            <div id="basic-form">
+              <div class="form-group field">
+                <%= f.label :name %><br>
+                <%= f.text_field :name, :required => true, :class => "form-control", :placeholder => "Name" %>
+              </div>
+              <div class="form-group field">
+                <%= f.label :ancestry %><br>
+                <%= f.collection_select :ancestry, ExerciseCategory.arrange_as_array({:order => 'name'}, @exercise_category.possible_parents), :id, :name, {prompt: 'Select a Category'}, {class: 'form-control'} %>
+              </div>
+
+              <div class="actions">
+                <%= f.submit :class => "btn btn-default" %>
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
 <% end %>

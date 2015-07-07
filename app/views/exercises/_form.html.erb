@@ -11,40 +11,50 @@
       </ul>
     </div>
   <% end %>
-  <div class="form-box-control">
-    <div class="control-group">
-      <%= f.label :name, :class => 'control-label' %><br>
-      <%= f.text_field :name, :required => true %>
+    <div class="row">
+      <div class="col-sm-6 portlets">
+        <div class="widget">
+          <div class="widget-header transparent">
+            <h2><strong><%= @exercise.new_record? ? "New" : "Edit" %></strong> Muscle Group</h2>
+          </div>
+          <div class="widget-content padding">
+            <div id="basic-form">
+              <div class="form-group field">
+                <%= f.label :name %><br>
+                <%= f.text_field :name, :required => true, :class => "form-control", :placeholder => "Name" %>
+              </div>
+              <div class="form-group field">
+                <%= f.label :exercise_category, :class => 'control-label' %><br>
+                <%= f.collection_select :exercise_category_id, ExerciseCategory.all, :id, :name, {}, {class: 'form-control'} %>
+              </div>
+
+              <div class="form-group field">
+                <%= f.label :exercise_type, :class => 'control-label' %><br>
+                <%= f.text_field :exercise_type, :required => true, :class => "form-control", :placeholder => "Name" %>
+              </div>
+              <div class="form-group">
+                <%= f.text_area :description, :class => 'summernote' %>
+              </div>
+              <div class="form-group">
+                <%= f.file_field :image, :class => 'btn btn-default', title: 'Search For an Image to Add' %>
+              </div>
+              <div class="form-group field">
+                <%= f.label :youtube_video_link, :class => 'control-label' %><br>
+                <%= f.text_field :youtube_video_link, :required => true, :class => "form-control", :placeholder => "Name" %>
+              </div>
+              <div class="form-group field">
+                <%= f.label :calories, :class => 'control-label' %><br>
+                <%= f.text_field :calories, :required => true, :class => "form-control", :placeholder => "Name" %>
+              </div>
+              <div class="actions">
+                <%= f.submit :class => "btn btn-default" %>
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
     </div>
-    <div class="control-group">
-      <%= f.label :exercise_category, :class => 'control-label' %><br>
-      <%= f.collection_select :exercise_category_id, ExerciseCategory.all, :id, :name %>
-    </div>
-    <div class="control-group">
-      <%= f.label :type, :class => 'control-label' %><br>
-      <%= f.text_field :exercise_type, :required => true %>
-    </div>
-    <div class="control-group">
-      <%= f.label :description, :class => 'control-label' %><br>
-      <%= f.text_area :description, :class => 'tinymce', :rows => 20, :cols => 120 %>
-      <%= tinymce %>
-    </div>
-    <div class="control-group">
-      <%= f.label :image, :class => 'control-label' %><br>
-      <%= f.file_field :image %>
-    </div>
-    <div class="control-group">
-      <%= f.label :youtube_video_link, :class => 'control-label' %><br>
-      <%= f.text_field :youtube_video_link, :required => true %>
-    </div>
-    <div class="control-group">
-      <%= f.label :calories, :class => 'control-label' %><br>
-      <%= f.number_field :calories, :required => true %>
-    </div>
-    <div class="actions">
-      <%= f.submit %>
-    </div>
-  </div>
+
 <% end %>
 
 

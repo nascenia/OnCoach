@@ -1,14 +1,35 @@
-<p id="notice"><%= notice %></p>
+<div class="page-heading">
+  <h1><i class='fa fa-list'></i> Muscle</h1>
+</div>
+<div class="row">
 
-<p>
-  <strong>Name:</strong>
-  <%= @muscle.name %>
-</p>
+  <div class="col-md-6">
+    <div class="widget">
+      <div class="widget-header">
+        <h2>Muscle</h2>
+      </div>
+      <div class="widget-content padding">
+        <div class="dd" id="nestable">
+          <ol class="dd-list">
+            <li class="dd-item">
+              <div class="dd-handle">
+                <span class="orange"><%= @muscle.name %></span>
+                <span class="lighter grey">
+                    &nbsp; Muscle Group: <%= @muscle.muscle_group.name %>
+                </span>
 
-<p>
-  <strong>Muscle group:</strong>
-  <%= @muscle.muscle_group_id %>
-</p>
+                <a title="Edit" href="<%=  edit_muscle_path(@muscle) %>" class="pull-right tooltip-info dd-nodrag btn btn-primary btn-xs text-white-1">
+                  <i class="fa fa-pencil"></i>
+                </a>
+              </div>
 
-<%= link_to 'Edit', edit_muscle_path(@muscle) %> |
-<%= link_to 'Back', muscles_path %>
+            </li>
+          </ol>
+        </div>
+      </div>
+    </div>
+
+  </div>
+
+</div>
+

@@ -18,6 +18,8 @@
  *= require clock
  *= require component
  *= require datepicker
+ *= require dataTables.bootstrap
+ *= require dataTables.tableTools
  *= require font-awesome.min
  *= require fontello
  *= require fullcalendar
@@ -25,6 +27,7 @@
  *= require ios7-switch
  *= require jquery-jvectormap-1.2.2
  *= require jquery-ui-1.10.4.custom.min
+ *= require jquery.nestable
  *= require magnific-popup
  *= require morris
  *= require pace
@@ -33,5 +36,6 @@
  *= require sortable-theme-bootstrap
  *= require style
  *= require style-responsive
+ *= require summernote
  *= require_self
 */

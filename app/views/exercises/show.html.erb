@@ -1,38 +1,49 @@
-<p id="notice"><%= notice %></p>
+<div class="page-heading">
+  <h1><i class='fa fa-list'></i> Muscle</h1>
+</div>
 
-<p>
-  <strong>Name:</strong>
-  <%= @exercise.name %>
-</p>
+<div class="row">
+  <div class="col-md-6">
+    <div class="widget">
+      <div class="widget-header">
+        <h2>Muscle</h2>
+      </div>
+      <div class="widget-content padding">
+        <div class="dd" id="nestable">
+          <ol class="dd-list">
+            <li class="dd-item">
+              <div class="dd-handle">
+                Name:
+                <span class="orange"><%= @exercise.name %></span>
+                <a title="Edit" href="<%= edit_exercise_path(@exercise) %>" class="pull-right tooltip-info dd-nodrag btn btn-primary btn-xs text-white-1">
+                  <i class="fa fa-pencil"></i>
+                </a>
+              </div>
+            </li>
+            <li class="dd-item">
+              <div class="dd-handle">
+                Category:
+                <span class="orange"><%= @exercise.exercise_category.name %></span>
+              </div>
+            </li>
+            <li class="dd-item">
+              <div class="dd-handle">
+                Type:
+                <span class="orange"><%= @exercise.exercise_type %></span>
+              </div>
+            </li>
+            <li class="dd-item">
+              <div class="dd-handle">
+                Description:
+                <span class="orange"><%= @exercise.description %></span>
+              </div>
+            </li>
+          </ol>
+        </div>
+      </div>
+    </div>
 
-<p>
-  <strong>Category:</strong>
-  <%= @exercise.exercise_category.name %>
-</p>
-<p>
-  <strong>Type:</strong>
-  <%= @exercise.exercise_type %>
-</p>
+  </div>
 
-<p>
-  <strong>Description:</strong>
-  <%= @exercise.description %>
-</p>
+</div>
 
-<p>
-  <strong>Image:</strong>
-  <%= image_tag @exercise.image %>
-</p>
-
-<p>
-  <strong>Youtube video link:</strong>
-  <%= @exercise.youtube_video_link %>
-</p>
-
-<p>
-  <strong>Calories:</strong>
-  <%= @exercise.calories %>
-</p>
-
-<%= link_to 'Edit', edit_exercise_path(@exercise) %> |
-<%= link_to 'Back', exercises_path %>

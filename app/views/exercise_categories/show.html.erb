@@ -1,14 +1,35 @@
-<p id="notice"><%= notice %></p>
+<div class="page-heading">
+  <h1><i class='fa fa-list'></i> Muscle</h1>
+</div>
 
-<p>
-  <strong>Name:</strong>
-  <%= @exercise_category.name %>
-</p>
+<div class="row">
+  <div class="col-md-6">
+    <div class="widget">
+      <div class="widget-header">
+        <h2>Muscle</h2>
+      </div>
+      <div class="widget-content padding">
+        <div class="dd" id="nestable">
+          <ol class="dd-list">
+            <li class="dd-item">
+              <div class="dd-handle">
+                <span class="orange"><%= @exercise_category.name %></span>
+                <span class="lighter grey">
+                    &nbsp; Ancestry: <%= @exercise_category.ancestry %>
+                </span>
 
-<p>
-  <strong>Ancestry:</strong>
-  <%= @exercise_category.ancestry %>
-</p>
+                <a title="Edit" href="<%= edit_exercise_category_path(@exercise_category) %>" class="pull-right tooltip-info dd-nodrag btn btn-primary btn-xs text-white-1">
+                  <i class="fa fa-pencil"></i>
+                </a>
+              </div>
 
-<%= link_to 'Edit', edit_exercise_category_path(@exercise_category) %> |
-<%= link_to 'Back', exercise_categories_path %>
+            </li>
+          </ol>
+        </div>
+      </div>
+    </div>
+
+  </div>
+
+</div>
+
