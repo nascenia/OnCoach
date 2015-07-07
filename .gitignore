@@ -33,3 +33,4 @@ bower.json
 .idea
 public
 .htaccess
+config/database.yml
