@@ -105,80 +105,24 @@
                 center: 'title',
                 right: 'month,agendaWeek'
             },
+            titleFormat: '\'Month 1\'',
+            year: 2018,
+            month: 0,
+            date: 1,
             selectable: true,
             selectHelper: true,
             events: [
+                <% @training_sessions.each do |event| %>
                 {
-                    title: '<%= @training_plan_template.name %>',
-                    start: '<%= @training_plan_template.start_date %>',
+                    id: '<%= event.id %>',
+                    title: '<%= event.training_plan_template.name %>',
+                    start: '<%= event.start_at %>',
                     allDay: false
-                }
+                },
+            <% end %>
             ],
-            eventColor: '#ED1317',
-            editable: true,
-            droppable: true, // this allows things to be dropped onto the calendar !!!
-            drop: function (date, allDay) { // this function is called when something is dropped
-                // retrieve the dropped element's stored Event Object
-                var originalEventObject = $(this).data('eventObject');
-                var $categoryClass = $(this).attr('data-class');
-                // we need to copy it, so that multiple events don't have a reference to the same object
-                var copiedEventObject = $.extend({}, originalEventObject);
-                // assign it the date that was reported
-                copiedEventObject.start = date;
-                copiedEventObject.allDay = allDay;
-                if ($categoryClass)
-                    copiedEventObject['className'] = [$categoryClass];
-                // render the event on the calendar
-                // the last `true` argument determines if the event "sticks" (http://arshaw.com/fullcalendar/docs/event_rendering/renderEvent/)
-                $('#calendar').fullCalendar('renderEvent', copiedEventObject, true);
-                // is the "remove after drop" checkbox checked?
-                if ($('#drop-remove').is(':checked')) {
-                    // if so, remove the element from the "Draggable Events" list
-                    $(this).remove();
-                }
-            },
+            eventColor: '#ED1317'
 
-            selectable: true,
-            eventClick: function (calEvent, jsEvent, view) {
-                var form = $("<form></form>");
-                form.append("<label>Change event name</label>");
-                form.append("<div class='input-group'><input class='form-control' type=text value='" + calEvent.title + "' /><span class='input-group-btn'><button type='submit' class='btn btn-success'><i class='fa fa-check'></i> Save Changes</button></span></div>");
-                $modal.modal({
-                    backdrop: 'static'
-                });
-                $modal.find('.delete-event').show().end().find('.save-event').hide().end().find('.modal-body').empty().prepend(form).end().find('.delete-event').unbind('click').click(function () {
-                    calendar.fullCalendar('removeEvents', function (ev) {
-                        return (ev._id == calEvent._id);
-                    });
-                    $modal.modal('hide');
-                });
-                $modal.find('form').on('submit', function () {
-                    calEvent.title = form.find("input[type=text]").val();
-                    calendar.fullCalendar('updateEvent', calEvent);
-                    $modal.modal('hide');
-                    return false;
-                });
-            },
-            select: function (start, end, allDay) {
-                $modal.modal({
-                    backdrop: 'static'
-                });
-                form = $('form#new_training_plan_template').html();
-                $modal.find('.delete-event').hide().end().find('.save-event').show().end().find('.modal-body').empty().prepend(form).end().find('.save-event').unbind('click').click(function () {
-                    var name = $('#training_plan_template_name').val();
-                    var owner_id = $('#training_plan_template_owner_id').val();
-                    $.ajax({
-                        type: "POST",
-                        url: "/training_sessions",
-                        data: { training_plan: {name: name, owner_id: owner_id, start_date: start} }
-                    }).done(function (msg) {
-                        window.location.reload(true);
-                        calendar.fullCalendar('refetchEvents');
-                    });
-                    $modal.modal('hide');
-                    return false;
-                });
-            }
         });
 
         var $modal = $('#event-modal');
