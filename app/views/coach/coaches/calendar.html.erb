@@ -24,11 +24,6 @@
     <div class="widget">
       <div class="widget-header">
         <h2>Training Session Manager | <%= @client.email %></h2>
-        <div class="additional-btn">
-          <a href="#" class="hidden reload"><i class="icon-ccw-1"></i></a>
-          <a href="#" class="widget-toggle"><i class="icon-down-open-2"></i></a>
-          <a href="#" class="widget-close"><i class="icon-cancel-3"></i></a>
-        </div>
       </div>
       <div class="widget-content padding">
         <div class="col-md-3">
@@ -80,42 +75,33 @@
     </div>
   </div>
 </div>
-<%= form_for(@training_session, :html => {:style => "display: none"}) do |f| %>
-  <%= hidden_field_tag :client_id, @client.id %>
-  <input type="hidden" name="start_at" id="start-at" value=""/>
-  <div class="row">
-    <div class="col-md-6">
-      <div class="form-group">
-        <label class="control-label">Training Session Template</label>
-        <%= f.collection_select :training_session_template_id, TrainingSessionTemplate.all, :id, :name, {prompt: "Select a Training Session Template"}, {:class => 'form-control'} %>
-      </div>
-    </div>
-    <div class="col-md-6">
-      <div class="form-group">
-        <label class="control-label">Training Plan Template</label>
-        <%= f.collection_select :training_plan_template_id, TrainingPlanTemplate.all, :id, :name, {prompt: "Select a Training Plan Template"}, {:class => 'form-control'} %>
-      </div>
-    </div>
-  </div>
-<% end %>
 <script>
     $(document).ready(function(){
         var date = new Date();
+        var calendarMode = localStorage.getItem('calendarMode');
         var calendar = $('#calendar').fullCalendar({
             header: {
                 left: 'prev,next today',
                 center: 'title',
                 right: 'month,agendaWeek'
             },
+            defaultView: function(){
+                if (calendarMode) {
+                    return calendarMode
+                }
+            }(),
             selectable: true,
             selectHelper: true,
             events: [
-                <% @client_training_sessions.each do |event| %>
-                {
-                    title: '<%= event.training_session_template.present? ? event.training_session_template.name : event.training_plan_template.name %>',
-                    start: '<%= event.start_at %>',
-                    allDay: false
-                },
+                <% if @client_training_sessions.present? %>
+                    <% @client_training_sessions.each do |event| %>
+                    {
+                        id: '<%= event.id %>',
+                        title: '<%= event.training_session_template.name %>',
+                        start: '<%= event.start_at %>',
+                        allDay: false
+                    },
+                    <% end %>
                 <% end %>
             ],
             editable: true,
@@ -166,22 +152,39 @@
                 $modal.modal({
                     backdrop: 'static'
                 });
-                form = $('form#new_training_session').html();//
-                $modal.find('.delete-event').hide().end().find('.save-event').show().end().find('.modal-body').empty().prepend(form).end().find('.save-event').unbind('click').click(function () {
+
+                $modal.find('.delete-event').hide().end().find('.save-event').show().end().find('.modal-body').empty().prepend("<%= escape_javascript render :partial => 'training_session_form' %>").end().find('.save-event').unbind('click').click(function () {
                     var session_id = $('#training_session_training_session_template_id').val();
                     var plan_id = $('#training_session_training_plan_template_id').val();
                     var client_id = $('#client_id').val();
+
+                    var hour = $('#training_session_start_at_4i').val();
+                    var minute = $('#training_session_start_at_5i').val();
+                    start.setHours(hour);
+                    start.setMinutes(minute);
+
                     $.ajax({
                         type: "POST",
                         url: "/training_sessions",
                         data: { training_session: {training_plan_template_id: plan_id, training_session_template_id: session_id, start_at: start, client_id: client_id} }
                     }).done(function (msg) {
+                        var view = $('#calendar').fullCalendar('getView');
+                        localStorage.setItem('calendarMode', view.name);
+
                         window.location.reload(true);
                         calendar.fullCalendar('refetchEvents');
                     });
                     $modal.modal('hide');
                     return false;
                 });
+
+                var hour = start.getHours();
+                var minute = start.getMinutes();
+
+                if (hour){
+                    $('#training_session_start_at_4i option:selected').val(hour).text(hour);
+                    $('#training_session_start_at_5i option:selected').val(minute).text(minute);
+                }
             }
         });
 

@@ -19,7 +19,7 @@
         <td><%= training_plan.user.email if training_plan.user.present? %></td>
         <td><%= training_plan.start_date %></td>
         <td><%= link_to 'Show', training_plan %></td>
-        <td><%= link_to 'Edit', training_plan_template_create_training_session_path(training_plan) %></td>
+        <td><%= link_to 'Edit', edit_training_plan_template_path(training_plan) %></td>
         <td><%= link_to 'Destroy', training_plan, method: :delete, data: { confirm: 'Are you sure?' } %></td>
       </tr>
     <% end %>

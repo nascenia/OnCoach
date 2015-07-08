@@ -21,12 +21,7 @@
   <div class="col-md-12 portlets">
     <div class="widget">
       <div class="widget-header">
-        <h2>Training Plan Template Manager</h2>
-        <div class="additional-btn">
-          <a href="#" class="hidden reload"><i class="icon-ccw-1"></i></a>
-          <a href="#" class="widget-toggle"><i class="icon-down-open-2"></i></a>
-          <a href="#" class="widget-close"><i class="icon-cancel-3"></i></a>
-        </div>
+        <h2><%= @training_plan_template.name %></h2>
       </div>
       <div class="widget-content padding">
         <div class="col-md-3">
@@ -90,26 +85,58 @@
       </div>
     </div>
 <% end %>
+<% unless @training_plan_template.new_record? %>
+    <%= form_for(@training_session, :html => {:style => "display: none"}) do |f| %>
+        <%= f.hidden_field :training_plan_template_id, :value => @training_plan_template.id %>
+        <div class="row">
+          <div class="col-md-6">
+            <div class="form-group">
+              <label class="control-label">Training Session Start At</label>
+              <%= f.time_select :start_at, {}, {:class => 'form-control'} %>
+            </div>
+          </div>
+          <div class="col-md-6">
+            <div class="form-group">
+              <label class="control-label">Training Session Template</label>
+              <%= f.collection_select :training_session_template_id, TrainingSessionTemplate.all, :id, :name, {:prompt => 'Select a Template'}, {:class => 'form-control'} %>
+            </div>
+          </div>
+        </div>
+    <% end %>
+<% end %>
 <script>
     $(document).ready(function(){
         var date = new Date();
+        var calendarMode = localStorage.getItem('calendarMode');
         var calendar = $('#calendar').fullCalendar({
             header: {
-                left: 'prev,next today',
-                center: 'title',
                 right: 'month,agendaWeek'
             },
+            titleFormat: {
+                month: '\'Month 1\'',
+                week: '\'Week 1\''
+            },
+            defaultView: function(){
+                if (calendarMode) {
+                    return calendarMode
+                }
+            }(),
             year: 2018,
             month: 0,
             date: 1,
             selectable: true,
             selectHelper: true,
             events: [
-                {
-                    title: '<%= @training_plan_template.name %>',
-                    start: '<%= @training_plan_template.start_date %>',
-                    allDay: false
-                }
+                <% if @training_sessions.present? %>
+                    <% @training_sessions.each do |event| %>
+                    {
+                        id: '<%= event.id %>',
+                        title: '<%= event.training_session_template.name %>',
+                        start: '<%= event.start_at %>',
+                        allDay: false
+                    },
+                    <% end %>
+                <% end %>
             ],
             eventColor: '#ED1317',
             editable: true,
@@ -134,25 +161,40 @@
                     $(this).remove();
                 }
             },
-
             selectable: true,
             eventClick: function (calEvent, jsEvent, view) {
-                var form = $('form.edit_training_plan_template').html();
-                var formId = $('form.edit_training_plan_template').attr('id');
-                var id = formId.slice(-1);
+                var form = $('form.new_training_session').html();
                 $modal.modal({
                     backdrop: 'static'
                 });
-                $modal.find('.delete-event').hide().end().find('.save-event').show().end().find('.modal-body').empty().prepend(form).end().find('.save-event').unbind('click').click(function () {
-                    var name = $('#training_plan_template_name').val();
-                    var owner_id = $('#training_plan_template_owner_id').val();
+
+                $modal.find('.delete-event').show().end().find('.save-event').show().end().find('.modal-body').empty().prepend(form).end().find('.save-event').unbind('click').click(function () {
+                    var sessioId = $('#training_session_training_session_template_id').val();
+                    var hour = $('#training_session_start_at_4i').val();
+                    var minute = $('#training_session_start_at_5i').val();
+
+                    calEvent.start.setHours(hour);
+                    calEvent.start.setMinutes(minute);
                     $.ajax({
                         type: "PUT",
-                        url: "/training_plan_templates/"+id,
-                        dataType: 'script',
-                        data: { training_plan_template: {name: name, owner_id: owner_id} }
+                        url: "/training_sessions/"+calEvent.id,
+                        dataType: 'html',
+                        data: { training_session: {training_session_template_id: sessioId, start_at: calEvent.start} }
                     }).done(function (msg) {
-                        window.location.reload(true);
+                        calendar.fullCalendar('refetchEvents');
+                    });
+                    $modal.modal('hide');
+                });
+
+                $modal.find('.delete-event').unbind('click').click(function () {
+                    var id = calEvent.id;
+                    $('#calendar').fullCalendar('removeEvents', id);
+                    $.ajax({
+                        type: "DELETE",
+                        url: "/training_sessions/"+id,
+                        dataType: 'html',
+                        data: { training_session: {id: id} }
+                    }).done(function (msg) {
                         calendar.fullCalendar('refetchEvents');
                     });
                     $modal.modal('hide');
@@ -162,21 +204,56 @@
                 $modal.modal({
                     backdrop: 'static'
                 });
-                form = $('form#new_training_plan_template').html();
-                $modal.find('.delete-event').hide().end().find('.save-event').show().end().find('.modal-body').empty().prepend(form).end().find('.save-event').unbind('click').click(function () {
-                    var name = $('#training_plan_template_name').val();
-                    var owner_id = $('#training_plan_template_owner_id').val();
-                    $.ajax({
-                        type: "POST",
-                        url: "/training_plan_templates",
-                        data: { training_plan_template: {name: name, owner_id: owner_id, start_date: start} }
-                    }).done(function (msg) {
-                        window.location.href = '<%= training_plan_templates_path %>';
-                        calendar.fullCalendar('refetchEvents');
+                var view = $('#calendar').fullCalendar('getView');
+                localStorage.setItem('calendarMode', view.name);
+
+                <% if @training_plan_template.new_record? %>
+                    form = $('form#new_training_plan_template').html();
+                    $modal.find('.delete-event').hide().end().find('.save-event').show().end().find('.modal-body').empty().prepend(form).end().find('.save-event').unbind('click').click(function () {
+                        var name = $('#training_plan_template_name').val();
+                        var owner_id = $('#training_plan_template_owner_id').val();
+                        $.ajax({
+                            type: "POST",
+                            url: "/training_plan_templates",
+                            data: { training_plan_template: {name: name, owner_id: owner_id, start_date: start} }
+                        }).done(function (msg) {
+                            window.location.href = '<%= training_plan_templates_path %>';
+                            calendar.fullCalendar('refetchEvents');
+                        });
+                        $modal.modal('hide');
+                        return false;
                     });
-                    $modal.modal('hide');
-                    return false;
-                });
+                <% else %>
+                    form = $('form#new_training_session').html();
+
+                    $modal.find('.delete-event').hide().end().find('.save-event').show().end().find('.modal-body').empty().prepend(form).end().find('.save-event').unbind('click').click(function () {
+                        var plan_id = $('#training_session_training_plan_template_id').val();
+                        var session_id = $('#training_session_training_session_template_id').val();
+
+                        var hour = $('#training_session_start_at_4i').val();
+                        var minute = $('#training_session_start_at_5i').val();
+                        start.setHours(hour);
+                        start.setMinutes(minute);
+                        $.ajax({
+                            type: "POST",
+                            url: "/training_sessions",
+                            data: { training_session: {training_plan_template_id: plan_id, training_session_template_id: session_id, start_at: start} }
+                        }).done(function (msg) {
+                            window.location.reload(true);
+                            calendar.fullCalendar('refetchEvents');
+                        });
+                        $modal.modal('hide');
+                        return false;
+                    });
+
+                    var hour = start.getHours();
+                    var minute = start.getMinutes();
+
+                    if (hour){
+                        $('#training_session_start_at_4i option:selected').val(hour).text(hour);
+                        $('#training_session_start_at_5i option:selected').val(minute).text(minute);
+                    }
+                <% end %>
             }
         });
 

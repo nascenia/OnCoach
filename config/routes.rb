@@ -4,7 +4,7 @@ Rails.application.routes.draw do
 
   resources :training_sessions
   resources :training_plan_templates do
-    get 'create_training_session' => 'training_plan_templates#create_training_session'
+    put 'edit'
   end
   resources :exercise_sessions
   resources :training_session_templates

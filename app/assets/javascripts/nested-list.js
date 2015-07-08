@@ -5,9 +5,9 @@ $(document).ready(function(){
         var list   = e.length ? e : $(e.target),
             output = list.data('output');
         if (window.JSON) {
-            output.val(window.JSON.stringify(list.nestable('serialize')));//, null, 2));
+//            output.val(window.JSON.stringify(list.nestable('serialize')));//, null, 2));
         } else {
-            output.val('JSON browser support required for this demo.');
+//            output.val('JSON browser support required for this demo.');
         }
     };
 

@@ -42,7 +42,7 @@ class TrainingSessionsController < ApplicationController
   def update
     respond_to do |format|
       if @training_session.update(training_session_params)
-        format.html { redirect_to @training_session, notice: 'Training session was successfully updated.' }
+        format.html { redirect_to request.referer, :id => @training_session.training_plan_template.id }
         format.json { render :show, status: :ok, location: @training_session }
       else
         format.html { render :edit }

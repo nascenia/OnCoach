@@ -20,6 +20,8 @@ class TrainingPlanTemplatesController < ApplicationController
 
   # GET /training_plan_templates/1/edit
   def edit
+    @training_session = TrainingSession.new
+    @training_sessions = @training_plan_template.training_sessions
   end
 
   # POST /training_plan_templates
@@ -63,16 +65,10 @@ class TrainingPlanTemplatesController < ApplicationController
     end
   end
 
-  def create_training_session
-    @training_plan_template = TrainingPlanTemplate.find params[:training_plan_template_id]
-    @training_session = TrainingSession.new
-    @training_sessions = @training_plan_template.training_sessions
-  end
-
   private
     # Use callbacks to share common setup or constraints between actions.
     def set_training_plan
-      @training_plan_template = TrainingPlanTemplate.find(params[:id])
+      @training_plan_template = params[:id].present? ? TrainingPlanTemplate.find(params[:id]): TrainingPlanTemplate.find(params[:training_plan_template_id])
     end
 
     # Never trust parameters from the scary internet, only allow the white list through.

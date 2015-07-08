@@ -1,0 +1,24 @@
+<%= form_for(@training_session) do |f| %>
+    <%= hidden_field_tag :client_id, @client.id %>
+    <input type="hidden" name="start_at" id="start-at" value=""/>
+    <div class="row">
+      <div class="col-md-6">
+        <div class="form-group">
+          <label class="control-label">Training Session Template</label>
+          <%= f.collection_select :training_session_template_id, TrainingSessionTemplate.all, :id, :name, {prompt: "Select a Training Session Template"}, {:class => 'form-control'} %>
+        </div>
+      </div>
+      <div class="col-md-6">
+        <div class="form-group">
+          <label class="control-label">Training Plan Template</label>
+          <%= f.collection_select :training_plan_template_id, TrainingPlanTemplate.all, :id, :name, {prompt: "Select a Training Plan Template"}, {:class => 'form-control'} %>
+        </div>
+      </div>
+      <div class="col-md-6">
+        <div class="form-group">
+          <label class="control-label">Training Plan Template</label>
+          <%= f.time_select :start_at, {}, {:class => 'form-control'} %>
+        </div>
+      </div>
+    </div>
+<% end %>
