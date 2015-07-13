@@ -32,6 +32,7 @@ class TrainingPlanTemplatesController < ApplicationController
     respond_to do |format|
       if @training_plan_template.save
         format.html { redirect_to @training_plan_template, notice: 'Training plan was successfully created.' }
+        format.js { render :js => "window.location.href = ('#{edit_training_plan_template_path(@training_plan_template)}');" }
         format.json { render :show, status: :created, location: @training_plan_template }
       else
         format.html { render :new }

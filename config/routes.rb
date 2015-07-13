@@ -2,7 +2,9 @@ Rails.application.routes.draw do
 
   mount FullcalendarEngine::Engine => "/fullcalendar_engine"
 
-  resources :training_sessions
+  resources :training_sessions do
+    get 'show_current_tst', to: 'training_sessions#show_current_tst'
+  end
   resources :training_plan_templates do
     put 'edit'
   end

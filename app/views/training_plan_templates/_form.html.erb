@@ -24,41 +24,7 @@
         <h2><%= @training_plan_template.name %></h2>
       </div>
       <div class="widget-content padding">
-        <div class="col-md-3">
-          <div class="widget bg-gray-light">
-            <div class="widget-body">
-              <div class="row">
-                <div class="col-md-12 col-sm-12 col-xs-12">
-                  <h3 class="text-white" id="calender-current-date">Events</h3>
-                  <div id='draggable-events'>
-                    <p>Drag and drop your event or click in the calendar</p><br>
-                    <div class="draggable-event btn btn-block bg-green-1 text-white-1" data-class="bg-green-1">
-                      <i class="fa fa-move"></i>Entertainment
-                    </div>
-                    <div class="draggable-event btn btn-block bg-pink-1 text-white-1" data-class="bg-pink-1">
-                      <i class="fa fa-move"></i>Meeting
-                    </div>
-                    <div class="draggable-event btn btn-block bg-lightblue-1 text-white-1" data-class="bg-lightblue-1">
-                      <i class="fa fa-move"></i>Lunch
-                    </div>
-                    <div class="draggable-event btn btn-block bg-red-1 text-white-1" data-class="bg-red-1">
-                      <i class="fa fa-move"></i>Work
-                    </div>
-                    <div class="draggable-event btn btn-block bg-blue-1 text-white-1" data-class="bg-blue-1">
-                      <i class="fa fa-move"></i>Sport
-                    </div><br>
-                    <p>
-                      <label>
-                        <input id="drop-remove" type="checkbox"> remove after drop
-                      </label>
-                    </p>
-                  </div>
-                </div>
-              </div>
-            </div>
-          </div>
-        </div>
-        <div class="col-md-9">
+        <div class="col-md-12">
           <div class="widget bg-white">
             <div class="widget-body">
               <div class="row">
@@ -110,11 +76,13 @@
         var calendarMode = localStorage.getItem('calendarMode');
         var calendar = $('#calendar').fullCalendar({
             header: {
+                left: 'prev,next',
+                center: 'title',
                 right: 'month,agendaWeek'
             },
             titleFormat: {
-                month: '\'Month 1\'',
-                week: '\'Week 1\''
+                month: '\'Month\' M',
+                week: '\'Week\' W'
             },
             defaultView: function(){
                 if (calendarMode) {
@@ -139,35 +107,22 @@
                 <% end %>
             ],
             eventColor: '#ED1317',
-            editable: true,
-            droppable: true, // this allows things to be dropped onto the calendar !!!
-            drop: function (date, allDay) { // this function is called when something is dropped
-                // retrieve the dropped element's stored Event Object
-                var originalEventObject = $(this).data('eventObject');
-                var $categoryClass = $(this).attr('data-class');
-                // we need to copy it, so that multiple events don't have a reference to the same object
-                var copiedEventObject = $.extend({}, originalEventObject);
-                // assign it the date that was reported
-                copiedEventObject.start = date;
-                copiedEventObject.allDay = allDay;
-                if ($categoryClass)
-                    copiedEventObject['className'] = [$categoryClass];
-                // render the event on the calendar
-                // the last `true` argument determines if the event "sticks" (http://arshaw.com/fullcalendar/docs/event_rendering/renderEvent/)
-                $('#calendar').fullCalendar('renderEvent', copiedEventObject, true);
-                // is the "remove after drop" checkbox checked?
-                if ($('#drop-remove').is(':checked')) {
-                    // if so, remove the element from the "Draggable Events" list
-                    $(this).remove();
-                }
-            },
-            selectable: true,
+            editable: false,
             eventClick: function (calEvent, jsEvent, view) {
                 var form = $('form.new_training_session').html();
                 $modal.modal({
                     backdrop: 'static'
                 });
+                $modal.find('.save-event').text('Update event');
 
+                $.ajax({
+                    type: "GET",
+                    url: "/training_sessions/"+calEvent.id+"/show_current_tst",
+                    dataType: 'script',
+                    data: { training_session_id: calEvent.id}
+                }).done(function (msg) {
+                    calendar.fullCalendar('refetchEvents');
+                });
                 $modal.find('.delete-event').show().end().find('.save-event').show().end().find('.modal-body').empty().prepend(form).end().find('.save-event').unbind('click').click(function () {
                     var sessioId = $('#training_session_training_session_template_id').val();
                     var hour = $('#training_session_start_at_4i').val();
@@ -204,6 +159,7 @@
                 $modal.modal({
                     backdrop: 'static'
                 });
+                $modal.find('.save-event').text('Add event');
                 var view = $('#calendar').fullCalendar('getView');
                 localStorage.setItem('calendarMode', view.name);
 
@@ -215,9 +171,9 @@
                         $.ajax({
                             type: "POST",
                             url: "/training_plan_templates",
+                            dataType: "script",
                             data: { training_plan_template: {name: name, owner_id: owner_id, start_date: start} }
                         }).done(function (msg) {
-                            window.location.href = '<%= training_plan_templates_path %>';
                             calendar.fullCalendar('refetchEvents');
                         });
                         $modal.modal('hide');
@@ -258,21 +214,6 @@
         });
 
         var $modal = $('#event-modal');
-        $('#draggable-events div.draggable-event').each(function () {
-            // create an Event Object (http://arshaw.com/fullcalendar/docs/event_data/Event_Object/)
-            // it doesn't need to have a start or end
-            var eventObject = {
-                title: $.trim($(this).text()) // use the element's text as the event title
-            };
-            // store the Event Object in the DOM element so we can get to it later
-            $(this).data('eventObject', eventObject);
-            // make the event draggable using jQuery UI
-            $(this).draggable({
-                zIndex: 999,
-                revert: true, // will cause the event to go back to its
-                revertDuration: 20 //  original position after the drag
-            });
-        });
 
     });
 </script>

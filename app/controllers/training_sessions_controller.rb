@@ -26,6 +26,11 @@ class TrainingSessionsController < ApplicationController
   def create
     @training_session = TrainingSession.new(training_session_params)
 
+    if @training_session.training_plan_template.present?
+      @training_session.clone_training_plan_template_sessions
+      redirect_to @training_session and return
+    end
+
     respond_to do |format|
       if @training_session.save
         format.html { redirect_to @training_session, notice: 'Training session was successfully created.' }
@@ -58,6 +63,15 @@ class TrainingSessionsController < ApplicationController
     respond_to do |format|
       format.html { redirect_to training_sessions_url, notice: 'Training session was successfully destroyed.' }
       format.json { head :no_content }
+    end
+  end
+
+  def show_current_tst
+    @training_session = TrainingSession.find params[:training_session_id]
+    @training_session_template = @training_session.training_session_template
+
+    respond_to do |format|
+      format.js
     end
   end
 
