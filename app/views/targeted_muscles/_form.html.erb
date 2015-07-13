@@ -10,20 +10,32 @@
       </ul>
     </div>
   <% end %>
-
-  <div class="field">
-    <%= f.label :exercise_id %><br>
-    <%= f.collection_select :exercise_id, Exercise.all, :id, :name %>
-  </div>
-  <div class="field">
-    <%= f.label :muscle_id %><br>
-    <%= f.collection_select :muscle_id, Muscle.all, :id, :name %>
-  </div>
-  <div class="field">
-    <%= f.label :primary %><br>
-    <%= f.check_box :primary %>
-  </div>
-  <div class="actions">
-    <%= f.submit %>
+  <div class="row">
+    <div class="col-sm-6 portlets">
+      <div class="widget">
+        <div class="widget-header transparent">
+          <h2><strong><%= @targeted_muscle.new_record? ? "New" : "Edit" %></strong> Targeted Muscle</h2>
+        </div>
+        <div class="widget-content padding">
+          <div id="basic-form">
+            <div class="form-group field">
+              <%= f.label :exercise_id %><br>
+              <%= f.collection_select :exercise_id, Exercise.all, :id, :name, {}, class: 'form-control' %>
+            </div>
+            <div class="form-group field">
+              <%= f.label :muscle_id %><br>
+              <%= f.collection_select :muscle_id, Muscle.all, :id, :name, {}, class: 'form-control' %>
+            </div>
+            <div class="form-group field">
+              <%= f.label :primary %><br>
+              <%= f.check_box :primary, class: 'form-control' %>
+            </div>
+            <div class="actions">
+              <%= f.submit :class => 'btn btn-default' %>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
   </div>
 <% end %>

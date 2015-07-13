@@ -11,7 +11,7 @@
       </div>
       <div class="widget-content padding">
         <div class="dd" id="nestable">
-          <ol class="dd-list">
+          <ol class="dd-list dd-nodrag">
             <li class="dd-item">
               <div class="dd-handle">
                 <%= @muscle_group.name %>
@@ -20,11 +20,11 @@
                 </a>
               </div>
 
-              <ol class="dd-list">
+              <ol class="dd-list dd-nodrag">
                 <% @muscle_group.muscles.each do |muscle| %>
                     <li class="dd-item">
                       <div class="dd-handle">
-                        <%= muscle.name %>
+                        <%= link_to muscle.name, '#', class: 'dd-nodrag' %>
                       </div>
                     </li>
                 <% end %>

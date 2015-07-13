@@ -1,4 +1,3 @@
-<%= tinymce_assets %>
 <%= form_for(@exercise, :html => {:class => 'form-horizontal form-box'}) do |f| %>
   <% if @exercise.errors.any? %>
     <div id="error_explanation">
@@ -12,10 +11,10 @@
     </div>
   <% end %>
     <div class="row">
-      <div class="col-sm-6 portlets">
+      <div class="col-md-12 portlets">
         <div class="widget">
           <div class="widget-header transparent">
-            <h2><strong><%= @exercise.new_record? ? "New" : "Edit" %></strong> Muscle Group</h2>
+            <h2><strong><%= @exercise.new_record? ? "New" : "Edit" %></strong> Exercise</h2>
           </div>
           <div class="widget-content padding">
             <div id="basic-form">

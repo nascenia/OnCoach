@@ -3,8 +3,30 @@
     <li>
       <a href='<%= admin_index_path %>' class="active" id='dashboard'>
         <i class='icon-home-3'></i>
-        <span>Dashboard</span>
+        <span>Users</span>
       </a>
+    </li>
+    <li class='has_sub'><a href='javascript:void(0);' id='muscle'><i class='icon-chart-line'></i><span>Muscles</span>
+      <span class="pull-right"><i class="fa fa-angle-down"></i></span></a>
+      <ul>
+        <li><a href='<%= muscles_path %>' id='all-muscle'><span>View All Muscle</span></a></li>
+        <li><a href='<%= new_muscle_path %>' id='new-muscle'><span>New Muscle</span></a></li>
+      </ul>
+    </li>
+    <li class='has_sub'><a href='javascript:void(0);' id='muscle-group'><i class='fa fa-envelope'></i><span>Muscle Groups</span>
+      <span class="pull-right"><i class="fa fa-angle-down"></i></span></a>
+      <ul>
+        <li><a href='<%= muscle_groups_path %>' id='all-muscle-group'><span>View All</span></a></li>
+        <li><a href='<%= new_muscle_group_path %>' id='new-muscle-group'><span>New Muscle Group</span></a></li>
+      </ul>
+    </li>
+    <li class='has_sub'>
+      <a href='javascript:void(0);' id='training-session'><i class='fa fa-map-marker'></i><span>Exercises</span>
+        <span class="pull-right"><i class="fa fa-angle-down"></i></span></a>
+      <ul>
+        <li><a href='<%= exercises_path %>' id='all-training-session'><span>All Exercises</span></a></li>
+        <li><a href='<%= new_exercise_path %>' id='new-training-session'><span>New Exercise</span></a></li>
+      </ul>
     </li>
     <li class='has_sub'>
       <a href='javascript:void(0);' id='exercise-category'>
@@ -22,58 +44,6 @@
           <a href='<%= new_exercise_category_path %>' id='new-category'><span>New Categories</span></a>
         </li>
 
-      </ul>
-    </li>
-    <li class='has_sub'>
-      <a href='javascript:void(0);' id='exercise-plan'>
-        <i class='icon-pencil-3'></i>
-        <span>Training Session Template</span>
-        <span class="pull-right"><i class="fa fa-angle-down"></i></span>
-      </a>
-      <ul>
-        <li>
-          <a href='<%= training_session_templates_path %>' id='all-exercise-plan'><span>View All</span></a>
-        </li>
-        <li>
-          <a href='<%= new_training_session_template_path %>' id='new-exercise-plan'><span>New Training Session Template</span></a>
-        </li>
-      </ul>
-    </li>
-    <li class='has_sub'>
-      <a href='javascript:void(0);' id='training-plan'>
-        <i class='fa fa-table'></i>
-        <span>Training Plan Template</span>
-        <span class="pull-right"><i class="fa fa-angle-down"></i></span>
-      </a>
-      <ul>
-        <li>
-          <a href='<%= training_plan_templates_path %>' id='all-training-plan'><span>View All</span></a>
-        </li>
-        <li>
-          <a href='<%= new_training_plan_template_path %>' id='new-training-plan'><span>New Trainig Plan Template</span></a>
-        </li>
-      </ul>
-    </li>
-    <li class='has_sub'>
-      <a href='javascript:void(0);' id='training-session'><i class='fa fa-map-marker'></i><span>Exercise</span>
-        <span class="pull-right"><i class="fa fa-angle-down"></i></span></a>
-      <ul>
-        <li><a href='<%= exercises_path %>' id='all-training-session'><span>All Exercises</span></a></li>
-        <li><a href='<%= new_exercise_path %>' id='new-training-session'><span>New Exercise</span></a></li>
-      </ul>
-    </li>
-    <li class='has_sub'><a href='javascript:void(0);' id='muscle-group'><i class='fa fa-envelope'></i><span>Muscle Group</span>
-      <span class="pull-right"><i class="fa fa-angle-down"></i></span></a>
-      <ul>
-        <li><a href='<%= muscle_groups_path %>' id='all-muscle-group'><span>View All</span></a></li>
-        <li><a href='<%= new_muscle_group_path %>' id='new-muscle-group'><span>New Muscle Group</span></a></li>
-      </ul>
-    </li>
-    <li class='has_sub'><a href='javascript:void(0);' id='muscle'><i class='icon-chart-line'></i><span>Muscle</span>
-      <span class="pull-right"><i class="fa fa-angle-down"></i></span></a>
-      <ul>
-        <li><a href='<%= muscles_path %>' id='all-muscle'><span>View All Muscle</span></a></li>
-        <li><a href='<%= new_muscle_path %>' id='new-muscle'><span>New Muscle</span></a></li>
       </ul>
     </li>
     <li class='has_sub'><a href='javascript:void(0);' id='targeted-muscle'><i class='icon-megaphone'></i><span>Targeted Muscle</span>

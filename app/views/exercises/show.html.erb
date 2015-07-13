@@ -15,9 +15,11 @@
               <div class="dd-handle">
                 Name:
                 <span class="orange"><%= @exercise.name %></span>
-                <a title="Edit" href="<%= edit_exercise_path(@exercise) %>" class="pull-right tooltip-info dd-nodrag btn btn-primary btn-xs text-white-1">
-                  <i class="fa fa-pencil"></i>
-                </a>
+                <% if can? :update, @exercise %>
+                    <a title="Edit" href="<%= edit_exercise_path(@exercise) %>" class="pull-right tooltip-info dd-nodrag btn btn-primary btn-xs text-white-1">
+                      <i class="fa fa-pencil"></i>
+                    </a>
+                <% end %>
               </div>
             </li>
             <li class="dd-item">
@@ -35,14 +37,13 @@
             <li class="dd-item">
               <div class="dd-handle">
                 Description:
-                <span class="orange"><%= @exercise.description %></span>
+                <span class="orange"><%=h truncate(@exercise.description, :length => 50) %></span>
               </div>
             </li>
           </ol>
         </div>
       </div>
     </div>
-
   </div>
 
 </div>

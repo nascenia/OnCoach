@@ -36,6 +36,8 @@ class Ability
       can [:index],[Coach]
       can [:calendar], [User]
       can [:calendar], [Coach]
+      can [:index], [Exercise]
+      can [:show], [Exercise]
     else
       can [:index],[User]
       can [:index], [TrainingSession]
