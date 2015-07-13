@@ -2,7 +2,6 @@
   <% if @targeted_muscle.errors.any? %>
     <div id="error_explanation">
       <h2><%= pluralize(@targeted_muscle.errors.count, "error") %> prohibited this targeted_muscle from being saved:</h2>
-
       <ul>
       <% @targeted_muscle.errors.full_messages.each do |message| %>
         <li><%= message %></li>
