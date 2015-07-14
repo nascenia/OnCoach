@@ -6,7 +6,9 @@
         <h4 class="modal-title"><strong>Manage</strong> Training Plan Template</h4>
       </div>
       <div class="modal-body">
-        <p></p>
+        <% if @training_plan_template.new_record? %>
+            <p style="color: red;">Fill up the name first!</p>
+        <% end %>
       </div>
       <div class="modal-footer">
         <button type="button" class="btn btn-default" data-dismiss="modal">Close</button>
@@ -16,12 +18,28 @@
     </div>
   </div>
 </div>
+<%= form_for(@training_plan_template) do |f| %>
+    <input type="hidden" name="start_date" id="start_date" value=""/>
+    <div class="row">
+      <div class="col-md-6">
+        <div class="form-group">
+          <label class="control-label">Name</label>
+          <%= f.text_field :name, :class => 'form-control' %>
+          <%= f.hidden_field :owner_id, :value => current_user.id %>
+          <%= f.hidden_field :start_date, :value => '2018-01-01' %>
+        </div>
+        <div class="actions">
+          <%= f.submit class: 'btn btn-default' %>
+        </div>
+      </div>
+    </div>
+<% end %>
 <!-- END MODAL -->
 <div class="row">
   <div class="col-md-12 portlets">
     <div class="widget">
       <div class="widget-header">
-        <h2><%= @training_plan_template.name %></h2>
+        <h2></h2>
       </div>
       <div class="widget-content padding">
         <div class="col-md-12">
@@ -39,18 +57,6 @@
     </div>
   </div>
 </div>
-<%= form_for(@training_plan_template, :html => {:style => "display: none"}) do |f| %>
-    <input type="hidden" name="start_date" id="start_date" value=""/>
-    <div class="row">
-      <div class="col-md-6">
-        <div class="form-group">
-          <label class="control-label">Name</label>
-          <%= f.text_field :name, :class => 'form-control' %>
-          <%= f.hidden_field :owner_id, :value => current_user.id %>
-        </div>
-      </div>
-    </div>
-<% end %>
 <% unless @training_plan_template.new_record? %>
     <%= form_for(@training_session, :html => {:style => "display: none"}) do |f| %>
         <%= f.hidden_field :training_plan_template_id, :value => @training_plan_template.id %>
@@ -106,6 +112,15 @@
                     <% end %>
                 <% end %>
             ],
+            viewDisplay: function(currentView){
+                var minDate = new Date(2018, 0, 1);
+                if (minDate >= currentView.start){
+                    $('.fc-button-prev').addClass('fc-state-disabled')
+
+                } else {
+                    $('.fc-button-prev').removeClass('fc-state-disabled')
+                }
+            },
             eventColor: '#ED1317',
             editable: false,
             eventClick: function (calEvent, jsEvent, view) {
@@ -123,6 +138,7 @@
                 }).done(function (msg) {
                     calendar.fullCalendar('refetchEvents');
                 });
+
                 $modal.find('.delete-event').show().end().find('.save-event').show().end().find('.modal-body').empty().prepend(form).end().find('.save-event').unbind('click').click(function () {
                     var sessioId = $('#training_session_training_session_template_id').val();
                     var hour = $('#training_session_start_at_4i').val();
@@ -136,6 +152,8 @@
                         dataType: 'html',
                         data: { training_session: {training_session_template_id: sessioId, start_at: calEvent.start} }
                     }).done(function (msg) {
+                        localStorage.setItem('calendarMode', view.name);
+                        window.location.reload(true);
                         calendar.fullCalendar('refetchEvents');
                     });
                     $modal.modal('hide');
@@ -163,23 +181,7 @@
                 var view = $('#calendar').fullCalendar('getView');
                 localStorage.setItem('calendarMode', view.name);
 
-                <% if @training_plan_template.new_record? %>
-                    form = $('form#new_training_plan_template').html();
-                    $modal.find('.delete-event').hide().end().find('.save-event').show().end().find('.modal-body').empty().prepend(form).end().find('.save-event').unbind('click').click(function () {
-                        var name = $('#training_plan_template_name').val();
-                        var owner_id = $('#training_plan_template_owner_id').val();
-                        $.ajax({
-                            type: "POST",
-                            url: "/training_plan_templates",
-                            dataType: "script",
-                            data: { training_plan_template: {name: name, owner_id: owner_id, start_date: start} }
-                        }).done(function (msg) {
-                            calendar.fullCalendar('refetchEvents');
-                        });
-                        $modal.modal('hide');
-                        return false;
-                    });
-                <% else %>
+                <% unless @training_plan_template.new_record? %>
                     form = $('form#new_training_session').html();
 
                     $modal.find('.delete-event').hide().end().find('.save-event').show().end().find('.modal-body').empty().prepend(form).end().find('.save-event').unbind('click').click(function () {
@@ -209,6 +211,7 @@
                         $('#training_session_start_at_4i option:selected').val(hour).text(hour);
                         $('#training_session_start_at_5i option:selected').val(minute).text(minute);
                     }
+
                 <% end %>
             }
         });

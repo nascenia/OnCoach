@@ -40,6 +40,50 @@
                 <span class="orange"><%=h truncate(@exercise.description, :length => 50) %></span>
               </div>
             </li>
+            <li class="dd-item">
+              <div class="dd-handle">
+                Primary Muscles:
+              </div>
+              <ol class="dd-list dd-nodrag">
+                <% @exercise.primary_muscles.each do |muscle| %>
+                    <li class="dd-item">
+                      <div class="dd-handle">
+                        Name:
+                        <%= link_to muscle.name, '#', class: 'dd-nodrag' %>
+                      </div>
+                    </li>
+                    <li class="dd-item">
+                      <div class="dd-handle">
+                        Muscle Group:
+                        <%= link_to muscle.muscle_group.name, '#', class: 'dd-nodrag' %>
+                      </div>
+                    </li>
+                <% end %>
+
+              </ol>
+            </li>
+            <li class="dd-item">
+              <div class="dd-handle">
+                Secondary Muscles:
+              </div>
+              <ol class="dd-list dd-nodrag">
+                <% @exercise.secondary_muscles.each do |muscle| %>
+                    <li class="dd-item">
+                      <div class="dd-handle">
+                        Name:
+                        <%= link_to muscle.name, '#', class: 'dd-nodrag' %>
+                      </div>
+                    </li>
+                    <li class="dd-item">
+                      <div class="dd-handle">
+                        Muscle Group:
+                        <%= link_to muscle.muscle_group.name, '#', class: 'dd-nodrag' %>
+                      </div>
+                    </li>
+                <% end %>
+
+              </ol>
+            </li>
           </ol>
         </div>
       </div>

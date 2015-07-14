@@ -45,8 +45,21 @@
                 <%= f.label :calories, :class => 'control-label' %><br>
                 <%= f.text_field :calories, :required => true, :class => "form-control", :placeholder => "Name" %>
               </div>
+              <% unless @exercise.new_record? %>
+                  <%= f.fields_for :muscles do |pm| %>
+                      <div class="form-group field">
+                        <%= pm.label :name, :class => 'control-label' %><br>
+                        <%= pm.text_field :name, :required => true, :class => "form-control", :placeholder => "Name" %>
+                      </div>
+                      <div class="form-group field">
+                        <%= pm.label :muscle_group_id, :class => 'control-label' %><br>
+                        <%= pm.collection_select :muscle_group_id, MuscleGroup.all, :id, :name, {}, {:class => "form-control"} %>
+                      </div>
+                  <% end %>
+              <% end %>
+              <br>
               <div class="actions">
-                <%= f.submit :class => "btn btn-default" %>
+                <%= f.submit :class => "btn btn-primary" %>
               </div>
             </div>
           </div>

@@ -26,7 +26,7 @@ class TrainingSessionsController < ApplicationController
   def create
     @training_session = TrainingSession.new(training_session_params)
 
-    if @training_session.training_plan_template.present?
+    if @training_session.training_plan_template.present? && @training_session.client_id.present?
       @training_session.clone_training_plan_template_sessions
       redirect_to @training_session and return
     end

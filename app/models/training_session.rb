@@ -8,7 +8,7 @@ class TrainingSession < ActiveRecord::Base
     training_plan_template = TrainingPlanTemplate.find self.training_plan_template_id
 
     training_plan_template.training_sessions.each do |ts|
-      number_of_days = (ts.start_at.to_date - training_plan_template.start_date).to_i
+      number_of_days = ((ts.start_at - training_plan_template.start_date.to_datetime.change({hour: ts.start_at.hour, min: ts.start_at.min}))/ 3600).to_i
       ts_start_at = self.start_at.change({
         hour: ts.start_at.hour,
         min: ts.start_at.min
@@ -17,7 +17,7 @@ class TrainingSession < ActiveRecord::Base
       TrainingSession.create(
         :training_session_template_id => ts.training_session_template_id,
         :client_id => self.client_id,
-        :start_at => ts_start_at + number_of_days.days
+        :start_at => ts_start_at + number_of_days.hours
       )
     end
   end
