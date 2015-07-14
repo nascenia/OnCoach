@@ -26,6 +26,13 @@
       <ul>
         <li><a href='<%= exercises_path %>' id='all-training-session'><span>All Exercises</span></a></li>
         <li><a href='<%= new_exercise_path %>' id='new-training-session'><span>New Exercise</span></a></li>
+        <li class='has_sub'><a href='javascript:void(0);'><span>Targeted Muscles</span>
+          <span class="pull-right"><i class="fa fa-angle-down"></i></span></a>
+          <ul>
+            <li><a href='<%= targeted_muscles_path %>' id='all-targeted-muscle'><span>All Targeted Muscle</span></a></li>
+            <li><a href='<%= new_targeted_muscle_path %>' id='new-targeted-muscle'><span>New Targeted Muscle</span></a></li>
+          </ul>
+        </li>
       </ul>
     </li>
     <li class='has_sub'>
@@ -44,13 +51,6 @@
           <a href='<%= new_exercise_category_path %>' id='new-category'><span>New Categories</span></a>
         </li>
 
-      </ul>
-    </li>
-    <li class='has_sub'><a href='javascript:void(0);' id='targeted-muscle'><i class='icon-megaphone'></i><span>Targeted Muscle</span>
-      <span class="pull-right"><i class="fa fa-angle-down"></i></span></a>
-      <ul>
-        <li><a href='<%= targeted_muscles_path %>' id='all-targeted-muscle'><span>All Targeted Muscle</span></a></li>
-        <li><a href='<%= new_targeted_muscle_path %>' id='new-targeted-muscle'><span>New Targeted Muscle</span></a></li>
       </ul>
     </li>
   </ul>
