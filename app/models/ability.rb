@@ -42,6 +42,8 @@ class Ability
       can [:index],[User]
       can [:index], [TrainingSession]
       can [:calendar], [User]
+      can [:account], [User]
+      can [:update], [User]
     end
   end
 end

@@ -40,6 +40,8 @@ Rails.application.routes.draw do
   namespace :user do
     get 'index' => 'users#index'
     get 'calendar' => 'users#calendar'
+    get 'account' => 'users#account'
+    post 'update' => 'users#update'
   end
 
   devise_for :users, controllers: {
