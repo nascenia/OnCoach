@@ -1,4 +1,5 @@
 <%= hidden_field_tag :events, @client_training_sessions %>
+<%= hidden_field_tag :client_id, @client.id %>
 <!-- BEGIN MODAL -->
 <div class="modal fade" id="event-modal">
   <div class="modal-dialog">
@@ -26,7 +27,36 @@
         <h2>Training Session Manager | <%= @client.email %></h2>
       </div>
       <div class="widget-content padding">
-        <div class="col-md-12">
+        <div class="col-md-3">
+          <div class="widget bg-gray-light">
+            <div class="widget-body">
+              <div class="row">
+                <div class="col-md-12 col-sm-12 col-xs-12">
+                  <h3 class="text-white" id="calender-current-date">Training Session Templates</h3>
+                  <div id='draggable-events'>
+                    <p>Drag and drop your TSTs or click in the calendar</p><br>
+
+                    <%= label_tag 'Default Time' %>
+                    <%= time_select('DefaultTime', '', {default: {hour: '16', minute: '00'}}, class: 'form-control') %>
+
+                    <% current_user.training_session_templates.each do |tst| %>
+                        <div class="draggable-event btn btn-block bg-green-1 text-white-1" data-class="bg-green-1" data-id="<%= tst.id %>">
+                          <i class="fa fa-move"></i> <%= tst.name %>
+                        </div>
+                    <% end %>
+
+                    <p>
+                      <label>
+                        <input id="drop-remove" type="checkbox"> remove after drop
+                      </label>
+                    </p>
+                  </div>
+                </div>
+              </div>
+            </div>
+          </div>
+        </div>
+        <div class="col-md-9">
           <div class="widget bg-white">
             <div class="widget-body">
               <div class="row">
@@ -70,7 +100,47 @@
                     <% end %>
                 <% end %>
             ],
-            editable: false,
+            editable: true,
+            droppable: true,
+            drop: function (date, allDay) { // this function is called when something is dropped
+                var client_id = $('#client_id').val();
+                var session_id = $(this).data('id');
+                var hour = $('#DefaultTime__4i option:selected').val()
+                var minute = $('#DefaultTime__5i option:selected').val()
+
+                date.setHours(hour);
+                date.setMinutes(minute);
+
+                $.ajax({
+                    type: "POST",
+                    url: "/training_sessions",
+                    data: { training_session: {training_session_template_id: session_id, start_at: date, client_id: client_id} }
+                }).done(function (msg) {
+                    var view = $('#calendar').fullCalendar('getView');
+                    localStorage.setItem('calendarMode', view.name);
+
+                    window.location.reload(true);
+                    calendar.fullCalendar('refetchEvents');
+                });
+                // retrieve the dropped element's stored Event Object
+                var originalEventObject = $(this).data('eventObject');
+                var $categoryClass = $(this).attr('data-class');
+                // we need to copy it, so that multiple events don't have a reference to the same object
+                var copiedEventObject = $.extend({}, originalEventObject);
+                // assign it the date that was reported
+                copiedEventObject.start = date;
+                copiedEventObject.allDay = allDay;
+                if ($categoryClass)
+                    copiedEventObject['className'] = [$categoryClass];
+                // render the event on the calendar
+                // the last `true` argument determines if the event "sticks" (http://arshaw.com/fullcalendar/docs/event_rendering/renderEvent/)
+                $('#calendar').fullCalendar('renderEvent', copiedEventObject, false);
+                // is the "remove after drop" checkbox checked?
+                if ($('#drop-remove').is(':checked')) {
+                    // if so, remove the element from the "Draggable Events" list
+                    $(this).remove();
+                }
+            },
             eventClick: function (calEvent, jsEvent, view) {
                 var form = $("<form></form>");
                 form.append("<label>Change event name</label>");
@@ -132,5 +202,22 @@
         });
 
         var $modal = $('#event-modal');
+        $('#draggable-events div.draggable-event').each(function () {
+            // create an Event Object (http://arshaw.com/fullcalendar/docs/event_data/Event_Object/)
+            // it doesn't need to have a start or end
+            var eventObject = {
+                title: $.trim($(this).text()) // use the element's text as the event title
+            };
+            // store the Event Object in the DOM element so we can get to it later
+            $(this).data('eventObject', eventObject);
+            // make the event draggable using jQuery UI
+            $(this).draggable({
+                zIndex: 999,
+                revert: true, // will cause the event to go back to its
+                revertDuration: 20 //  original position after the drag
+            });
+
+        });
+
     });
 </script>

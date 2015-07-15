@@ -69,6 +69,6 @@ class TrainingSessionTemplatesController < ApplicationController
 
     # Never trust parameters from the scary internet, only allow the white list through.
     def exercise_plan_params
-      params.require(:training_session_template).permit(:name, exercise_sessions_attributes: [:training_session_template_id, :exercise_id, :phase, :intensity, :repetitions, :num_of_series, :resting_period])
+      params.require(:training_session_template).permit(:name, :owner_id, exercise_sessions_attributes: [:training_session_template_id, :exercise_id, :phase, :intensity, :repetitions, :num_of_series, :resting_period])
     end
 end

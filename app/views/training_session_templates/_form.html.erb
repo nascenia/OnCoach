@@ -14,6 +14,7 @@
   <div class="field">
     <%= f.label :name %><br>
     <%= f.text_field :name, :required => true %>
+    <%= f.hidden_field :owner_id, :value => current_user.id %>
   </div>
   <h3>Sessions</h3>
   <%= f.fields_for :exercise_sessions do |session| %>

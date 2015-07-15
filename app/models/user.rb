@@ -1,6 +1,7 @@
 class User < ActiveRecord::Base
   has_many :training_sessions, :foreign_key => :client_id
   has_many :training_plan_templates, :foreign_key => :owner_id
+  has_many :training_session_templates, :foreign_key => :owner_id
 
   devise :database_authenticatable, :registerable,
          :recoverable, :rememberable, :trackable, :validatable, :omniauthable, :omniauth_providers => [:facebook]
